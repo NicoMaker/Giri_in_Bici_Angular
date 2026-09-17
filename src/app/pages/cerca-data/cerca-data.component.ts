@@ -1,9 +1,13 @@
-import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { CriterioOrdine, SearchService, Uscita } from '../../core/services/search.service';
-import { ItalianNumberPipe } from '../../core/pipes/italian-number.pipe';
+import { CommonModule } from "@angular/common";
+import { Component, inject } from "@angular/core";
+import { FormsModule } from "@angular/forms";
+import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
+import {
+  CriterioOrdine,
+  SearchService,
+  Uscita,
+} from "../../core/services/search.service";
+import { ItalianNumberPipe } from "../../core/pipes/italian-number.pipe";
 
 // ============================================================
 // CercaDataComponent — equivalente di CercaData.html +
@@ -17,32 +21,32 @@ import { ItalianNumberPipe } from '../../core/pipes/italian-number.pipe';
 // "vero" per le uscite Autunno-Inverno.
 // ============================================================
 @Component({
-  selector: 'app-cerca-data',
+  selector: "app-cerca-data",
   standalone: true,
   imports: [CommonModule, FormsModule, ItalianNumberPipe],
-  templateUrl: './cerca-data.component.html',
-  styleUrl: './cerca-data.component.css',
+  templateUrl: "./cerca-data.component.html",
+  styleUrl: "./cerca-data.component.css",
 })
 export class CercaDataComponent {
   private readonly search = inject(SearchService);
   private readonly sanitizer = inject(DomSanitizer);
 
-  modalita: 'data' | 'posto' = 'data';
+  modalita: "data" | "posto" = "data";
 
   // --- Cerca per data ---
-  date: string[] = [''];
-  postiPerData: string[] = [''];
+  date: string[] = [""];
+  postiPerData: string[] = [""];
 
   // --- Cerca per posto ---
-  testoPosto = '';
+  testoPosto = "";
 
-  criterio: CriterioOrdine = 'alfabetico';
+  criterio: CriterioOrdine = "alfabetico";
   risultati: (Uscita & { postoSafe: SafeHtml })[] = [];
   cercato = false;
   inCorso = false;
 
   aggiungiData(): void {
-    this.date.push('');
+    this.date.push("");
   }
 
   rimuoviData(i: number): void {
@@ -50,7 +54,7 @@ export class CercaDataComponent {
   }
 
   aggiungiPosto(): void {
-    this.postiPerData.push('');
+    this.postiPerData.push("");
   }
 
   rimuoviPosto(i: number): void {
@@ -58,7 +62,9 @@ export class CercaDataComponent {
   }
 
   async cercaPerData(): Promise<void> {
-    const dateValide = this.date.filter(Boolean).map((d) => new Date(d + 'T00:00:00'));
+    const dateValide = this.date
+      .filter(Boolean)
+      .map((d) => new Date(d + "T00:00:00"));
     if (dateValide.length === 0) return;
     this.inCorso = true;
     this.cercato = true;

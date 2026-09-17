@@ -10,7 +10,8 @@
       <span class="hero__unita">km percorsi dal 2020</span>
     </p>
     <p class="hero__sub">
-      {{ totali.totalRaces | italianNumber }} uscite &middot; {{ totali.totalYears | italianNumber }} anni &middot;
+      {{ totali.totalRaces | italianNumber }} uscite &middot;
+      {{ totali.totalYears | italianNumber }} anni &middot;
       {{ totali.totalPeriods | italianNumber }} periodi in tre stagioni
     </p>
   }
@@ -28,7 +29,10 @@
     <span>Estate</span>
   </a>
   <a class="scheda-stagione" routerLink="/autunno-inverno">
-    <img [src]="'/img/Autunno_Inverno.jpg' | assetUrl" alt="Autunno - Inverno" />
+    <img
+      [src]="'/img/Autunno_Inverno.jpg' | assetUrl"
+      alt="Autunno - Inverno"
+    />
     <span>Autunno &middot; Inverno</span>
   </a>
 </section>
@@ -36,13 +40,49 @@
 @if (!caricamento && totali && medie) {
   <section class="colore" appScrollReveal>
     <h2 class="colore__titolo">In sintesi</h2>
-    <p class="misuracolore"><span>km medi per uscita</span> <span class="cifra">{{ medie.avgKmPerRace | italianNumber }}</span></p>
-    <p class="misuracolore"><span>Media km al mese</span> <span class="cifra">{{ medie.avgKmPerMonth === null ? 'N/D' : (medie.avgKmPerMonth | italianNumber) }}</span></p>
-    <p class="misuracolore"><span>Media km all'anno</span> <span class="cifra">{{ medie.avgKmPerYear === null ? 'N/D' : (medie.avgKmPerYear | italianNumber) }}</span></p>
-    <p class="misuracolore"><span>Uscite medie al mese</span> <span class="cifra">{{ medie.avgRacesPerMonth === null ? 'N/D' : (medie.avgRacesPerMonth | italianNumber) }}</span></p>
-    <p class="misuracolore"><span>Media km per periodo</span> <span class="cifra">{{ medie.avgKmPerPeriod === null ? 'N/D' : (medie.avgKmPerPeriod | italianNumber) }}</span></p>
-    <p class="misuracolore"><span>Media km per stagione</span> <span class="cifra">{{ medie.avgKmPerSeason | italianNumber }}</span></p>
-    <a class="colore__vai-a" routerLink="/statistiche">Vai alle statistiche complete <span aria-hidden="true">→</span></a>
+    <p class="misuracolore">
+      <span>km medi per uscita</span>
+      <span class="cifra">{{ medie.avgKmPerRace | italianNumber }}</span>
+    </p>
+    <p class="misuracolore">
+      <span>Media km al mese</span>
+      <span class="cifra">{{
+        medie.avgKmPerMonth === null
+          ? "N/D"
+          : (medie.avgKmPerMonth | italianNumber)
+      }}</span>
+    </p>
+    <p class="misuracolore">
+      <span>Media km all'anno</span>
+      <span class="cifra">{{
+        medie.avgKmPerYear === null
+          ? "N/D"
+          : (medie.avgKmPerYear | italianNumber)
+      }}</span>
+    </p>
+    <p class="misuracolore">
+      <span>Uscite medie al mese</span>
+      <span class="cifra">{{
+        medie.avgRacesPerMonth === null
+          ? "N/D"
+          : (medie.avgRacesPerMonth | italianNumber)
+      }}</span>
+    </p>
+    <p class="misuracolore">
+      <span>Media km per periodo</span>
+      <span class="cifra">{{
+        medie.avgKmPerPeriod === null
+          ? "N/D"
+          : (medie.avgKmPerPeriod | italianNumber)
+      }}</span>
+    </p>
+    <p class="misuracolore">
+      <span>Media km per stagione</span>
+      <span class="cifra">{{ medie.avgKmPerSeason | italianNumber }}</span>
+    </p>
+    <a class="colore__vai-a" routerLink="/statistiche"
+      >Vai alle statistiche complete <span aria-hidden="true">→</span></a
+    >
   </section>
 } @else if (!caricamento) {
   <p class="centro">Dati non disponibili al momento.</p>

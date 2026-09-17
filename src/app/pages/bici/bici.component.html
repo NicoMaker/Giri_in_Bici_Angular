@@ -1,10 +1,34 @@
 <h1 class="titolo">Le nostre bici</h1>
 
 <nav class="bici-filtri">
-  <button class="bici-filtro" [class.attivo]="filtro === 'home'" (click)="imposta('home')">Home</button>
-  <button class="bici-filtro" [class.attivo]="filtro === 'mtb'" (click)="imposta('mtb')">MTB</button>
-  <button class="bici-filtro" [class.attivo]="filtro === 'corsa'" (click)="imposta('corsa')">Corsa</button>
-  <button class="bici-filtro" [class.attivo]="filtro === 'tutte'" (click)="imposta('tutte')">Tutte</button>
+  <button
+    class="bici-filtro"
+    [class.attivo]="filtro === 'home'"
+    (click)="imposta('home')"
+  >
+    Home
+  </button>
+  <button
+    class="bici-filtro"
+    [class.attivo]="filtro === 'mtb'"
+    (click)="imposta('mtb')"
+  >
+    MTB
+  </button>
+  <button
+    class="bici-filtro"
+    [class.attivo]="filtro === 'corsa'"
+    (click)="imposta('corsa')"
+  >
+    Corsa
+  </button>
+  <button
+    class="bici-filtro"
+    [class.attivo]="filtro === 'tutte'"
+    (click)="imposta('tutte')"
+  >
+    Tutte
+  </button>
 </nav>
 
 @if (caricamento) {
@@ -18,14 +42,14 @@
     }
   </section>
 
-  @if (filtro !== 'home') {
+  @if (filtro !== "home") {
     <section class="bici-griglia" appScrollReveal>
       @for (b of biciFiltrate(); track b.nome) {
         <article class="bici-scheda">
           <img [src]="b.immagine | assetUrl" [alt]="b.nome" />
           <h2>{{ b.nome }}</h2>
           <ul>
-            <li>Tipo: {{ b.tipo === 'mtb' ? 'MTB' : 'Corsa' }}</li>
+            <li>Tipo: {{ b.tipo === "mtb" ? "MTB" : "Corsa" }}</li>
             <li>Freni: {{ b.tipo_freni }}</li>
             <li>Materiale: {{ b.materiale }}</li>
             <li>Ruote: {{ b.misura_ruote }}"</li>

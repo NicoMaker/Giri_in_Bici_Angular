@@ -1,4 +1,6 @@
-<a class="pulsante-indietro" routerLink="/statistiche">← Torna alle statistiche</a>
+<a class="pulsante-indietro" routerLink="/statistiche"
+  >← Torna alle statistiche</a
+>
 
 <h1 class="titolo">Statistiche totali</h1>
 
@@ -10,7 +12,11 @@
     <p class="misuracolore">Mesi registrati {{ righe.length }}</p>
   </section>
 
-  <app-bar-chart [dati]="barre" titolo="Andamento km, mese per mese" appScrollReveal></app-bar-chart>
+  <app-bar-chart
+    [dati]="barre"
+    titolo="Andamento km, mese per mese"
+    appScrollReveal
+  ></app-bar-chart>
 
   <div class="tabella-scroll" appScrollReveal>
     <table>

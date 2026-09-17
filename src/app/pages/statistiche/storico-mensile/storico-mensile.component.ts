@@ -1,11 +1,15 @@
-import { CommonModule } from '@angular/common';
-import { Component, OnInit, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { JsonDataService } from '../../../core/services/json-data.service';
-import { ConfigMesi, Storico, YearStat } from '../../../core/models/data.models';
-import { formatNumber } from '../../../core/services/number-format.service';
-import { ItalianNumberPipe } from '../../../core/pipes/italian-number.pipe';
-import { ScrollRevealDirective } from '../../../shared/scroll-reveal/scroll-reveal.directive';
+import { CommonModule } from "@angular/common";
+import { Component, OnInit, inject } from "@angular/core";
+import { RouterLink } from "@angular/router";
+import { JsonDataService } from "../../../core/services/json-data.service";
+import {
+  ConfigMesi,
+  Storico,
+  YearStat,
+} from "../../../core/models/data.models";
+import { formatNumber } from "../../../core/services/number-format.service";
+import { ItalianNumberPipe } from "../../../core/pipes/italian-number.pipe";
+import { ScrollRevealDirective } from "../../../shared/scroll-reveal/scroll-reveal.directive";
 
 interface Cella {
   km: number;
@@ -31,11 +35,11 @@ interface RigaAnno {
 // dell'anno precedente, con lo stesso calcolo di variazioni.js.
 // ============================================================
 @Component({
-  selector: 'app-storico-mensile',
+  selector: "app-storico-mensile",
   standalone: true,
   imports: [CommonModule, RouterLink, ItalianNumberPipe, ScrollRevealDirective],
-  templateUrl: './storico-mensile.component.html',
-  styleUrl: './storico-mensile.component.css',
+  templateUrl: "./storico-mensile.component.html",
+  styleUrl: "./storico-mensile.component.css",
 })
 export class StoricoMensileComponent implements OnInit {
   private readonly json = inject(JsonDataService);
@@ -46,8 +50,12 @@ export class StoricoMensileComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     const [storico, configMesi] = await Promise.all([
-      this.json.leggiOppureNull<Storico>('json/Statistiche/History/Storico.json'),
-      this.json.leggiOppureNull<ConfigMesi>('json/Statistiche/History/config-mesi.json'),
+      this.json.leggiOppureNull<Storico>(
+        "json/Statistiche/History/Storico.json",
+      ),
+      this.json.leggiOppureNull<ConfigMesi>(
+        "json/Statistiche/History/config-mesi.json",
+      ),
     ]);
 
     if (!storico) {
@@ -59,13 +67,28 @@ export class StoricoMensileComponent implements OnInit {
       ? Object.keys(configMesi.orderMesi).sort(
           (a, b) => configMesi.orderMesi[a] - configMesi.orderMesi[b],
         )
-      : ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'];
+      : [
+          "Gennaio",
+          "Febbraio",
+          "Marzo",
+          "Aprile",
+          "Maggio",
+          "Giugno",
+          "Luglio",
+          "Agosto",
+          "Settembre",
+          "Ottobre",
+          "Novembre",
+          "Dicembre",
+        ];
 
     const anni = Object.keys(storico.anni).sort();
-    const palette = storico.coloriAnni?.length ? storico.coloriAnni : ['blue'];
+    const palette = storico.coloriAnni?.length ? storico.coloriAnni : ["blue"];
 
     const datiPerAnno = await Promise.all(
-      anni.map((anno) => this.json.leggiOppureNull<YearStat>(storico.anni[anno])),
+      anni.map((anno) =>
+        this.json.leggiOppureNull<YearStat>(storico.anni[anno]),
+      ),
     );
 
     const valoriMensiliPerAnno: number[][] = datiPerAnno.map((dati) =>
@@ -75,8 +98,10 @@ export class StoricoMensileComponent implements OnInit {
     this.righe = anni.map((anno, indiceAnno) => {
       const valori = valoriMensiliPerAnno[indiceAnno];
       const celle: Cella[] = valori.map((km, indiceMese) => {
-        const precedente = indiceAnno > 0 ? valoriMensiliPerAnno[indiceAnno - 1][indiceMese] : 0;
-        const variazione = precedente === 0 ? null : ((km - precedente) / precedente) * 100;
+        const precedente =
+          indiceAnno > 0 ? valoriMensiliPerAnno[indiceAnno - 1][indiceMese] : 0;
+        const variazione =
+          precedente === 0 ? null : ((km - precedente) / precedente) * 100;
         return { km, variazione };
       });
       return {
@@ -91,11 +116,11 @@ export class StoricoMensileComponent implements OnInit {
   }
 
   segno(v: number): string {
-    return v > 0 ? '▲' : v < 0 ? '▼' : '●';
+    return v > 0 ? "▲" : v < 0 ? "▼" : "●";
   }
 
   classeVariazione(v: number): string {
-    return v > 0 ? 'su' : v < 0 ? 'giu' : 'pari';
+    return v > 0 ? "su" : v < 0 ? "giu" : "pari";
   }
 
   formatNumber = formatNumber;

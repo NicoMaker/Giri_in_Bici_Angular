@@ -1,7 +1,7 @@
-import { Injectable, inject } from '@angular/core';
-import { JsonDataService } from './json-data.service';
-import { PeriodEntry, Storico } from '../models/data.models';
-import { formatNumber } from './number-format.service';
+import { Injectable, inject } from "@angular/core";
+import { JsonDataService } from "./json-data.service";
+import { PeriodEntry, Storico } from "../models/data.models";
+import { formatNumber } from "./number-format.service";
 
 // ============================================================
 // SearchService
@@ -33,37 +33,50 @@ export interface Uscita {
 }
 
 export type CriterioOrdine =
-  | 'alfabetico'
-  | 'alfabetico-desc'
-  | 'data-vecchio'
-  | 'data-recente'
-  | 'distanza-lungo'
-  | 'distanza-corto';
+  | "alfabetico"
+  | "alfabetico-desc"
+  | "data-vecchio"
+  | "data-recente"
+  | "distanza-lungo"
+  | "distanza-corto";
 
 const MESI = [
-  'Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno',
-  'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre',
+  "Gennaio",
+  "Febbraio",
+  "Marzo",
+  "Aprile",
+  "Maggio",
+  "Giugno",
+  "Luglio",
+  "Agosto",
+  "Settembre",
+  "Ottobre",
+  "Novembre",
+  "Dicembre",
 ];
 
 // Nei file Autunno-Inverno (es. "2024-2025.json") i mesi Gennaio-Aprile
 // appartengono al secondo anno della coppia, gli altri al primo.
-const MESI_SECONDO_ANNO = ['Gennaio', 'Febbraio', 'Marzo', 'Aprile'];
+const MESI_SECONDO_ANNO = ["Gennaio", "Febbraio", "Marzo", "Aprile"];
 
-@Injectable({ providedIn: 'root' })
+@Injectable({ providedIn: "root" })
 export class SearchService {
   private readonly json = inject(JsonDataService);
 
   primavera(anno: number): Candidato {
-    return { stagione: 'Primavera', url: `json/Primavera/Periodi/${anno}.json` };
+    return {
+      stagione: "Primavera",
+      url: `json/Primavera/Periodi/${anno}.json`,
+    };
   }
 
   estate(anno: number): Candidato {
-    return { stagione: 'Estate', url: `json/Estate/Periodi/${anno}.json` };
+    return { stagione: "Estate", url: `json/Estate/Periodi/${anno}.json` };
   }
 
   autunnoInverno(annoInizio: number, annoFine: number): Candidato {
     return {
-      stagione: 'Autunno - Inverno',
+      stagione: "Autunno - Inverno",
       url: `json/Autunno_Inverno/Periodi/${annoInizio}-${annoFine}.json`,
       annoInizio,
       annoFine,
@@ -99,10 +112,12 @@ export class SearchService {
   /** Tutti i file di periodo del sito, per la ricerca per posto. */
   async tuttiICandidati(): Promise<Candidato[]> {
     const storico = await this.json.leggiOppureNull<Storico>(
-      'json/Statistiche/History/Storico.json',
+      "json/Statistiche/History/Storico.json",
     );
     const anni = storico?.anni
-      ? Object.keys(storico.anni).map(Number).sort((a, b) => a - b)
+      ? Object.keys(storico.anni)
+          .map(Number)
+          .sort((a, b) => a - b)
       : [2020, 2021, 2022, 2023, 2024, 2025, 2026];
 
     const candidati: Candidato[] = [];
@@ -121,16 +136,16 @@ export class SearchService {
 
   /** Estrae solo il testo da un campo "place" (puo' contenere un link <a>). */
   testoPosto(html: string): string {
-    const contenitore = document.createElement('div');
+    const contenitore = document.createElement("div");
     contenitore.innerHTML = html;
-    return (contenitore.textContent || '').trim();
+    return (contenitore.textContent || "").trim();
   }
 
   normalizza(testo: string): string {
     return testo
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
-      .toLocaleLowerCase('it');
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLocaleLowerCase("it");
   }
 
   /** Legge una lista di candidati e restituisce tutte le uscite trovate, arricchite. */
@@ -145,12 +160,12 @@ export class SearchService {
       const candidato = candidati[indice];
 
       dati.forEach((giro) => {
-        const parti = giro.date.split(' ');
+        const parti = giro.date.split(" ");
         const giorno = parseInt(parti[0], 10);
         const mese = parti[1];
         const meseIndice = MESI.indexOf(mese);
         const anno =
-          candidato.stagione === 'Autunno - Inverno'
+          candidato.stagione === "Autunno - Inverno"
             ? MESI_SECONDO_ANNO.indexOf(mese) !== -1
               ? (candidato.annoFine as number)
               : (candidato.annoInizio as number)
@@ -177,7 +192,9 @@ export class SearchService {
   }
 
   private perAlfabeto(a: Uscita, b: Uscita): number {
-    return a.postoTesto.localeCompare(b.postoTesto, 'it', { sensitivity: 'base' });
+    return a.postoTesto.localeCompare(b.postoTesto, "it", {
+      sensitivity: "base",
+    });
   }
 
   /** Ordina secondo uno dei 6 criteri dei bottoni "Ordina per". */
@@ -185,22 +202,22 @@ export class SearchService {
     const copia = uscite.slice();
 
     switch (criterio) {
-      case 'data-vecchio':
+      case "data-vecchio":
         copia.sort((a, b) => this.perData(a, b) || this.perAlfabeto(a, b));
         break;
-      case 'data-recente':
+      case "data-recente":
         copia.sort((a, b) => this.perData(b, a) || this.perAlfabeto(a, b));
         break;
-      case 'distanza-lungo':
+      case "distanza-lungo":
         copia.sort((a, b) => b.distanza - a.distanza || this.perData(a, b));
         break;
-      case 'distanza-corto':
+      case "distanza-corto":
         copia.sort((a, b) => a.distanza - b.distanza || this.perData(a, b));
         break;
-      case 'alfabetico-desc':
+      case "alfabetico-desc":
         copia.sort((a, b) => this.perAlfabeto(b, a) || this.perData(a, b));
         break;
-      case 'alfabetico':
+      case "alfabetico":
       default:
         copia.sort((a, b) => this.perAlfabeto(a, b) || this.perData(a, b));
         break;
@@ -220,7 +237,9 @@ export class SearchService {
 
     const uscite = await this.leggiUscite(Array.from(mappa.values()));
     const dateChiavi = new Set(
-      date.map((d) => d.getFullYear() * 10000 + (d.getMonth() + 1) * 100 + d.getDate()),
+      date.map(
+        (d) => d.getFullYear() * 10000 + (d.getMonth() + 1) * 100 + d.getDate(),
+      ),
     );
 
     let risultati = uscite.filter((u) => dateChiavi.has(u.chiaveData));
@@ -234,7 +253,7 @@ export class SearchService {
       }
     }
 
-    return this.ordina(risultati, 'data-vecchio');
+    return this.ordina(risultati, "data-vecchio");
   }
 
   /** Ricerca per posto (sottostringa, senza distinguere accenti/maiuscole) in tutto il diario. */
@@ -244,8 +263,10 @@ export class SearchService {
 
     const candidati = await this.tuttiICandidati();
     const uscite = await this.leggiUscite(candidati);
-    const risultati = uscite.filter((u) => this.normalizza(u.postoTesto).includes(query));
-    return this.ordina(risultati, 'alfabetico');
+    const risultati = uscite.filter((u) =>
+      this.normalizza(u.postoTesto).includes(query),
+    );
+    return this.ordina(risultati, "alfabetico");
   }
 
   formatNumber = formatNumber;

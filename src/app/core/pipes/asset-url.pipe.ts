@@ -1,13 +1,13 @@
-import { Pipe, PipeTransform } from '@angular/core';
-import { resolveAssetPath } from '../services/asset-path.util';
+import { Pipe, PipeTransform } from "@angular/core";
+import { resolveAssetPath } from "../services/asset-path.util";
 
 @Pipe({
-  name: 'assetUrl',
+  name: "assetUrl",
   standalone: true,
 })
 export class AssetUrlPipe implements PipeTransform {
   transform(path: string | null | undefined): string {
-    if (!path) return '';
+    if (!path) return "";
     return resolveAssetPath(path);
   }
 }

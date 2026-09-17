@@ -1,6 +1,6 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { AssetUrlPipe } from '../../core/pipes/asset-url.pipe';
+import { CommonModule } from "@angular/common";
+import { Component } from "@angular/core";
+import { AssetUrlPipe } from "../../core/pipes/asset-url.pipe";
 
 // ============================================================
 // QrCodeComponent — equivalente di QR_CODE/Logo.html: pagina
@@ -8,7 +8,7 @@ import { AssetUrlPipe } from '../../core/pipes/asset-url.pipe';
 // nessuna dipendenza esterna necessaria).
 // ============================================================
 @Component({
-  selector: 'app-qr-code',
+  selector: "app-qr-code",
   standalone: true,
   imports: [CommonModule, AssetUrlPipe],
   template: `
@@ -23,11 +23,18 @@ import { AssetUrlPipe } from '../../core/pipes/asset-url.pipe';
         />
       </div>
       <p>
-        <a href="https://giri-in-bici.netlify.app/" target="_blank" rel="noopener"
+        <a
+          href="https://giri-in-bici.netlify.app/"
+          target="_blank"
+          rel="noopener"
           >giri-in-bici.netlify.app</a
         >
       </p>
-      <img class="logo" [src]="'/img/logo.jpg' | assetUrl" alt="Logo Giri in Bici" />
+      <img
+        class="logo"
+        [src]="'/img/logo.jpg' | assetUrl"
+        alt="Logo Giri in Bici"
+      />
     </section>
   `,
   styles: [
@@ -54,7 +61,7 @@ import { AssetUrlPipe } from '../../core/pipes/asset-url.pipe';
 })
 export class QrCodeComponent {
   qrSrc(): string {
-    const url = encodeURIComponent('https://giri-in-bici.netlify.app/');
+    const url = encodeURIComponent("https://giri-in-bici.netlify.app/");
     return `https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=${url}`;
   }
 }

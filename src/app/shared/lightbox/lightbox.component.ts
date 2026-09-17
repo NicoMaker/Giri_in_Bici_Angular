@@ -1,5 +1,5 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { CommonModule } from "@angular/common";
+import { Component } from "@angular/core";
 
 // ============================================================
 // LightboxComponent — equivalente di
@@ -10,13 +10,20 @@ import { Component } from '@angular/core';
 // Statistiche/Anni, ecc.).
 // ============================================================
 @Component({
-  selector: 'app-lightbox',
+  selector: "app-lightbox",
   standalone: true,
   imports: [CommonModule],
   template: `
     @if (src) {
       <div class="lightbox" (click)="chiudi()">
-        <button class="lightbox__chiudi" type="button" (click)="chiudi()" aria-label="Chiudi">✕</button>
+        <button
+          class="lightbox__chiudi"
+          type="button"
+          (click)="chiudi()"
+          aria-label="Chiudi"
+        >
+          ✕
+        </button>
         <img [src]="src" [alt]="alt" (click)="$event.stopPropagation()" />
       </div>
     }
@@ -53,9 +60,9 @@ import { Component } from '@angular/core';
 })
 export class LightboxComponent {
   src: string | null = null;
-  alt = '';
+  alt = "";
 
-  apri(src: string, alt = ''): void {
+  apri(src: string, alt = ""): void {
     this.src = src;
     this.alt = alt;
   }

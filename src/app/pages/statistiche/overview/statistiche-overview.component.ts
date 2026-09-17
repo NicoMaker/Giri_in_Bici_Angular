@@ -1,11 +1,11 @@
-import { CommonModule } from '@angular/common';
-import { Component, OnInit, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { JsonDataService } from '../../../core/services/json-data.service';
-import { StatsService } from '../../../core/services/stats.service';
-import { Storico, TotaliGenerali } from '../../../core/models/data.models';
-import { ItalianNumberPipe } from '../../../core/pipes/italian-number.pipe';
-import { ScrollRevealDirective } from '../../../shared/scroll-reveal/scroll-reveal.directive';
+import { CommonModule } from "@angular/common";
+import { Component, OnInit, inject } from "@angular/core";
+import { RouterLink } from "@angular/router";
+import { JsonDataService } from "../../../core/services/json-data.service";
+import { StatsService } from "../../../core/services/stats.service";
+import { Storico, TotaliGenerali } from "../../../core/models/data.models";
+import { ItalianNumberPipe } from "../../../core/pipes/italian-number.pipe";
+import { ScrollRevealDirective } from "../../../shared/scroll-reveal/scroll-reveal.directive";
 
 // ============================================================
 // StatisticheOverviewComponent — equivalente di Statistiche.html
@@ -16,11 +16,11 @@ import { ScrollRevealDirective } from '../../../shared/scroll-reveal/scroll-reve
 // alle 4 pagine "Storico" + "Stagioni".
 // ============================================================
 @Component({
-  selector: 'app-statistiche-overview',
+  selector: "app-statistiche-overview",
   standalone: true,
   imports: [CommonModule, RouterLink, ItalianNumberPipe, ScrollRevealDirective],
-  templateUrl: './statistiche-overview.component.html',
-  styleUrl: './statistiche-overview.component.css',
+  templateUrl: "./statistiche-overview.component.html",
+  styleUrl: "./statistiche-overview.component.css",
 })
 export class StatisticheOverviewComponent implements OnInit {
   private readonly json = inject(JsonDataService);
@@ -32,7 +32,9 @@ export class StatisticheOverviewComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     const [storico, totali] = await Promise.all([
-      this.json.leggiOppureNull<Storico>('json/Statistiche/History/Storico.json'),
+      this.json.leggiOppureNull<Storico>(
+        "json/Statistiche/History/Storico.json",
+      ),
       this.stats.getTotaliGenerali(),
     ]);
 

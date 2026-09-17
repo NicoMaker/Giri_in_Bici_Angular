@@ -1,10 +1,14 @@
-import { CommonModule } from '@angular/common';
-import { Component, OnInit, inject } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
-import { JsonDataService } from '../../core/services/json-data.service';
-import { SEASONS, SeasonConfig, SeasonKey } from '../../core/models/data.models';
-import { AssetUrlPipe } from '../../core/pipes/asset-url.pipe';
-import { ScrollRevealDirective } from '../../shared/scroll-reveal/scroll-reveal.directive';
+import { CommonModule } from "@angular/common";
+import { Component, OnInit, inject } from "@angular/core";
+import { ActivatedRoute, RouterLink } from "@angular/router";
+import { JsonDataService } from "../../core/services/json-data.service";
+import {
+  SEASONS,
+  SeasonConfig,
+  SeasonKey,
+} from "../../core/models/data.models";
+import { AssetUrlPipe } from "../../core/pipes/asset-url.pipe";
+import { ScrollRevealDirective } from "../../shared/scroll-reveal/scroll-reveal.directive";
 
 // ============================================================
 // SeasonComponent — equivalente di Primavera.html / Estate.html /
@@ -13,11 +17,11 @@ import { ScrollRevealDirective } from '../../shared/scroll-reveal/scroll-reveal.
 // in subPeriods, coi colori dichiarati nel file stesso.
 // ============================================================
 @Component({
-  selector: 'app-season',
+  selector: "app-season",
   standalone: true,
   imports: [CommonModule, RouterLink, AssetUrlPipe, ScrollRevealDirective],
-  templateUrl: './season.component.html',
-  styleUrl: './season.component.css',
+  templateUrl: "./season.component.html",
+  styleUrl: "./season.component.css",
 })
 export class SeasonComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
@@ -29,9 +33,11 @@ export class SeasonComponent implements OnInit {
   caricamento = true;
 
   async ngOnInit(): Promise<void> {
-    this.seasonKey = this.route.snapshot.data['seasonKey'];
+    this.seasonKey = this.route.snapshot.data["seasonKey"];
     const meta = SEASONS.find((s) => s.key === this.seasonKey)!;
-    this.config = await this.json.leggiOppureNull<SeasonConfig>(meta.configPath);
+    this.config = await this.json.leggiOppureNull<SeasonConfig>(
+      meta.configPath,
+    );
 
     if (this.config) {
       const chiavi = Object.keys(this.config.subPeriods);
@@ -44,7 +50,7 @@ export class SeasonComponent implements OnInit {
   }
 
   immagineIntestazione(): string {
-    if (!this.config) return '';
+    if (!this.config) return "";
     // Nei json originali "image" e' un nome file relativo a img/<Stagione>.jpg
     return `/img/${this.config.path}.jpg`;
   }

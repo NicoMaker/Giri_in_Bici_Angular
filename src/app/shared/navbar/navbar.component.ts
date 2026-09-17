@@ -1,10 +1,10 @@
-import { CommonModule, Location } from '@angular/common';
-import { Component, HostListener, OnInit, inject } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { RouterLink, RouterLinkActive } from '@angular/router';
-import { MenuService } from '../../core/services/menu.service';
-import { MenuItem } from '../../core/models/data.models';
-import { AssetUrlPipe } from '../../core/pipes/asset-url.pipe';
+import { CommonModule, Location } from "@angular/common";
+import { Component, HostListener, OnInit, inject } from "@angular/core";
+import { FormsModule } from "@angular/forms";
+import { RouterLink, RouterLinkActive } from "@angular/router";
+import { MenuService } from "../../core/services/menu.service";
+import { MenuItem } from "../../core/models/data.models";
+import { AssetUrlPipe } from "../../core/pipes/asset-url.pipe";
 
 // ============================================================
 // NavbarComponent
@@ -15,9 +15,15 @@ import { AssetUrlPipe } from '../../core/pipes/asset-url.pipe';
 // ricerca sulle voci e apertura/chiusura ad hamburger.
 // ============================================================
 @Component({
-  selector: 'app-navbar',
+  selector: "app-navbar",
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink, RouterLinkActive, AssetUrlPipe],
+  imports: [
+    CommonModule,
+    FormsModule,
+    RouterLink,
+    RouterLinkActive,
+    AssetUrlPipe,
+  ],
   template: `
     <header class="barra">
       <button
@@ -35,7 +41,11 @@ import { AssetUrlPipe } from '../../core/pipes/asset-url.pipe';
       </a>
     </header>
 
-    <div class="scrim" [class.scrim--visibile]="aperto" (click)="aperto = false"></div>
+    <div
+      class="scrim"
+      [class.scrim--visibile]="aperto"
+      (click)="aperto = false"
+    ></div>
 
     <div class="drawer" [class.drawer--aperto]="aperto">
       <div class="drawer__intestazione">
@@ -46,7 +56,13 @@ import { AssetUrlPipe } from '../../core/pipes/asset-url.pipe';
           name="filtroMenu"
           aria-label="Cerca nel menu"
         />
-        <button type="button" (click)="aperto = false" aria-label="Chiudi il menu">✕</button>
+        <button
+          type="button"
+          (click)="aperto = false"
+          aria-label="Chiudi il menu"
+        >
+          ✕
+        </button>
       </div>
 
       @if (voci().length === 0) {
@@ -57,18 +73,32 @@ import { AssetUrlPipe } from '../../core/pipes/asset-url.pipe';
         @for (item of voci(); track item.link + item.name) {
           <li>
             @if (isPaginaPrecedente(item)) {
-              <a href="javascript:void(0)" class="menu-back" (click)="indietro()">
-                <span class="ico-tile"><img [src]="iconaFallback(item) | assetUrl" alt="" /></span>
+              <a
+                href="javascript:void(0)"
+                class="menu-back"
+                (click)="indietro()"
+              >
+                <span class="ico-tile"
+                  ><img [src]="iconaFallback(item) | assetUrl" alt=""
+                /></span>
                 <span>{{ item.name }}</span>
               </a>
             } @else if (isEsterno(item)) {
               <a [href]="item.link" target="_blank" rel="noopener">
-                <span class="ico-tile"><img [src]="iconaFallback(item) | assetUrl" alt="" /></span>
+                <span class="ico-tile"
+                  ><img [src]="iconaFallback(item) | assetUrl" alt=""
+                /></span>
                 <span>{{ item.name }}</span>
               </a>
             } @else {
-              <a [routerLink]="rotta(item)" routerLinkActive="attivo" (click)="aperto = false">
-                <span class="ico-tile"><img [src]="iconaFallback(item) | assetUrl" alt="" /></span>
+              <a
+                [routerLink]="rotta(item)"
+                routerLinkActive="attivo"
+                (click)="aperto = false"
+              >
+                <span class="ico-tile"
+                  ><img [src]="iconaFallback(item) | assetUrl" alt=""
+                /></span>
                 <span>{{ item.name }}</span>
               </a>
             }
@@ -77,14 +107,14 @@ import { AssetUrlPipe } from '../../core/pipes/asset-url.pipe';
       </ul>
     </div>
   `,
-  styleUrl: './navbar.component.css',
+  styleUrl: "./navbar.component.css",
 })
 export class NavbarComponent implements OnInit {
   private readonly menuService = inject(MenuService);
   private readonly location = inject(Location);
 
   aperto = false;
-  filtro = '';
+  filtro = "";
   private tutteLeVoci: MenuItem[] = [];
 
   async ngOnInit(): Promise<void> {
@@ -92,21 +122,23 @@ export class NavbarComponent implements OnInit {
   }
 
   voci(): MenuItem[] {
-    const query = this.filtro.trim().toLocaleLowerCase('it');
+    const query = this.filtro.trim().toLocaleLowerCase("it");
     if (!query) return this.tutteLeVoci;
-    return this.tutteLeVoci.filter((v) => v.name.toLocaleLowerCase('it').includes(query));
+    return this.tutteLeVoci.filter((v) =>
+      v.name.toLocaleLowerCase("it").includes(query),
+    );
   }
 
   isPaginaPrecedente(item: MenuItem): boolean {
-    return item.name.trim() === 'Pagina Precedente' && item.link === '#';
+    return item.name.trim() === "Pagina Precedente" && item.link === "#";
   }
 
   isEsterno(item: MenuItem): boolean {
-    return item.link.startsWith('http');
+    return item.link.startsWith("http");
   }
 
   rotta(item: MenuItem): string[] {
-    return this.menuService.toRouterLink(item.link) ?? ['/giri'];
+    return this.menuService.toRouterLink(item.link) ?? ["/giri"];
   }
 
   iconaFallback(item: MenuItem): string {
@@ -121,7 +153,7 @@ export class NavbarComponent implements OnInit {
     this.location.back();
   }
 
-  @HostListener('document:keydown.escape')
+  @HostListener("document:keydown.escape")
   chiudiConEsc(): void {
     this.aperto = false;
   }

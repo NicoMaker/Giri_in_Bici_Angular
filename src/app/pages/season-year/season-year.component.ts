@@ -1,12 +1,12 @@
-import { CommonModule } from '@angular/common';
-import { Component, OnInit, inject } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { JsonDataService } from '../../core/services/json-data.service';
-import { StatsService } from '../../core/services/stats.service';
-import { PeriodEntry, SEASONS, SeasonKey } from '../../core/models/data.models';
-import { ItalianNumberPipe } from '../../core/pipes/italian-number.pipe';
-import { ScrollRevealDirective } from '../../shared/scroll-reveal/scroll-reveal.directive';
+import { CommonModule } from "@angular/common";
+import { Component, OnInit, inject } from "@angular/core";
+import { ActivatedRoute, RouterLink } from "@angular/router";
+import { DomSanitizer, SafeHtml } from "@angular/platform-browser";
+import { JsonDataService } from "../../core/services/json-data.service";
+import { StatsService } from "../../core/services/stats.service";
+import { PeriodEntry, SEASONS, SeasonKey } from "../../core/models/data.models";
+import { ItalianNumberPipe } from "../../core/pipes/italian-number.pipe";
+import { ScrollRevealDirective } from "../../shared/scroll-reveal/scroll-reveal.directive";
 
 // ============================================================
 // SeasonYearComponent — equivalente di Primavera/2021.html,
@@ -17,11 +17,11 @@ import { ScrollRevealDirective } from '../../shared/scroll-reveal/scroll-reveal.
 // sul totale + statistiche riassuntive.
 // ============================================================
 @Component({
-  selector: 'app-season-year',
+  selector: "app-season-year",
   standalone: true,
   imports: [CommonModule, RouterLink, ItalianNumberPipe, ScrollRevealDirective],
-  templateUrl: './season-year.component.html',
-  styleUrl: './season-year.component.css',
+  templateUrl: "./season-year.component.html",
+  styleUrl: "./season-year.component.css",
 })
 export class SeasonYearComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
@@ -30,8 +30,12 @@ export class SeasonYearComponent implements OnInit {
   private readonly sanitizer = inject(DomSanitizer);
 
   seasonKey!: SeasonKey;
-  anno = '';
-  righe: (PeriodEntry & { numero: number; percentuale: number; placeSafe: SafeHtml })[] = [];
+  anno = "";
+  righe: (PeriodEntry & {
+    numero: number;
+    percentuale: number;
+    placeSafe: SafeHtml;
+  })[] = [];
   totalKm = 0;
   totalRaces = 0;
   media = 0;
@@ -39,8 +43,8 @@ export class SeasonYearComponent implements OnInit {
   errore = false;
 
   async ngOnInit(): Promise<void> {
-    this.seasonKey = this.route.snapshot.data['seasonKey'];
-    this.anno = this.route.snapshot.paramMap.get('year') ?? '';
+    this.seasonKey = this.route.snapshot.data["seasonKey"];
+    this.anno = this.route.snapshot.paramMap.get("year") ?? "";
     const meta = SEASONS.find((s) => s.key === this.seasonKey)!;
     const url = `json/${meta.folder}/Periodi/${this.anno}.json`;
 

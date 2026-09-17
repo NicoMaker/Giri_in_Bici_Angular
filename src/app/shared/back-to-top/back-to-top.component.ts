@@ -1,17 +1,22 @@
-import { CommonModule } from '@angular/common';
-import { Component, HostListener } from '@angular/core';
+import { CommonModule } from "@angular/common";
+import { Component, HostListener } from "@angular/core";
 
 // ============================================================
 // BackToTopComponent — equivalente di
 // JS/assets/motion/barre/torna-su.js
 // ============================================================
 @Component({
-  selector: 'app-back-to-top',
+  selector: "app-back-to-top",
   standalone: true,
   imports: [CommonModule],
   template: `
     @if (visibile) {
-      <button class="torna-su" type="button" (click)="tornaSu()" aria-label="Torna su">
+      <button
+        class="torna-su"
+        type="button"
+        (click)="tornaSu()"
+        aria-label="Torna su"
+      >
         ↑
       </button>
     }
@@ -33,7 +38,9 @@ import { Component, HostListener } from '@angular/core';
         font-family: var(--font-display);
         z-index: 30;
         box-shadow: var(--shadow-md);
-        transition: transform 0.15s ease, background 0.15s ease;
+        transition:
+          transform 0.15s ease,
+          background 0.15s ease;
       }
       .torna-su:hover {
         background: var(--pine-700);
@@ -46,12 +53,12 @@ import { Component, HostListener } from '@angular/core';
 export class BackToTopComponent {
   visibile = false;
 
-  @HostListener('window:scroll')
+  @HostListener("window:scroll")
   onScroll(): void {
     this.visibile = window.scrollY > 400;
   }
 
   tornaSu(): void {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 }

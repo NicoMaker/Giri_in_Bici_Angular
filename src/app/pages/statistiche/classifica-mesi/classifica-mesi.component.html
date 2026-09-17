@@ -1,19 +1,37 @@
-<a class="pulsante-indietro" routerLink="/statistiche">← Torna alle statistiche</a>
+<a class="pulsante-indietro" routerLink="/statistiche"
+  >← Torna alle statistiche</a
+>
 
 <h1 class="titolo">Classifica dei mesi</h1>
 
 <nav class="tab">
-  <button [class.attivo]="scheda === 'mesi'" (click)="scheda = 'mesi'">Mesi</button>
-  <button [class.attivo]="scheda === 'periodi'" (click)="scheda = 'periodi'">Periodi</button>
+  <button [class.attivo]="scheda === 'mesi'" (click)="scheda = 'mesi'">
+    Mesi
+  </button>
+  <button [class.attivo]="scheda === 'periodi'" (click)="scheda = 'periodi'">
+    Periodi
+  </button>
 </nav>
 
 @if (caricamento) {
   <p class="centro">Caricamento…</p>
-} @else if (scheda === 'mesi') {
+} @else if (scheda === "mesi") {
   <nav class="tab tab--piccola">
-    <button [class.attivo]="metrica === 'km'" (click)="metrica = 'km'">km totali</button>
-    <button [class.attivo]="metrica === 'mesiPercorsi'" (click)="metrica = 'mesiPercorsi'">Anni pedalati</button>
-    <button [class.attivo]="metrica === 'kmMedio'" (click)="metrica = 'kmMedio'">km medi mensili</button>
+    <button [class.attivo]="metrica === 'km'" (click)="metrica = 'km'">
+      km totali
+    </button>
+    <button
+      [class.attivo]="metrica === 'mesiPercorsi'"
+      (click)="metrica = 'mesiPercorsi'"
+    >
+      Anni pedalati
+    </button>
+    <button
+      [class.attivo]="metrica === 'kmMedio'"
+      (click)="metrica = 'kmMedio'"
+    >
+      km medi mensili
+    </button>
   </nav>
 
   <div class="podio" appScrollReveal>
@@ -23,8 +41,10 @@
         <span class="podio__mese">{{ r.mese }}</span>
         <span class="podio__km">{{ formattaValore(r) }}</span>
         <span class="podio__dettaglio">
-          {{ formatItalianNumber(r.km) }} km totali · {{ formatItalianNumber(r.mesiPercorsi) }}
-          {{ r.mesiPercorsi === 1 ? 'anno pedalato' : 'anni pedalati' }} · media {{ formatItalianNumber(r.kmMedio, true) }} km
+          {{ formatItalianNumber(r.km) }} km totali ·
+          {{ formatItalianNumber(r.mesiPercorsi) }}
+          {{ r.mesiPercorsi === 1 ? "anno pedalato" : "anni pedalati" }} · media
+          {{ formatItalianNumber(r.kmMedio, true) }} km
         </span>
       </div>
     }
@@ -37,36 +57,53 @@
         <span class="classifica-riga__mese">
           {{ r.mese }}
           <small class="classifica-riga__sotto"
-            >{{ formatItalianNumber(r.mesiPercorsi) }} {{ r.mesiPercorsi === 1 ? 'anno pedalato' : 'anni pedalati' }} · media
-            {{ formatItalianNumber(r.kmMedio, true) }} km</small
+            >{{ formatItalianNumber(r.mesiPercorsi) }}
+            {{ r.mesiPercorsi === 1 ? "anno pedalato" : "anni pedalati" }} ·
+            media {{ formatItalianNumber(r.kmMedio, true) }} km</small
           >
         </span>
         <span class="classifica-riga__km">{{ formattaValore(r) }}</span>
-        <span class="classifica-riga__percentuale">{{ formatNumber(r.percentuale) }} %</span>
+        <span class="classifica-riga__percentuale"
+          >{{ formatNumber(r.percentuale) }} %</span
+        >
       </li>
     }
   </ul>
 } @else {
   <div class="podio" appScrollReveal>
     @for (r of righePeriodi.slice(0, 3); track r.nome; let i = $index) {
-      <a class="podio__gradino" [class]="'podio__gradino--' + (i + 1)" [routerLink]="r.link">
+      <a
+        class="podio__gradino"
+        [class]="'podio__gradino--' + (i + 1)"
+        [routerLink]="r.link"
+      >
         <span class="podio__medaglia">{{ medaglie[i] }}</span>
         <span class="podio__mese">{{ r.nome }}</span>
         <span class="podio__km">{{ formatItalianNumber(r.km) }} km</span>
-        <span class="podio__dettaglio">{{ formatNumber(r.percentuale) }} % del totale</span>
+        <span class="podio__dettaglio"
+          >{{ formatNumber(r.percentuale) }} % del totale</span
+        >
       </a>
     }
   </div>
 
   <ul class="classifica-lista" appScrollReveal>
     @for (r of righePeriodi; track r.nome; let i = $index) {
-      <li class="classifica-riga classifica-riga--cliccabile" [class.classifica-riga--podio]="i < 3">
+      <li
+        class="classifica-riga classifica-riga--cliccabile"
+        [class.classifica-riga--podio]="i < 3"
+      >
         <a class="classifica-riga__link" [routerLink]="r.link">
           <span class="classifica-riga__posizione">{{ i + 1 }}º</span>
           <span class="classifica-riga__mese"
-            >{{ r.nome }} <small class="classifica-riga__sotto">{{ formatNumber(r.percentuale) }} % del totale</small></span
+            >{{ r.nome }}
+            <small class="classifica-riga__sotto"
+              >{{ formatNumber(r.percentuale) }} % del totale</small
+            ></span
           >
-          <span class="classifica-riga__km">{{ formatItalianNumber(r.km) }} km</span>
+          <span class="classifica-riga__km"
+            >{{ formatItalianNumber(r.km) }} km</span
+          >
         </a>
       </li>
     }

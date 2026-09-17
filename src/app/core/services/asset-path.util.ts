@@ -20,12 +20,12 @@ export function resolveAssetPath(path: string): string {
 
   let p = path.trim();
 
-  if (p.startsWith('/img/')) return 'assets/img/' + p.slice('/img/'.length);
-  if (p.startsWith('img/')) return 'assets/img/' + p.slice('img/'.length);
-  if (p.startsWith('/json/')) return 'assets/json/' + p.slice('/json/'.length);
-  if (p.startsWith('json/')) return 'assets/json/' + p.slice('json/'.length);
-  if (p.startsWith('/css/')) return 'assets/css/' + p.slice('/css/'.length);
-  if (p.startsWith('css/')) return 'assets/css/' + p.slice('css/'.length);
+  if (p.startsWith("/img/")) return "assets/img/" + p.slice("/img/".length);
+  if (p.startsWith("img/")) return "assets/img/" + p.slice("img/".length);
+  if (p.startsWith("/json/")) return "assets/json/" + p.slice("/json/".length);
+  if (p.startsWith("json/")) return "assets/json/" + p.slice("json/".length);
+  if (p.startsWith("/css/")) return "assets/css/" + p.slice("/css/".length);
+  if (p.startsWith("css/")) return "assets/css/" + p.slice("css/".length);
 
   return p;
 }

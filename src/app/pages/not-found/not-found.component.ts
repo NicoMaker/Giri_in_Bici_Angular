@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component } from "@angular/core";
+import { RouterLink } from "@angular/router";
 
 @Component({
-  selector: 'app-not-found',
+  selector: "app-not-found",
   standalone: true,
   imports: [RouterLink],
   template: `

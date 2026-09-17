@@ -7,11 +7,20 @@
     </div>
 
     <h1>Giri in Bici</h1>
-    <p class="sottotitolo">Accedi per esplorare le avventure in Friuli Venezia Giulia</p>
+    <p class="sottotitolo">
+      Accedi per esplorare le avventure in Friuli Venezia Giulia
+    </p>
 
     <form class="login-form" [class.shake]="scuoti" (ngSubmit)="accedi()">
       <label for="username">Nome utente</label>
-      <input id="username" name="username" type="text" [(ngModel)]="username" autocomplete="username" required />
+      <input
+        id="username"
+        name="username"
+        type="text"
+        [(ngModel)]="username"
+        autocomplete="username"
+        required
+      />
 
       <label for="password">Password del giorno</label>
       <div class="campo-password">
@@ -24,8 +33,12 @@
           placeholder="Giri GG/MM/AAAA"
           required
         />
-        <button type="button" (click)="mostraPassword = !mostraPassword" aria-label="Mostra/nascondi password">
-          {{ mostraPassword ? '🙈' : '👁️' }}
+        <button
+          type="button"
+          (click)="mostraPassword = !mostraPassword"
+          aria-label="Mostra/nascondi password"
+        >
+          {{ mostraPassword ? "🙈" : "👁️" }}
         </button>
       </div>
 
@@ -35,7 +48,9 @@
       </label>
 
       @if (messaggio) {
-        <p class="messaggio" [class]="'messaggio--' + messaggio.tipo">{{ messaggio.testo }}</p>
+        <p class="messaggio" [class]="'messaggio--' + messaggio.tipo">
+          {{ messaggio.testo }}
+        </p>
       }
 
       <button class="login-btn" type="submit" [disabled]="inCorso">
@@ -49,7 +64,8 @@
     </form>
 
     <p class="nota">
-      La password cambia ogni giorno: formato <code>Giri GG/MM/AAAA</code> (data odierna).
+      La password cambia ogni giorno: formato <code>Giri GG/MM/AAAA</code> (data
+      odierna).
     </p>
   </div>
 </main>

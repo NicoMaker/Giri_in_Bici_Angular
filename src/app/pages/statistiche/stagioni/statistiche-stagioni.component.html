@@ -1,4 +1,6 @@
-<a class="pulsante-indietro" routerLink="/statistiche">← Torna alle statistiche</a>
+<a class="pulsante-indietro" routerLink="/statistiche"
+  >← Torna alle statistiche</a
+>
 
 <h1 class="titolo">Confronto tra le stagioni</h1>
 
@@ -10,12 +12,18 @@
   <section class="colore" appScrollReveal>
     <p class="misuracolore">Totale km {{ totale | italianNumber }}</p>
     <p class="misuracolore">Totale corse {{ corseTotale | italianNumber }}</p>
-    <p class="misuracolore">Totale periodi {{ totalePeriodi | italianNumber }}</p>
+    <p class="misuracolore">
+      Totale periodi {{ totalePeriodi | italianNumber }}
+    </p>
     <p class="misuracolore">Media km per stagione {{ avgMediaStagione }}</p>
     <p class="misuracolore">Media km per periodo {{ avgPeriod }}</p>
   </section>
 
-  <app-bar-chart [dati]="barre" titolo="km per stagione" appScrollReveal></app-bar-chart>
+  <app-bar-chart
+    [dati]="barre"
+    titolo="km per stagione"
+    appScrollReveal
+  ></app-bar-chart>
 
   <section class="schede-stagioni" appScrollReveal>
     @for (s of schede; track s.nome) {

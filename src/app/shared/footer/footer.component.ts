@@ -1,12 +1,12 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { CommonModule } from "@angular/common";
+import { Component } from "@angular/core";
 
 // ============================================================
 // FooterComponent — equivalente di
 // JS/assets/ui/piede-pagina/anno-corrente.js e data-odierna.js
 // ============================================================
 @Component({
-  selector: 'app-footer',
+  selector: "app-footer",
   standalone: true,
   imports: [CommonModule],
   template: `
@@ -36,10 +36,10 @@ import { Component } from '@angular/core';
 })
 export class FooterComponent {
   annoCorrente = new Date().getFullYear();
-  dataOdierna = new Date().toLocaleDateString('it-IT', {
-    weekday: 'long',
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
+  dataOdierna = new Date().toLocaleDateString("it-IT", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
   });
 }

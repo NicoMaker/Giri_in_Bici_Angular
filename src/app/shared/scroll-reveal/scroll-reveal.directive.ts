@@ -4,7 +4,7 @@ import {
   ElementRef,
   OnDestroy,
   inject,
-} from '@angular/core';
+} from "@angular/core";
 
 // ============================================================
 // ScrollRevealDirective — equivalente di
@@ -15,7 +15,7 @@ import {
 // assets/componenti/animazioni/... (invariate) possono agganciarsi.
 // ============================================================
 @Directive({
-  selector: '[appScrollReveal]',
+  selector: "[appScrollReveal]",
   standalone: true,
 })
 export class ScrollRevealDirective implements AfterViewInit, OnDestroy {
@@ -23,12 +23,12 @@ export class ScrollRevealDirective implements AfterViewInit, OnDestroy {
   private observer?: IntersectionObserver;
 
   ngAfterViewInit(): void {
-    this.el.nativeElement.classList.add('comparsa-scroll');
+    this.el.nativeElement.classList.add("comparsa-scroll");
     this.observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            this.el.nativeElement.classList.add('in-vista');
+            this.el.nativeElement.classList.add("in-vista");
             this.observer?.unobserve(this.el.nativeElement);
           }
         });

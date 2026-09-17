@@ -1,7 +1,12 @@
-<a class="pulsante-indietro" routerLink="/statistiche">← Torna alle statistiche</a>
+<a class="pulsante-indietro" routerLink="/statistiche"
+  >← Torna alle statistiche</a
+>
 
 <h1 class="titolo">Storico mensile</h1>
-<p class="centro sottotitolo">km per mese, anno per anno. Le frecce mostrano la variazione % rispetto allo stesso mese dell'anno precedente.</p>
+<p class="centro sottotitolo">
+  km per mese, anno per anno. Le frecce mostrano la variazione % rispetto allo
+  stesso mese dell'anno precedente.
+</p>
 
 @if (caricamento) {
   <p class="centro">Caricamento…</p>
@@ -21,7 +26,8 @@
         @for (r of righe; track r.anno) {
           <tr>
             <td>
-              <span class="pallino" [style.background]="r.colore"></span>{{ r.anno }}
+              <span class="pallino" [style.background]="r.colore"></span
+              >{{ r.anno }}
             </td>
             @for (c of r.celle; track $index) {
               <td>
@@ -29,8 +35,15 @@
                 @if (c.variazione === null) {
                   <span class="badge badge-neutro">—</span>
                 } @else {
-                  <span class="badge" [class]="'badge-' + classeVariazione(c.variazione)"
-                    >{{ segno(c.variazione) }} {{ formatNumber(c.variazione < 0 ? -c.variazione : c.variazione) }}%</span
+                  <span
+                    class="badge"
+                    [class]="'badge-' + classeVariazione(c.variazione)"
+                    >{{ segno(c.variazione) }}
+                    {{
+                      formatNumber(
+                        c.variazione < 0 ? -c.variazione : c.variazione
+                      )
+                    }}%</span
                   >
                 }
               </td>

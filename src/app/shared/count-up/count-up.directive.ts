@@ -1,5 +1,5 @@
-import { Directive, ElementRef, Input, OnChanges, inject } from '@angular/core';
-import { formatItalianNumber } from '../../core/services/number-format.service';
+import { Directive, ElementRef, Input, OnChanges, inject } from "@angular/core";
+import { formatItalianNumber } from "../../core/services/number-format.service";
 
 // ============================================================
 // CountUpDirective
@@ -10,17 +10,18 @@ import { formatItalianNumber } from '../../core/services/number-format.service';
 // motion legata all'azione della persona, non decorativa.
 // ============================================================
 @Directive({
-  selector: '[appCountUp]',
+  selector: "[appCountUp]",
   standalone: true,
 })
 export class CountUpDirective implements OnChanges {
   private readonly el = inject(ElementRef<HTMLElement>);
   private animato = false;
 
-  @Input('appCountUp') valore: number | null = null;
+  @Input("appCountUp") valore: number | null = null;
 
   ngOnChanges(): void {
-    if (this.animato || this.valore === null || this.valore === undefined) return;
+    if (this.animato || this.valore === null || this.valore === undefined)
+      return;
     this.animato = true;
 
     const target = this.valore;
@@ -30,7 +31,9 @@ export class CountUpDirective implements OnChanges {
     const passo = (adesso: number) => {
       const t = Math.min(1, (adesso - inizio) / durata);
       const eased = 1 - Math.pow(1 - t, 3);
-      this.el.nativeElement.textContent = formatItalianNumber(Math.round(target * eased));
+      this.el.nativeElement.textContent = formatItalianNumber(
+        Math.round(target * eased),
+      );
       if (t < 1) requestAnimationFrame(passo);
     };
 

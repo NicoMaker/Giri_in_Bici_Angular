@@ -1,4 +1,6 @@
-<a class="pulsante-indietro" [routerLink]="['/', seasonKey]">← Torna a {{ seasonKey }}</a>
+<a class="pulsante-indietro" [routerLink]="['/', seasonKey]"
+  >← Torna a {{ seasonKey }}</a
+>
 
 <h1 class="titolo-anno">{{ anno }}</h1>
 
@@ -10,7 +12,9 @@
   <section class="colore" appScrollReveal>
     <p class="misuracolore">Totale km percorsi {{ totalKm | italianNumber }}</p>
     <p class="misuracolore">Media km percorsi {{ media | italianNumber }}</p>
-    <p class="misuracolore">Numero di uscite {{ totalRaces | italianNumber }}</p>
+    <p class="misuracolore">
+      Numero di uscite {{ totalRaces | italianNumber }}
+    </p>
   </section>
 
   <div class="tabella-scroll" appScrollReveal>

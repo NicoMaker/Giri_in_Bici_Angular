@@ -1,6 +1,6 @@
-import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
-import { ItalianNumberPipe } from '../../core/pipes/italian-number.pipe';
+import { CommonModule } from "@angular/common";
+import { Component, Input } from "@angular/core";
+import { ItalianNumberPipe } from "../../core/pipes/italian-number.pipe";
 
 export interface BarraDati {
   etichetta: string;
@@ -22,7 +22,7 @@ export interface BarraDati {
 // originali.
 // ============================================================
 @Component({
-  selector: 'app-bar-chart',
+  selector: "app-bar-chart",
   standalone: true,
   imports: [CommonModule, ItalianNumberPipe],
   template: `
@@ -89,7 +89,7 @@ export interface BarraDati {
 })
 export class BarChartComponent {
   @Input() dati: BarraDati[] = [];
-  @Input() titolo = '';
+  @Input() titolo = "";
 
   percentuale(valore: number): number {
     const max = Math.max(...this.dati.map((d) => d.valore), 1);

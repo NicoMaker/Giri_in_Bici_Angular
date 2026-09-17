@@ -6,9 +6,15 @@
   @if (totali) {
     <section class="colore" appScrollReveal>
       <p class="misuracolore">Totale km {{ totali.totalKm | italianNumber }}</p>
-      <p class="misuracolore">Totale corse {{ totali.totalRaces | italianNumber }}</p>
-      <p class="misuracolore">Totale anni {{ totali.totalYears | italianNumber }}</p>
-      <p class="misuracolore">Totale periodi {{ totali.totalPeriods | italianNumber }}</p>
+      <p class="misuracolore">
+        Totale corse {{ totali.totalRaces | italianNumber }}
+      </p>
+      <p class="misuracolore">
+        Totale anni {{ totali.totalYears | italianNumber }}
+      </p>
+      <p class="misuracolore">
+        Totale periodi {{ totali.totalPeriods | italianNumber }}
+      </p>
     </section>
   }
 
@@ -22,7 +28,11 @@
 
   <section class="griglia-periodi" appScrollReveal>
     @for (a of anni; track a.anno) {
-      <a class="scheda-periodo" [routerLink]="['/statistiche/anni', a.anno]" [style.background]="a.colore">
+      <a
+        class="scheda-periodo"
+        [routerLink]="['/statistiche/anni', a.anno]"
+        [style.background]="a.colore"
+      >
         <span>{{ a.anno }}</span>
       </a>
     }

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 
 // ============================================================
 // NumberFormatService
@@ -14,21 +14,21 @@ export function formatItalianNumber(
   num: number | string,
   forceDecimals = false,
 ): string {
-  let n = typeof num === 'string' ? parseFloat(num) : num;
-  if (isNaN(n)) return '0';
+  let n = typeof num === "string" ? parseFloat(num) : num;
+  if (isNaN(n)) return "0";
 
   const rounded = Math.round((n + Number.EPSILON) * 100) / 100;
 
-  let decimalString = '';
+  let decimalString = "";
   if (forceDecimals || !Number.isInteger(rounded)) {
-    const decimalPart = rounded.toFixed(2).split('.')[1];
-    if (decimalPart !== '00') {
-      decimalString = ',' + decimalPart;
+    const decimalPart = rounded.toFixed(2).split(".")[1];
+    if (decimalPart !== "00") {
+      decimalString = "," + decimalPart;
     }
   }
 
   let integerPart = Math.trunc(Math.abs(rounded)).toString();
-  const sign = rounded < 0 ? '-' : '';
+  const sign = rounded < 0 ? "-" : "";
 
   if (integerPart.length > 3) {
     const groups: string[] = [];
@@ -38,7 +38,7 @@ export function formatItalianNumber(
       groups.unshift(integerPart.substring(start, i));
       i -= 3;
     }
-    integerPart = groups.join('.');
+    integerPart = groups.join(".");
   }
 
   return sign + integerPart + decimalString;
@@ -60,7 +60,7 @@ export function pluralizza(
   return Math.abs(Number(count)) === 1 ? singolare : plurale;
 }
 
-@Injectable({ providedIn: 'root' })
+@Injectable({ providedIn: "root" })
 export class NumberFormatService {
   formatItalianNumber = formatItalianNumber;
   formatNumber = formatNumber;

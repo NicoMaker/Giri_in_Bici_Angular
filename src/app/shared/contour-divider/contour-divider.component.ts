@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input } from "@angular/core";
 
 // ============================================================
 // ContourDividerComponent
@@ -10,7 +10,7 @@ import { Component, Input } from '@angular/core';
 // decorazione ripetuta.
 // ============================================================
 @Component({
-  selector: 'app-contour-divider',
+  selector: "app-contour-divider",
   standalone: true,
   template: `
     <svg
@@ -43,5 +43,5 @@ import { Component, Input } from '@angular/core';
   ],
 })
 export class ContourDividerComponent {
-  @Input() colore = 'var(--pine-500)';
+  @Input() colore = "var(--pine-500)";
 }

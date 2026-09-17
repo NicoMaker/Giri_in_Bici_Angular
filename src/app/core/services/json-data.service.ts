@@ -1,7 +1,7 @@
-import { Injectable, inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, firstValueFrom, forkJoin, of } from 'rxjs';
-import { resolveAssetPath } from './asset-path.util';
+import { Injectable, inject } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { Observable, catchError, firstValueFrom, forkJoin, of } from "rxjs";
+import { resolveAssetPath } from "./asset-path.util";
 
 // ============================================================
 // JsonDataService — equivalente TypeScript di JS/core/lettura-json.js
@@ -11,7 +11,7 @@ import { resolveAssetPath } from './asset-path.util';
 // stessa idea diventa un servizio Angular iniettabile, con le
 // stesse tre modalita' di lettura offerte dall'originale.
 // ============================================================
-@Injectable({ providedIn: 'root' })
+@Injectable({ providedIn: "root" })
 export class JsonDataService {
   private readonly http = inject(HttpClient);
   private readonly cache = new Map<string, Promise<unknown>>();
@@ -24,7 +24,9 @@ export class JsonDataService {
         url,
         firstValueFrom(this.http.get<T>(url)).catch((errore) => {
           this.cache.delete(url);
-          throw new Error(`Errore nel leggere ${url}: ${errore.message ?? errore}`);
+          throw new Error(
+            `Errore nel leggere ${url}: ${errore.message ?? errore}`,
+          );
         }),
       );
     }

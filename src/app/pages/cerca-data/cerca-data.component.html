@@ -1,36 +1,65 @@
 <h1 class="titolo">Cerca nel diario</h1>
 
 <nav class="tab">
-  <button [class.attivo]="modalita === 'data'" (click)="modalita = 'data'">Cerca per data</button>
-  <button [class.attivo]="modalita === 'posto'" (click)="modalita = 'posto'">Cerca per posto</button>
+  <button [class.attivo]="modalita === 'data'" (click)="modalita = 'data'">
+    Cerca per data
+  </button>
+  <button [class.attivo]="modalita === 'posto'" (click)="modalita = 'posto'">
+    Cerca per posto
+  </button>
 </nav>
 
-@if (modalita === 'data') {
+@if (modalita === "data") {
   <form class="form-ricerca" (ngSubmit)="cercaPerData()">
     <fieldset>
       <legend>Date</legend>
       @for (d of date; track $index) {
         <div class="riga-data-input">
-          <input type="date" [(ngModel)]="date[$index]" [name]="'data' + $index" />
+          <input
+            type="date"
+            [(ngModel)]="date[$index]"
+            [name]="'data' + $index"
+          />
           @if (date.length > 1) {
-            <button type="button" (click)="rimuoviData($index)" aria-label="Rimuovi data">✕</button>
+            <button
+              type="button"
+              (click)="rimuoviData($index)"
+              aria-label="Rimuovi data"
+            >
+              ✕
+            </button>
           }
         </div>
       }
-      <button type="button" class="aggiungi" (click)="aggiungiData()">+ Aggiungi un'altra data</button>
+      <button type="button" class="aggiungi" (click)="aggiungiData()">
+        + Aggiungi un'altra data
+      </button>
     </fieldset>
 
     <fieldset>
       <legend>Posto (facoltativo)</legend>
       @for (p of postiPerData; track $index) {
         <div class="riga-data-input">
-          <input type="text" [(ngModel)]="postiPerData[$index]" [name]="'posto' + $index" placeholder="es. Caorle" />
+          <input
+            type="text"
+            [(ngModel)]="postiPerData[$index]"
+            [name]="'posto' + $index"
+            placeholder="es. Caorle"
+          />
           @if (postiPerData.length > 1) {
-            <button type="button" (click)="rimuoviPosto($index)" aria-label="Rimuovi posto">✕</button>
+            <button
+              type="button"
+              (click)="rimuoviPosto($index)"
+              aria-label="Rimuovi posto"
+            >
+              ✕
+            </button>
           }
         </div>
       }
-      <button type="button" class="aggiungi" (click)="aggiungiPosto()">+ Aggiungi un altro posto</button>
+      <button type="button" class="aggiungi" (click)="aggiungiPosto()">
+        + Aggiungi un altro posto
+      </button>
     </fieldset>
 
     <button type="submit" class="cerca-btn" [disabled]="inCorso">Cerca</button>
@@ -51,12 +80,48 @@
 @if (cercato) {
   <div class="criterio-ordine" id="ordine">
     <span>Ordina per:</span>
-    <button class="criterio-ordine__pulsante" [class.attivo]="criterio === 'alfabetico'" (click)="cambiaCriterio('alfabetico')">A-Z</button>
-    <button class="criterio-ordine__pulsante" [class.attivo]="criterio === 'alfabetico-desc'" (click)="cambiaCriterio('alfabetico-desc')">Z-A</button>
-    <button class="criterio-ordine__pulsante" [class.attivo]="criterio === 'data-vecchio'" (click)="cambiaCriterio('data-vecchio')">Data ↑</button>
-    <button class="criterio-ordine__pulsante" [class.attivo]="criterio === 'data-recente'" (click)="cambiaCriterio('data-recente')">Data ↓</button>
-    <button class="criterio-ordine__pulsante" [class.attivo]="criterio === 'distanza-lungo'" (click)="cambiaCriterio('distanza-lungo')">km ↓</button>
-    <button class="criterio-ordine__pulsante" [class.attivo]="criterio === 'distanza-corto'" (click)="cambiaCriterio('distanza-corto')">km ↑</button>
+    <button
+      class="criterio-ordine__pulsante"
+      [class.attivo]="criterio === 'alfabetico'"
+      (click)="cambiaCriterio('alfabetico')"
+    >
+      A-Z
+    </button>
+    <button
+      class="criterio-ordine__pulsante"
+      [class.attivo]="criterio === 'alfabetico-desc'"
+      (click)="cambiaCriterio('alfabetico-desc')"
+    >
+      Z-A
+    </button>
+    <button
+      class="criterio-ordine__pulsante"
+      [class.attivo]="criterio === 'data-vecchio'"
+      (click)="cambiaCriterio('data-vecchio')"
+    >
+      Data ↑
+    </button>
+    <button
+      class="criterio-ordine__pulsante"
+      [class.attivo]="criterio === 'data-recente'"
+      (click)="cambiaCriterio('data-recente')"
+    >
+      Data ↓
+    </button>
+    <button
+      class="criterio-ordine__pulsante"
+      [class.attivo]="criterio === 'distanza-lungo'"
+      (click)="cambiaCriterio('distanza-lungo')"
+    >
+      km ↓
+    </button>
+    <button
+      class="criterio-ordine__pulsante"
+      [class.attivo]="criterio === 'distanza-corto'"
+      (click)="cambiaCriterio('distanza-corto')"
+    >
+      km ↑
+    </button>
   </div>
 
   @if (inCorso) {
@@ -65,7 +130,10 @@
     <p class="centro">Nessun giro trovato.</p>
   } @else {
     @if (risultati.length > 1) {
-      <p class="hero-sub centro">{{ risultati.length }} giri trovati, per un totale di {{ totaleKm() | italianNumber }} km.</p>
+      <p class="hero-sub centro">
+        {{ risultati.length }} giri trovati, per un totale di
+        {{ totaleKm() | italianNumber }} km.
+      </p>
     }
     <ul class="elenco-risultati">
       @for (u of risultati; track u.etichetta + u.postoTesto; let i = $index) {
@@ -73,9 +141,13 @@
           <span class="risultato-riga__posizione">{{ i + 1 }}</span>
           <span class="risultato-riga__posto">
             <span [innerHTML]="u.postoSafe"></span>
-            <small class="risultato-riga__sotto">{{ u.etichetta }} · {{ u.stagione }}</small>
+            <small class="risultato-riga__sotto"
+              >{{ u.etichetta }} · {{ u.stagione }}</small
+            >
           </span>
-          <span class="risultato-riga__km">{{ u.distanza | italianNumber }} km</span>
+          <span class="risultato-riga__km"
+            >{{ u.distanza | italianNumber }} km</span
+          >
         </li>
       }
     </ul>

@@ -1,4 +1,6 @@
-<a class="pulsante-indietro" routerLink="/statistiche">← Torna alle statistiche</a>
+<a class="pulsante-indietro" routerLink="/statistiche"
+  >← Torna alle statistiche</a
+>
 
 <h1 class="titolo">Anno {{ anno }}</h1>
 
@@ -14,7 +16,11 @@
     <p class="misuracolore">km medi per mese {{ kmMediPerMese }}</p>
   </section>
 
-  <app-bar-chart [dati]="barre" titolo="km per mese" appScrollReveal></app-bar-chart>
+  <app-bar-chart
+    [dati]="barre"
+    titolo="km per mese"
+    appScrollReveal
+  ></app-bar-chart>
 
   <div class="tabella-scroll" appScrollReveal>
     <table>
@@ -28,7 +34,10 @@
       <tbody>
         @for (r of righe; track r.mese) {
           <tr>
-            <td><span class="pallino" [style.background]="r.colore"></span>{{ r.mese }}</td>
+            <td>
+              <span class="pallino" [style.background]="r.colore"></span
+              >{{ r.mese }}
+            </td>
             <td>{{ r.km | italianNumber }}</td>
             <td>{{ r.percentuale }} %</td>
           </tr>

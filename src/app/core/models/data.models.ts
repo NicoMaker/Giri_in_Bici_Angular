@@ -110,7 +110,7 @@ export interface UsersData {
 }
 
 /** Le tre "famiglie" di stagione gestite dal sito */
-export type SeasonKey = 'primavera' | 'estate' | 'autunno-inverno';
+export type SeasonKey = "primavera" | "estate" | "autunno-inverno";
 
 export interface SeasonRouteConfig {
   key: SeasonKey;
@@ -122,22 +122,22 @@ export interface SeasonRouteConfig {
 
 export const SEASONS: SeasonRouteConfig[] = [
   {
-    key: 'primavera',
-    label: 'Primavera',
-    configPath: 'json/Primavera/primavera.json',
-    folder: 'Primavera',
+    key: "primavera",
+    label: "Primavera",
+    configPath: "json/Primavera/primavera.json",
+    folder: "Primavera",
   },
   {
-    key: 'estate',
-    label: 'Estate',
-    configPath: 'json/Estate/estate.json',
-    folder: 'Estate',
+    key: "estate",
+    label: "Estate",
+    configPath: "json/Estate/estate.json",
+    folder: "Estate",
   },
   {
-    key: 'autunno-inverno',
-    label: 'Autunno - Inverno',
-    configPath: 'json/Autunno_Inverno/autunno-inverno.json',
-    folder: 'Autunno_Inverno',
+    key: "autunno-inverno",
+    label: "Autunno - Inverno",
+    configPath: "json/Autunno_Inverno/autunno-inverno.json",
+    folder: "Autunno_Inverno",
   },
 ];
 

@@ -1,14 +1,20 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { NavbarComponent } from './shared/navbar/navbar.component';
-import { FooterComponent } from './shared/footer/footer.component';
-import { BackToTopComponent } from './shared/back-to-top/back-to-top.component';
+import { CommonModule } from "@angular/common";
+import { Component } from "@angular/core";
+import { RouterOutlet } from "@angular/router";
+import { NavbarComponent } from "./shared/navbar/navbar.component";
+import { FooterComponent } from "./shared/footer/footer.component";
+import { BackToTopComponent } from "./shared/back-to-top/back-to-top.component";
 
 @Component({
-  selector: 'app-root',
+  selector: "app-root",
   standalone: true,
-  imports: [CommonModule, RouterOutlet, NavbarComponent, FooterComponent, BackToTopComponent],
+  imports: [
+    CommonModule,
+    RouterOutlet,
+    NavbarComponent,
+    FooterComponent,
+    BackToTopComponent,
+  ],
   template: `
     <app-navbar></app-navbar>
     <main class="pagina">

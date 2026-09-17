@@ -1,0 +1,44 @@
+{
+  "seasons": [
+    {
+      "name": "Estate",
+      "displayName": "Estate",
+      "link": "../../Estate.html",
+      "subPeriods": {
+        "2020": "json/Estate/Periodi/2020.json",
+        "2021": "json/Estate/Periodi/2021.json",
+        "2022": "json/Estate/Periodi/2022.json",
+        "2023": "json/Estate/Periodi/2023.json",
+        "2024": "json/Estate/Periodi/2024.json",
+        "2025": "json/Estate/Periodi/2025.json",
+        "2026": "json/Estate/Periodi/2026.json"
+      }
+    },
+    {
+      "name": "Primavera",
+      "displayName": "Primavera",
+      "link": "../../Primavera.html",
+      "subPeriods": {
+        "2021": "json/Primavera/Periodi/2021.json",
+        "2022": "json/Primavera/Periodi/2022.json",
+        "2023": "json/Primavera/Periodi/2023.json",
+        "2024": "json/Primavera/Periodi/2024.json",
+        "2025": "json/Primavera/Periodi/2025.json",
+        "2026": "json/Primavera/Periodi/2026.json"
+      }
+    },
+    {
+      "name": "Autunno_Inverno",
+      "displayName": "Autunno - Inverno",
+      "link": "../../Autunno_Inverno.html",
+      "subPeriods": {
+        "2020-2021": "json/Autunno_Inverno/Periodi/2020-2021.json",
+        "2021-2022": "json/Autunno_Inverno/Periodi/2021-2022.json",
+        "2022-2023": "json/Autunno_Inverno/Periodi/2022-2023.json",
+        "2023-2024": "json/Autunno_Inverno/Periodi/2023-2024.json",
+        "2024-2025": "json/Autunno_Inverno/Periodi/2024-2025.json",
+        "2025-2026": "json/Autunno_Inverno/Periodi/2025-2026.json"
+      }
+    }
+  ]
+}

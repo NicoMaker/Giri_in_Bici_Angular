@@ -1,0 +1,562 @@
+/* ============================================================
+   Animazioni extra — movimento in più, stesso aspetto
+   Parte del tema condiviso: assets/css/core.css
+
+   Questo foglio AGGIUNGE solo movimento (entrate, micro-interazioni,
+   respiri, bagliori) agganciandosi alle classi già esistenti nel
+   markup. Non cambia colori, struttura o logica: la grafica resta
+   quella di prima, solo più viva. Tutto si spegne da solo se
+   l'utente ha attivato "riduci animazioni" (in fondo al file).
+   ============================================================ */
+
+/* ============================================================
+   1. FOTOGRAMMI — nuovi keyframes (nomi propri per non toccare
+      quelli già presenti in rifiniture.css)
+   ============================================================ */
+
+@keyframes fx-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes fx-float-soft {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(-1deg);
+  }
+}
+
+@keyframes fx-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+@keyframes fx-glow {
+  0%,
+  100% {
+    box-shadow:
+      var(--sh-3),
+      0 0 0 0 transparent;
+  }
+  50% {
+    box-shadow:
+      var(--sh-3),
+      0 16px 44px -14px color-mix(in srgb, var(--a1) 50%, transparent);
+  }
+}
+
+@keyframes fx-pop-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.82) translateY(10px);
+  }
+  60% {
+    transform: scale(1.04) translateY(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes fx-fade-left {
+  from {
+    opacity: 0;
+    transform: translateX(-26px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fx-fade-right {
+  from {
+    opacity: 0;
+    transform: translateX(26px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fx-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fx-blur-in {
+  from {
+    opacity: 0;
+    filter: blur(10px);
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: none;
+  }
+}
+
+@keyframes fx-wiggle {
+  0%,
+  100% {
+    transform: translateY(-2px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-4px) rotate(-8deg);
+  }
+  75% {
+    transform: translateY(-4px) rotate(8deg);
+  }
+}
+
+@keyframes fx-heartbeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.08);
+  }
+  45% {
+    transform: scale(0.98);
+  }
+  60% {
+    transform: scale(1.04);
+  }
+}
+
+@keyframes fx-spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fx-sheen {
+  0% {
+    transform: translateX(-140%) skewX(-18deg);
+  }
+  100% {
+    transform: translateX(260%) skewX(-18deg);
+  }
+}
+
+@keyframes fx-gradient-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes fx-bar-sheen {
+  0% {
+    background-position: -180% 0;
+  }
+  100% {
+    background-position: 180% 0;
+  }
+}
+
+@keyframes fx-drop-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-16px) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ============================================================
+   2. RESPIRI E MOVIMENTI AMBIENTALI (idle)
+      Solo su elementi decorativi senza trasformazioni di hover,
+      così non entrano in conflitto con le reazioni al mouse.
+   ============================================================ */
+
+/* Logo della home: galleggia piano e ha un alone che pulsa */
+.hero-logo {
+  animation:
+    fx-float 6s ease-in-out infinite,
+    fx-glow 5s ease-in-out infinite;
+  will-change: transform, box-shadow;
+}
+
+/* Immagine grande di apertura stagione: galleggia dolcemente */
+.hero .immagini_stagione,
+.hero .immagineParticolare {
+  animation: fx-float-soft 7s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Robot / immagine JN: leggero respiro */
+.immmaginejnrobot {
+  animation: fx-breathe 6s ease-in-out infinite;
+}
+
+/* Il titolo grande in gradiente scorre di continuo (colore vivo) */
+.hero > h1,
+.Titolo,
+.Titolo2 {
+  background-size: 220% auto;
+}
+
+/* ============================================================
+   3. ENTRATE — elementi che prima comparivano fermi
+   ============================================================ */
+
+/* Sottotitolo hero e occhielli: entrano con un filo di blur */
+.hero .hero-sub,
+.hero p {
+  animation: fx-blur-in 0.8s var(--ease) 0.3s both;
+}
+
+/* Piè di pagina: sale entrando in vista al caricamento */
+.site-footer,
+footer {
+  animation: fx-fade-up 0.8s var(--ease) both;
+}
+
+/* Barra dei filtri bici e paginazione: scivolano dentro */
+.bici-filtri,
+#pagination {
+  animation: fx-fade-up 0.6s var(--ease) 0.15s both;
+}
+
+/* Intestazioni di sezione: comparsa morbida */
+.titolo-storico,
+.titoli {
+  animation: fx-fade-up 0.6s var(--ease) both;
+}
+
+/* Icone di navigazione: cadono dall'alto una dopo l'altra */
+.Icons a {
+  animation: fx-drop-in 0.5s var(--ease) both;
+}
+.Icons a:nth-child(1) {
+  animation-delay: 0.05s;
+}
+.Icons a:nth-child(2) {
+  animation-delay: 0.11s;
+}
+.Icons a:nth-child(3) {
+  animation-delay: 0.17s;
+}
+.Icons a:nth-child(4) {
+  animation-delay: 0.23s;
+}
+.Icons a:nth-child(5) {
+  animation-delay: 0.29s;
+}
+.Icons a:nth-child(n + 6) {
+  animation-delay: 0.35s;
+}
+
+/* ============================================================
+   4. HOVER PIÙ RICCHI — stessa direzione di prima (sollevamento),
+      con in più bagliore colorato del tema e un filo di scala.
+      Si replica l'ombra originale (--sh-3) e si aggiunge il --glow.
+   ============================================================ */
+
+.contorno,
+.bici,
+.shot,
+.Primaveracontorno,
+.Estatecontorno,
+.Autunno-Invernocontorno,
+.Statistiche,
+.bici-card {
+  transition:
+    transform 0.32s var(--ease),
+    box-shadow 0.32s var(--ease),
+    border-color 0.32s var(--ease);
+  will-change: transform;
+}
+
+.contorno:hover,
+.bici:hover,
+.shot:hover,
+.Primaveracontorno:hover,
+.Estatecontorno:hover,
+.Autunno-Invernocontorno:hover,
+.Statistiche:hover,
+.bici-card:hover {
+  transform: translateY(-6px) scale(1.012);
+  box-shadow:
+    var(--sh-3),
+    0 22px 50px -18px color-mix(in srgb, var(--a1) 42%, transparent);
+}
+
+/* Zoom morbido della foto dentro la scheda bici (il riquadro taglia
+   già l'eccesso con overflow: hidden, quindi resta pulito) */
+.bici-card__media img {
+  transition: transform 0.5s var(--ease);
+  will-change: transform;
+}
+.bici-card:hover .bici-card__media img {
+  transform: scale(1.06);
+}
+
+/* Icone della barra: piccolo saltello giocoso al passaggio */
+.Icons a:hover img,
+.Icons a:focus-visible img {
+  animation: fx-wiggle 0.55s var(--ease);
+}
+
+/* Pulsante "torna su": batte piano quando è visibile, e si gonfia
+   leggermente al passaggio (oltre al sollevamento già presente) */
+.to-top.is-visible {
+  animation: fx-glow 3.4s ease-in-out infinite;
+}
+.to-top:hover {
+  transform: translateY(-4px) scale(1.06);
+}
+
+/* Pulsante indietro / FVG / accedi: rimbalzino al passaggio */
+.fvg-link:hover,
+.login-btn:hover {
+  animation: fx-heartbeat 0.6s var(--ease);
+}
+
+/* Freccia della paginazione: scatto più deciso */
+#pagination button:hover {
+  transform: translateY(-2px) scale(1.05);
+}
+
+/* Icone contatto: oltre all'anello già presente, un mezzo giro */
+.Icona:hover .Immagineicona,
+.Icona:hover img {
+  animation: fx-heartbeat 0.6s var(--ease);
+}
+
+/* ============================================================
+   5. SFAVILLII — luce che passa sulle card grandi al passaggio
+      Solo su .contorno e .km-link (riquadri ampi). Sugli elementi
+      piccoli il riflesso non serviva: tolto per pulizia.
+   ============================================================ */
+
+.contorno {
+  position: relative;
+  overflow: hidden;
+}
+
+.contorno::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 45%;
+  height: 100%;
+  pointer-events: none;
+  background: linear-gradient(
+    100deg,
+    transparent,
+    color-mix(in srgb, #fff 55%, transparent),
+    transparent
+  );
+  transform: translateX(-140%) skewX(-18deg);
+  opacity: 0;
+}
+
+.contorno:hover::after {
+  opacity: 1;
+  animation: fx-sheen 0.9s var(--ease);
+}
+
+/* ============================================================
+   6. RIFINITURE IN MOVIMENTO
+   ============================================================ */
+
+/* Barra di avanzamento lettura: un riflesso che scorre dentro */
+.scroll-progress {
+  background:
+    linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent),
+    linear-gradient(90deg, var(--a1), var(--a2));
+  background-size:
+    180% 100%,
+    100% 100%;
+  animation: fx-bar-sheen 2.4s linear infinite;
+}
+
+/* Il segnaposto/gif della bici respira mentre carica */
+.animazione-bici,
+.Immaginebici {
+  animation: fx-breathe 5s ease-in-out infinite;
+}
+
+/* ============================================================
+   6c. TABELLE CHE ENTRANO — ovunque nel sito
+       Quando una tabella compare (storico mensile, mesi per anno,
+       totali...), l'intestazione e le righe entrano a cascata, una
+       dopo l'altra, mentre i numeri dentro salgono da 0. Vale per
+       tutte le tabelle perché aggancia i tag td/tr generici.
+   ============================================================ */
+
+thead {
+  animation: fx-fade-up 0.45s var(--ease) both;
+}
+
+tbody tr {
+  animation: fx-fade-up 0.5s var(--ease) both;
+  will-change: transform, opacity;
+}
+tbody tr:nth-child(1) {
+  animation-delay: 0.05s;
+}
+tbody tr:nth-child(2) {
+  animation-delay: 0.1s;
+}
+tbody tr:nth-child(3) {
+  animation-delay: 0.15s;
+}
+tbody tr:nth-child(4) {
+  animation-delay: 0.2s;
+}
+tbody tr:nth-child(5) {
+  animation-delay: 0.25s;
+}
+tbody tr:nth-child(6) {
+  animation-delay: 0.3s;
+}
+tbody tr:nth-child(7) {
+  animation-delay: 0.35s;
+}
+tbody tr:nth-child(8) {
+  animation-delay: 0.4s;
+}
+tbody tr:nth-child(9) {
+  animation-delay: 0.45s;
+}
+tbody tr:nth-child(10) {
+  animation-delay: 0.5s;
+}
+tbody tr:nth-child(11) {
+  animation-delay: 0.55s;
+}
+tbody tr:nth-child(12) {
+  animation-delay: 0.6s;
+}
+tbody tr:nth-child(n + 13) {
+  animation-delay: 0.65s;
+}
+
+/* Il totale in fondo arriva per ultimo, come chiusura */
+tfoot tr {
+  animation: fx-fade-up 0.5s var(--ease) 0.55s both;
+}
+
+/* ============================================================
+   6b. NUMERI CHE CONTANO — classe neutra per i numeri "extra"
+       (secondi numeri di una riga, celle di tabella, schede bici).
+       Non tocca posizione né peso: serve solo a tenere ferma la
+       larghezza delle cifre mentre il numero sale, senza sobbalzi.
+   ============================================================ */
+.num-anim {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+/* Entrata elegante dei numeri: mentre salgono da 0, compaiono con
+   una comparsa morbida (ispirata allo stile pulito del riferimento).
+   Il transform non tocca l'impaginazione (niente a-capo o salti). */
+@keyframes fx-num-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.num,
+.num-anim {
+  animation: fx-num-in 0.55s var(--ease) both;
+}
+
+/* ============================================================
+   7. RISPETTO DELLE PREFERENZE — se l'utente riduce il movimento,
+      qui si spegne tutto quello aggiunto sopra.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .hero-logo,
+  .hero .immagini_stagione,
+  .hero .immagineParticolare,
+  .immmaginejnrobot,
+  .hero .hero-sub,
+  .hero p,
+  .site-footer,
+  footer,
+  .bici-filtri,
+  #pagination,
+  .titolo-storico,
+  .titoli,
+  .Icons a,
+  .to-top.is-visible,
+  .scroll-progress,
+  .animazione-bici,
+  .Immaginebici,
+  thead,
+  tbody tr,
+  tfoot tr,
+  .num,
+  .num-anim {
+    animation: none !important;
+  }
+
+  .colore,
+  .contorno,
+  .bici,
+  .shot,
+  .km-link,
+  .Primaveracontorno,
+  .Estatecontorno,
+  .Autunno-Invernocontorno,
+  .Statistiche,
+  .bici-card,
+  .bici-card__media img {
+    transition: none !important;
+    transform: none !important;
+  }
+
+  .contorno::after,
+  .km-link::after {
+    display: none !important;
+  }
+
+  .Icons a:hover img,
+  .Icons a:focus-visible img,
+  .fvg-link:hover,
+  .login-btn:hover,
+  .Icona:hover .Immagineicona,
+  .Icona:hover img {
+    animation: none !important;
+  }
+}

@@ -1,0 +1,80 @@
+/* ============================================================
+   Movimento agganciato allo scroll + molla sui pulsanti principali
+   Parte del tema condiviso: assets/css/core.css
+
+   Due aggiunte, entrambe "progressive enhancement" pure: dove il
+   browser non le supporta, il sito si comporta esattamente come
+   prima (nessun errore, nessuna regressione).
+   ============================================================ */
+
+/* ---------- 1. Comparsa allo scroll agganciata alla posizione ----------
+   Oggi .reveal compare con una transizione a scatto quando l'elemento
+   entra nello schermo (rivelazione.js + rivelazione.css, sempre
+   attivi, restano cosi' per tutti). Dove il browser supporta
+   "animation-timeline: view()" (Chrome/Edge dal 2024, Safari 26+)
+   la stessa classe .reveal prende anche un movimento continuo,
+   agganciato proprio alla posizione di scroll invece che a una sola
+   soglia: l'elemento sale e schiarisce gradualmente man mano che
+   entra nell'inquadratura, non tutto insieme.
+   Le due tecniche non litigano: le animazioni vincono sempre sulle
+   semplici transizioni di classe, quindi qui semplicemente si
+   sostituisce con qualcosa di piu' fluido, stesso risultato finale. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: rivela-con-scroll linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 35%;
+    }
+
+    @keyframes rivela-con-scroll {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+}
+
+/* ---------- 2. Pulsanti principali: rimbalzo leggero invece di un
+   arrivo secco ----------
+   Stessi spostamenti gia' definiti in barra.css e micro-interazioni.css
+   (transform: translateY + scale), solo con --ease-spring al posto
+   di --ease sulla parte "transform": il pulsante supera appena il
+   punto di arrivo e torna, invece di fermarsi di colpo. Ombra e
+   colore restano sulla curva morbida di sempre, cosi' non sfarfallano. */
+.graficostagioni {
+  transition:
+    transform 0.5s var(--ease-spring),
+    box-shadow 0.25s var(--ease),
+    color 0.2s var(--ease);
+}
+
+.cta-classifica {
+  transition:
+    transform 0.55s var(--ease-spring),
+    box-shadow 0.3s var(--ease);
+}
+
+/* Pressione: piccolo schiacciamento immediato, cosi' il pulsante
+   sembra davvero premuto e non solo "sollevato" all'hover. Stessa
+   specificita' della regola :hover in barra.css/micro-interazioni.css:
+   qui vince perche' arriva dopo nell'ordine di importazione. */
+.graficostagioni:active,
+.cta-classifica:active {
+  transform: scale(0.95);
+  transition: transform 0.18s var(--ease-spring);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .graficostagioni,
+  .cta-classifica,
+  .graficostagioni:active,
+  .cta-classifica:active {
+    transition: none;
+  }
+}

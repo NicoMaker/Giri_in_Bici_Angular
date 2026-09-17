@@ -1,0 +1,86 @@
+{
+  "items": [
+    {
+      "name": "Home",
+      "icona": "casa",
+      "icon": "/img/Icons/home.png",
+      "link": "Giri.html"
+    },
+    {
+      "name": "Statistiche",
+      "icona": "statistiche",
+      "icon": "/img/Icons/Statistiche.png",
+      "link": "Statistiche.html"
+    },
+    {
+      "name": "Cerca per data",
+      "icona": "calendario",
+      "icon": "/img/Icons/Statistiche.png",
+      "link": "CercaData.html"
+    },
+    {
+      "name": "Bici",
+      "icona": "bici",
+      "icon": "/img/Icons/bici.png",
+      "link": "Bici/Bici.html"
+    },
+    {
+      "name": "Primavera",
+      "icona": "primavera",
+      "icon": "/img/Icons/primavera.png",
+      "link": "Primavera.html"
+    },
+    {
+      "name": "Estate",
+      "icona": "estate",
+      "icon": "/img/Icons/estate.png",
+      "link": "Estate.html"
+    },
+    {
+      "name": "Autunno - Inverno",
+      "icona": "inverno",
+      "icon": "/img/Icons/inverno.png",
+      "link": "Autunno_Inverno.html"
+    },
+    {
+      "name": "Pagina Precedente",
+      "icona": "indietro",
+      "icon": "/img/Icons/freccia.png",
+      "link": "#"
+    },
+    {
+      "name": "Login",
+      "icona": "accesso",
+      "icon": "/img/Icons/login.png",
+      "link": "index.html"
+    },
+    {
+      "name": "Informazioni",
+      "icona": "informazioni",
+      "icon": "/img/Icons/informazioni.png",
+      "link": "About_US/About_us.html"
+    },
+    {
+      "name": "Apertura Repository Git",
+      "icona": "codice",
+      "icon": "/img/Icons/GitHub.png",
+      "link": "https://github.com/NicoMaker/Giri-in-bici"
+    },
+    {
+      "name": "Apertura Account GitHub",
+      "icon": "/img/Icons/Logo Scuro.jpg",
+      "link": "https://github.com/NicoMaker"
+    },
+    {
+      "name": "QR CODE",
+      "icona": "qr",
+      "icon": "/img/Icons/qr_code.png",
+      "link": "QR_CODE/Logo.html"
+    },
+    {
+      "name": "Stagioni",
+      "icona": "/img/assets/stagioni.svg",
+      "link": "Statistiche/stagioni.html"
+    }
+  ]
+}

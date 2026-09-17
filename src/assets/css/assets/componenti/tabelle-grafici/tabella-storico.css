@@ -1,0 +1,125 @@
+/* ============================================================
+   Tabella dello storico mensile
+   Parte del tema condiviso: assets/css/core.css
+   ============================================================ */
+
+/* ---------- 11. Tabella storico mensile ---------- */
+.storico-tabella-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  box-shadow: var(--sh-2);
+  margin-bottom: 2rem;
+}
+
+.storico-tabella {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+}
+
+.storico-tabella .th-mese,
+.storico-tabella .th-anno,
+.storico-tabella .th-sub {
+  background: linear-gradient(120deg, var(--a1), var(--a2));
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.7rem 0.8rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.storico-tabella .th-sub {
+  font-size: 0.7rem;
+  opacity: 0.92;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.storico-tabella .mese-label {
+  text-align: left;
+  font-weight: 600;
+  color: var(--ink);
+  position: sticky;
+  left: 0;
+  background: var(--surface);
+  z-index: 1;
+}
+
+.storico-tabella tbody tr:nth-child(even) .mese-label {
+  background: var(--surface-2);
+}
+
+.storico-tabella .valore {
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+
+.storico-tabella .zero {
+  color: var(--ink-3);
+  opacity: 0.6;
+}
+
+.storico-tabella .th-var,
+.storico-tabella .td-var {
+  min-width: 108px;
+}
+
+.storico-tabella tfoot .totale-label,
+.storico-tabella tfoot .totale-valore {
+  background: var(--surface-3);
+  font-weight: 700;
+  color: var(--ink);
+  border-top: 2px solid var(--a1);
+}
+
+.legenda-variazioni {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 1.1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.legenda-nota {
+  font-size: 0.82rem;
+  color: var(--ink-3);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+  padding: 0.24rem 0.62rem;
+  border-radius: var(--r-full);
+  font-family: var(--font-head);
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.badge-su {
+  background: rgba(22, 163, 74, 0.14);
+  color: #15803d;
+}
+
+.badge-giu {
+  background: rgba(220, 38, 38, 0.13);
+  color: #b91c1c;
+}
+
+.badge-pari {
+  background: rgba(37, 99, 235, 0.13);
+  color: #1d4ed8;
+}
+
+.badge-neutro {
+  background: var(--surface-3);
+  color: var(--ink-3);
+}

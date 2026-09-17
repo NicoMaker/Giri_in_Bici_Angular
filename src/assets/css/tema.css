@@ -1,0 +1,21 @@
+/* ============================================================
+   Colori d'accento — TEMA UNICO CONDIVISO
+
+   Questo è l'unico file tema.css del progetto: prima ce n'era
+   uno per ogni sezione (Login, About_US, Statistiche), ora sono
+   stati unificati qui. Le pagine lo richiamano con:
+     giri.css                 -> @import "tema.css"
+     About_US/StyleAbout.css  -> @import "../tema.css"
+     Login/StyleLogin.css     -> @import "../tema.css"
+     Statistiche/...          -> @import "../tema.css"
+
+   Le stagioni (Primavera, Estate, Autunno·Inverno) e la sezione
+   Statistiche ridefiniscono solo --a1/--a2/--a-soft nel proprio
+   foglio, quindi l'aspetto di ogni pagina resta identico a prima.
+   ============================================================ */
+
+:root {
+  --a1: #0e8bd4;
+  --a2: #6f5bf0;
+  --a-soft: rgba(14, 139, 212, 0.12);
+}

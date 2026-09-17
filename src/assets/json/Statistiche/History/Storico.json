@@ -1,0 +1,21 @@
+{
+  "_nota": "Unico file sorgente per le pagine Statistiche, Statistiche Totali, Statistiche Mensili e Storico Mensile. Sostituisce Generale.json, GraficoTotale.json e StoricoMensile.json, che ripetevano tutti la stessa mappa anno->percorso e, Generale e StoricoMensile, anche la stessa lista di colori.",
+  "anni": {
+    "2020": "json/Statistiche/anni/2020.json",
+    "2021": "json/Statistiche/anni/2021.json",
+    "2022": "json/Statistiche/anni/2022.json",
+    "2023": "json/Statistiche/anni/2023.json",
+    "2024": "json/Statistiche/anni/2024.json",
+    "2025": "json/Statistiche/anni/2025.json",
+    "2026": "json/Statistiche/anni/2026.json"
+  },
+  "coloriAnni": [
+    "yellow",
+    "lightgreen",
+    "orange",
+    "cyan",
+    "red",
+    "blue",
+    "pink"
+  ]
+}

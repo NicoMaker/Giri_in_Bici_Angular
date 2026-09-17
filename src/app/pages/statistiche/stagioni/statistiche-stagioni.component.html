@@ -1,0 +1,30 @@
+<a class="pulsante-indietro" routerLink="/statistiche">← Torna alle statistiche</a>
+
+<h1 class="titolo">Confronto tra le stagioni</h1>
+
+@if (caricamento) {
+  <p class="centro">Caricamento…</p>
+} @else if (errore) {
+  <p class="centro">Errore nel caricamento dei dati delle stagioni.</p>
+} @else {
+  <section class="colore" appScrollReveal>
+    <p class="misuracolore">Totale km {{ totale | italianNumber }}</p>
+    <p class="misuracolore">Totale corse {{ corseTotale | italianNumber }}</p>
+    <p class="misuracolore">Totale periodi {{ totalePeriodi | italianNumber }}</p>
+    <p class="misuracolore">Media km per stagione {{ avgMediaStagione }}</p>
+    <p class="misuracolore">Media km per periodo {{ avgPeriod }}</p>
+  </section>
+
+  <app-bar-chart [dati]="barre" titolo="km per stagione" appScrollReveal></app-bar-chart>
+
+  <section class="schede-stagioni" appScrollReveal>
+    @for (s of schede; track s.nome) {
+      <article class="scheda-stagione-stat">
+        <h2>{{ s.nome }}</h2>
+        <p>{{ s.km | italianNumber }} km · {{ s.percentuale }} %</p>
+        <p>{{ s.corse | italianNumber }} uscite in {{ s.periodi }} periodi</p>
+        <p>Media km/periodo: {{ s.kmMedioPeriodo }}</p>
+      </article>
+    }
+  </section>
+}

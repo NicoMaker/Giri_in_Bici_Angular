@@ -1,0 +1,10 @@
+/* ============================================================
+   Card chilometri cliccabile
+   Parte del tema principale: giri.css
+   ============================================================ */
+
+/* Card chilometri della home cliccabile */
+.km-link {
+  display: block;
+  color: inherit;
+}

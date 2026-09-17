@@ -1,0 +1,73 @@
+/* ============================================================
+   Transizioni fra pagine (Cross-Document View Transitions)
+   Parte del tema condiviso: assets/css/core.css
+
+   Il sito è multipagina: ogni sezione (Home, Statistiche, una
+   stagione, un anno...) è un vero caricamento di pagina, non una
+   SPA. Finora si passava da una pagina all'altra con un taglio
+   secco. Con "@view-transition" è il browser stesso ad animare il
+   cambio pagina con una dissolvenza, senza una riga di JavaScript
+   e senza toccare come sono fatte le pagine.
+
+   Supporto: Chrome/Edge/Opera (dal 2024). Negli altri browser
+   questa regola viene semplicemente ignorata e la navigazione resta
+   quella di sempre: nessun errore, nessun peggioramento, si
+   guadagna solo dove il browser lo permette.
+   ============================================================ */
+
+@view-transition {
+  navigation: auto;
+}
+
+/* Prima era solo una dissolvenza incrociata (durata/curva della
+   dissolvenza di default del browser). Ora la pagina che esce scivola
+   un po' in alto rimpicciolendosi, quella che entra sale dal basso
+   ingrandendosi leggermente: piu' movimento, stesso concetto. */
+@keyframes vt-esce {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-18px) scale(0.97);
+  }
+}
+
+@keyframes vt-entra {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(1.02);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+::view-transition-old(root) {
+  animation: vt-esce 0.36s var(--ease) both;
+}
+
+::view-transition-new(root) {
+  animation: vt-entra 0.42s var(--ease) both;
+}
+
+/* La barra in cima (logo + icone di navigazione) è identica in ogni
+   pagina: le si dà un nome così il browser la fa scorrere in modo
+   continuo da una pagina all'altra invece di sostituirla di scatto
+   insieme al resto del contenuto. Un solo elemento con questo nome
+   per pagina — la barra compare una volta sola in ognuna. */
+.site-bar {
+  view-transition-name: barra-sito;
+}
+
+/* Riduci animazioni: nessuna transizione, cambio pagina immediato
+   come oggi. */
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}

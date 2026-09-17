@@ -1,0 +1,55 @@
+<main class="container">
+  <div class="login-card">
+    <div class="logo-container">
+      <div class="logo-circle">
+        <img [src]="'/img/logo.jpg' | assetUrl" alt="Logo Giri in Bici" />
+      </div>
+    </div>
+
+    <h1>Giri in Bici</h1>
+    <p class="sottotitolo">Accedi per esplorare le avventure in Friuli Venezia Giulia</p>
+
+    <form class="login-form" [class.shake]="scuoti" (ngSubmit)="accedi()">
+      <label for="username">Nome utente</label>
+      <input id="username" name="username" type="text" [(ngModel)]="username" autocomplete="username" required />
+
+      <label for="password">Password del giorno</label>
+      <div class="campo-password">
+        <input
+          id="password"
+          name="password"
+          [type]="mostraPassword ? 'text' : 'password'"
+          [(ngModel)]="password"
+          autocomplete="current-password"
+          placeholder="Giri GG/MM/AAAA"
+          required
+        />
+        <button type="button" (click)="mostraPassword = !mostraPassword" aria-label="Mostra/nascondi password">
+          {{ mostraPassword ? '🙈' : '👁️' }}
+        </button>
+      </div>
+
+      <label class="cookie">
+        <input type="checkbox" [(ngModel)]="cookieAccettati" name="cookie" />
+        Accetto i cookie tecnici necessari per l'accesso
+      </label>
+
+      @if (messaggio) {
+        <p class="messaggio" [class]="'messaggio--' + messaggio.tipo">{{ messaggio.testo }}</p>
+      }
+
+      <button class="login-btn" type="submit" [disabled]="inCorso">
+        <span class="btn-text">Accedi</span>
+        @if (inCorso) {
+          <span class="spinner">⏳</span>
+        } @else {
+          <span>→</span>
+        }
+      </button>
+    </form>
+
+    <p class="nota">
+      La password cambia ogni giorno: formato <code>Giri GG/MM/AAAA</code> (data odierna).
+    </p>
+  </div>
+</main>

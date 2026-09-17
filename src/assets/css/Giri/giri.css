@@ -1,0 +1,16 @@
+/* ============================================================
+   Giri in Bici — Home, bici e QR
+
+   Indice dei componenti. Il tema condiviso arriva da
+   assets/css/core.css; qui sotto solo cio' che e' proprio
+   di questa pagina, un file per ogni parte.
+   ============================================================ */
+
+@import url("../assets/core.css");
+
+@import url("../tema.css"); /* Colori d'accento del tema principale */
+@import url("../km/km-home.css"); /* Blocco chilometri della home, cliccabile */
+@import url("../bici/bici-griglia.css"); /* Catalogo bici: griglia, striscia AI, riquadro foto */
+@import url("../bici/bici-scheda.css"); /* Scheda della singola bici */
+@import url("../bici/bici-filtri.css"); /* Barra dei filtri per categoria */
+@import url("../km/km-card.css"); /* Card chilometri cliccabile */

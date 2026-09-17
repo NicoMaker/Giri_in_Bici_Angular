@@ -1,0 +1,19 @@
+/* ============================================================
+   Sovrascrive la griglia .container del tema
+   Parte della pagina di accesso: Login/StyleLogin.css
+   ============================================================ */
+
+/* Sovrascrive la griglia .container del core */
+.container {
+  display: grid;
+  place-items: center;
+  grid-template-columns: 1fr;
+  gap: 0;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 480px;
+  padding: 1.5rem 0;
+  border-radius: var(--r-xl);
+  transition: background 1.8s var(--ease);
+}

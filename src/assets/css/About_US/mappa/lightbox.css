@@ -1,0 +1,111 @@
+/* ============================================================
+   Apertura e scaricamento della mappa
+   Parte della pagina Informazioni: About_US/StyleAbout.css
+   ============================================================ */
+
+/* Lightbox e download (mappa) */
+.lightbox-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+.lightbox-overlay.open {
+  display: flex;
+}
+.lightbox-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  background: transparent;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.lightbox-content img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 85vh;
+  border-radius: var(--r-sm);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  cursor: pointer; /* per chiudere cliccando sull'immagine */
+}
+.lightbox-close,
+.lightbox-download {
+  position: absolute;
+  top: 1rem;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    background 0.2s;
+  color: #222;
+  font-size: 1.4rem;
+  z-index: 10;
+}
+.lightbox-close {
+  right: 1rem;
+}
+.lightbox-download {
+  right: 4.5rem;
+  color: #0e8bd4;
+}
+.lightbox-close:hover,
+.lightbox-download:hover {
+  transform: scale(1.1);
+  background: #fff;
+}
+.sitemap-image-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+.sitemap-image-wrapper .sitemap-download-btn {
+  position: absolute;
+  bottom: 1.2rem;
+  right: 1.2rem;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid #ccc;
+  border-radius: 30px;
+  padding: 0.4rem 1rem 0.4rem 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #222;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(4px);
+}
+.sitemap-image-wrapper .sitemap-download-btn:hover {
+  background: #fff;
+  transform: scale(1.05);
+}
+.sitemap-image-wrapper .sitemap-download-btn svg {
+  width: 18px;
+  height: 18px;
+}
+@media (max-width: 480px) {
+  .sitemap-image-wrapper .sitemap-download-btn .download-label {
+    display: none;
+  }
+  .sitemap-image-wrapper .sitemap-download-btn {
+    padding: 0.3rem 0.6rem;
+  }
+}

@@ -1,0 +1,39 @@
+<h1 class="titolo">Le nostre bici</h1>
+
+<nav class="bici-filtri">
+  <button class="bici-filtro" [class.attivo]="filtro === 'home'" (click)="imposta('home')">Home</button>
+  <button class="bici-filtro" [class.attivo]="filtro === 'mtb'" (click)="imposta('mtb')">MTB</button>
+  <button class="bici-filtro" [class.attivo]="filtro === 'corsa'" (click)="imposta('corsa')">Corsa</button>
+  <button class="bici-filtro" [class.attivo]="filtro === 'tutte'" (click)="imposta('tutte')">Tutte</button>
+</nav>
+
+@if (caricamento) {
+  <p class="centro">Caricamento…</p>
+} @else if (!dati) {
+  <p class="centro">Impossibile caricare il catalogo delle bici.</p>
+} @else {
+  <section class="intestazione-bici" appScrollReveal>
+    @for (img of immaginiIntestazione(); track img) {
+      <img [src]="img | assetUrl" alt="" />
+    }
+  </section>
+
+  @if (filtro !== 'home') {
+    <section class="bici-griglia" appScrollReveal>
+      @for (b of biciFiltrate(); track b.nome) {
+        <article class="bici-scheda">
+          <img [src]="b.immagine | assetUrl" [alt]="b.nome" />
+          <h2>{{ b.nome }}</h2>
+          <ul>
+            <li>Tipo: {{ b.tipo === 'mtb' ? 'MTB' : 'Corsa' }}</li>
+            <li>Freni: {{ b.tipo_freni }}</li>
+            <li>Materiale: {{ b.materiale }}</li>
+            <li>Ruote: {{ b.misura_ruote }}"</li>
+            <li>Cambio: {{ b.avanti }}x{{ b.dietro }}</li>
+            <li>Anno: {{ b.anno }}</li>
+          </ul>
+        </article>
+      }
+    </section>
+  }
+}

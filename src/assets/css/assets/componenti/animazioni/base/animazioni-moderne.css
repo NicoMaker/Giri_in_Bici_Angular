@@ -1,0 +1,178 @@
+/* ============================================================
+   Movimento in più, in giro per tutto il sito
+   Parte del tema condiviso: assets/css/core.css
+
+   Un pugno di aggiunte, tutte fatte solo con transform / opacity /
+   background-position / box-shadow — mai proprietà che spostano il
+   layout (width, height, margin, posizione degli elementi): non
+   possono quindi rompere l'impaginazione di nessuna pagina.
+   Rispettano già "prefers-reduced-motion" da sole, perché quella
+   preferenza spegne TUTTE le animazioni del sito da un'unica regola
+   in interazioni/preferenze.css — qui non serve ripeterla.
+   ============================================================ */
+
+/* ---------- Sfondo che respira ---------- */
+/* Le tre macchie di colore dello sfondo (reset.css) ora derivano
+   piano, come nuvole che si spostano — quasi impercettibile, ma la
+   pagina non è più ferma nemmeno da immobili. */
+@keyframes derivaSfondo {
+  0%,
+  100% {
+    background-position:
+      12% -8%,
+      92% 0%,
+      50% 115%,
+      0 0;
+  }
+  50% {
+    background-position:
+      18% -3%,
+      86% 5%,
+      54% 108%,
+      0 0;
+  }
+}
+
+body {
+  animation: derivaSfondo 28s var(--ease) infinite;
+}
+
+/* ---------- Riflesso che attraversa le card al passaggio ---------- */
+/* Una striscia di luce diagonale che scorre da un lato all'altro
+   della card quando ci si passa sopra col mouse — si aggiunge al
+   sollevamento e al bagliore che c'erano già (animazioni-extra.css),
+   non li sostituisce. */
+.bici-card,
+.primavera,
+.estate,
+.autunno_inverno {
+  position: relative;
+}
+
+.bici-card::after,
+.primavera::after,
+.estate::after,
+.autunno_inverno::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 42%,
+    color-mix(in srgb, #fff 65%, transparent) 50%,
+    transparent 58%
+  );
+  transform: translateX(-130%);
+  transition: transform 0.85s var(--ease);
+  pointer-events: none;
+}
+
+.bici-card:hover::after,
+.primavera:hover::after,
+.estate:hover::after,
+.autunno_inverno:hover::after {
+  transform: translateX(130%);
+}
+
+/* ---------- Pulsante "Stagioni": vivo anche da fermo ---------- */
+/* Il pulsante principale della barra ha uno sfondo in gradiente che
+   scorre piano, cosi' il pulsante piu' invitante del sito si nota
+   anche senza doverci passare sopra. Anima solo la posizione dello
+   sfondo (non l'ombra): l'ombra resta tutta all'hover gia' esistente
+   in barra.css, cosi' i due non si accavallano mai. */
+@keyframes ctaViva {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.graficostagioni {
+  background-image: linear-gradient(120deg, var(--a1), var(--a2), var(--a1));
+  background-size: 220% 220%;
+  animation: ctaViva 6s linear infinite;
+}
+
+/* ---------- Medaglie del podio: un filo di vita ---------- */
+/* Un dondolio lento e leggero, come una medaglia vera appesa al
+   collo — non gira, non rimbalza forte, solo un'oscillazione minima
+   che si nota ma non stanca l'occhio. */
+@keyframes medagliaOscilla {
+  0%,
+  100% {
+    transform: rotate(-6deg);
+  }
+  50% {
+    transform: rotate(6deg);
+  }
+}
+
+.podio__medaglia {
+  display: inline-block;
+  animation: medagliaOscilla 2.6s ease-in-out infinite;
+  transform-origin: 50% 0%;
+}
+
+/* ---------- Barre di avanzamento: riflesso che scorre ---------- */
+/* Sopra al riempimento colorato (gia' animato in larghezza) scorre
+   in continuazione una piccola striscia di luce, cosi' anche le
+   barre ferme sembrano "vive" invece che un semplice riempimento
+   statico. */
+.classifica-riga__barra > span {
+  position: relative;
+  overflow: hidden;
+}
+
+.classifica-riga__barra > span::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    transparent 0%,
+    color-mix(in srgb, #fff 55%, transparent) 50%,
+    transparent 100%
+  );
+  background-size: 60% 100%;
+  animation: rifless-barra 2.4s linear infinite;
+}
+
+@keyframes rifless-barra {
+  from {
+    background-position: -60% 0;
+  }
+  to {
+    background-position: 160% 0;
+  }
+}
+
+/* ---------- Icona della pagina attuale: anello che respira ---------- */
+/* L'anello sottile che segna "sei qui" nella barra di navigazione
+   pulsa piano, cosi' si nota anche con un'occhiata veloce, non solo
+   guardando bene la barra. */
+@keyframes anelloRespira {
+  0%,
+  100% {
+    box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--a1) 55%, transparent);
+  }
+  50% {
+    box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--a1) 90%, transparent);
+  }
+}
+
+.Icons a[aria-current="page"],
+.Icons a.is-attivo {
+  animation: anelloRespira 2.4s ease-in-out infinite;
+}
+
+/* ---------- Icone delle righe statistiche: pastiglia colorata ---------- */
+/* Da icona nuda a piccolo badge circolare tinto — lo stesso
+   trattamento delle righe di attivita' nelle app da ciclismo/sport,
+   dove ogni dato ha la sua iconcina dentro un cerchietto colorato
+   invece di stare "nuda" sulla riga. */
+.misuracolore img {
+  width: 24px;
+  height: 24px;
+  padding: 4px;
+  border-radius: 50%;
+  background: var(--a-soft);
+}

@@ -1,0 +1,31 @@
+<h1 class="titolo">Chi siamo</h1>
+
+@if (caricamento) {
+  <p class="centro">Caricamento…</p>
+} @else {
+  <section class="squadra" appScrollReveal>
+    @for (u of squadra; track u.username) {
+      <article class="membro">
+        <img [src]="avatarPath(u) | assetUrl" [alt]="u.name || u.username" />
+        <h2>{{ u.name || u.username }}</h2>
+        <p>{{ u.description }}</p>
+        @if (u.komootUrl) {
+          <a [href]="u.komootUrl" target="_blank" rel="noopener">Profilo Komoot ↗</a>
+        }
+      </article>
+    }
+  </section>
+
+  <section class="mappa-blocco" appScrollReveal>
+    <h2>La mappa dei nostri giri</h2>
+    <img [src]="'/img/About_US/Mappa.jpg' | assetUrl" alt="Mappa dei percorsi" />
+  </section>
+
+  <section class="contatti" appScrollReveal>
+    <h2>Contatti</h2>
+    <ul>
+      <li><a href="https://github.com/NicoMaker/Giri-in-bici" target="_blank" rel="noopener">Repository GitHub</a></li>
+      <li><a href="https://github.com/NicoMaker" target="_blank" rel="noopener">Account GitHub</a></li>
+    </ul>
+  </section>
+}

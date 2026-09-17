@@ -1,0 +1,136 @@
+/* ============================================================
+   Variabili di progetto: colori, tipi, spazi, ombre, misure
+   Parte del tema condiviso: assets/css/core.css
+   ============================================================ */
+
+/* I temi (giri.css, Primavera.css, Estate.css, ...) importano core.css
+   e ridefiniscono solo gli accenti --a1, --a2, --a-soft. */
+
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&family=Dancing+Script:wght@600&display=swap");
+
+/* ---------- 1. Token ---------- */
+:root {
+  /* Accenti: sovrascritti dai singoli temi stagionali.
+     --a1 = oro (l'aquila della bandiera del Friuli Venezia Giulia)
+     --a2 = blu FVG (il campo della bandiera stessa). I due colori
+     della bandiera, non un blu/indaco generico da app. */
+  --a1: #c99a2e;
+  --a2: #14568f;
+  --a-soft: rgba(201, 154, 46, 0.14);
+
+  /* Inchiostro e superfici — blu FVG scurito per il testo e per le
+     barre, non piu' grafite neutro: il colore di fondo della
+     bandiera diventa il colore di fondo del sito. */
+  --ink: #0f2438;
+  --ink-2: #47617a;
+  --ink-3: #7691a6;
+  --surface: #f7fafc;
+  --surface-2: #eef3f7;
+  --surface-3: #e3ebf1;
+  --line: rgba(15, 36, 56, 0.1);
+  --line-strong: rgba(15, 36, 56, 0.2);
+
+  /* Sfondo di header e footer: prima era var(--ink) diretto, cioe' lo
+     stesso colore del testo di tutto il sito. Separato in una
+     variabile propria cosi' si puo' cambiare solo la barra senza
+     toccare anche il testo ovunque altrove.
+     Passato da un blu (si confondeva con l'accento dell'Autunno-
+     Inverno) a un bianco sporco/panna, e ora a bianco puro. Testo e
+     icone dentro la barra restano scuri (var(--ink)). */
+  --bar-bg: #ffffff;
+
+  /* Sfondo pagina — bianco freddo con un velo di blu, come il cielo
+     sopra il campo azzurro della bandiera */
+  --bg-1: #eef4f9;
+  --bg-2: #e6edf6;
+  --bg-3: #f3f8fb;
+
+  /* Grafici: restano sempre chiari, anche in tema scuro */
+  --chart-surface: #ffffff;
+
+  /* Tipografia — --font-head resta "Outfit": e' gia' usato per
+     pulsanti, etichette e badge in tutto il sito, a quelle misure
+     piccole deve restare un sans neutro e leggibile. "Syne" (nuovo)
+     e' riservato solo ai titoli veri e propri (h1-h4, hero, marchio):
+     li' puo' permettersi carattere, senza compromettere l'interfaccia
+     minuta altrove. */
+  --font-display: "Dancing Script", "Segoe Script", cursive;
+  --font-display-bold: "Syne", "Outfit", system-ui, sans-serif;
+  --font-head: "Outfit", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Forma — un filo meno "bolle", piu' vicino a un oggetto disegnato
+     che a un'app generica. Raggi un filo piu' morbidi rispetto a
+     prima: e' il tratto piu' "2026" della forma attuale, pill e
+     card un po' piu' arrotondate invece che squadrate. */
+  --r-sm: 10px;
+  --r-md: 16px;
+  --r-lg: 20px;
+  --r-xl: 30px;
+  --r-full: 999px;
+
+  /* Ombre — sempre nel blu FVG scuro, non piu' grafite neutro.
+     Un filo piu' profonde/morbide di prima (piu' sfocatura, meno
+     "incollate" all'elemento): l'effetto "galleggiante" premium che
+     prima era riservato solo a --sh-4 ora si sente un po' anche
+     nei livelli sotto. */
+  --sh-1: 0 1px 3px rgba(15, 36, 56, 0.07);
+  --sh-2:
+    0 2px 4px rgba(15, 36, 56, 0.07), 0 14px 30px -16px rgba(15, 36, 56, 0.34);
+  --sh-3:
+    0 3px 6px rgba(15, 36, 56, 0.08), 0 26px 56px -22px rgba(15, 36, 56, 0.42);
+  /* Ombra "premium": per gli hover che devono sembrare sollevati
+     davvero (card di riepilogo, hero, bottoni principali) */
+  --sh-4:
+    0 5px 12px rgba(15, 36, 56, 0.11), 0 40px 74px -24px rgba(15, 36, 56, 0.48);
+  /* Bagliore colorato coerente col tema attivo, per bordi/ombre in
+     risalto sugli elementi interattivi principali */
+  --glow: 0 16px 46px -12px color-mix(in srgb, var(--a1) 50%, transparent);
+
+  /* Bandiera italiana — verde, bianco, rosso ufficiali (tricolore),
+     usati per la striscia sotto la scritta "Giri in Bici" nella
+     barra e nella pagina di accesso */
+  --it-verde: #009246;
+  --it-bianco: #f4f5f0;
+  --it-rosso: #ce2b37;
+  --it-contorno: #29abe2;
+
+  /* Misure */
+  --wrap: 1180px;
+  --bar-h: 68px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  /* Curva "a molla": stessa famiglia di --ease ma con un piccolo
+     rimbalzo oltre il target prima di assestarsi. Pensata per i
+     pulsanti principali (hover/press), non per tutto: un rimbalzo
+     ovunque stancherebbe l'occhio piu' che aiutarlo.
+     Definita con linear(), non cubic-bezier(): serve per poter
+     "superare" il 100% e tornare indietro, cosa che cubic-bezier()
+     da solo non puo' fare. Supporto: Chrome/Edge/Firefox/Safari
+     recenti; dove linear() non e' supportato il browser ignora la
+     dichiarazione e resta il valore precedente (nessun errore). */
+  --ease-spring: linear(
+    0,
+    0.006,
+    0.023,
+    0.253 15.4%,
+    0.481 23.6%,
+    0.784 34.2%,
+    0.899 40.3%,
+    0.98 48%,
+    1.017 56.5%,
+    1.021 61.7%,
+    1.008 68.7%,
+    0.996 78.5%,
+    0.999 91.6%,
+    1
+  );
+}
+
+/* Tema chiaro unico e fisso: niente interruttore, niente tema scuro
+   e niente adattamento automatico al tema scuro di sistema.
+   color-scheme: light impedisce anche a browser e WebView mobile di
+   invertire da soli controlli, scrollbar e campi form, cosi'
+   l'aspetto del sito resta identico su ogni pagina e dispositivo. */
+:root {
+  color-scheme: light;
+}

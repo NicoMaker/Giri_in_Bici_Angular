@@ -1,0 +1,104 @@
+/* ============================================================
+   Bottone Accedi, ripple e messaggio di errore
+   Parte della pagina di accesso: Login/StyleLogin.css
+   ============================================================ */
+
+/* ====== BOTTONE ACCEDI – FULL-WIDTH E DIMENSIONI FISSE ====== */
+
+/* Wrapper che isola il bottone e l'eventuale messaggio di errore */
+.login-btn-wrapper {
+  min-height: 80px; /* altezza fissa per contenere bottone + spazio per errore */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; /* il bottone si allarga a tutto il wrapper */
+  justify-content: flex-start;
+  margin-top: 0.6rem;
+}
+
+/* Il bottone */
+.login-btn {
+  position: relative;
+  display: inline-flex; /* flex interno per allineare icona e testo */
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%; /* OCCUPA TUTTA LA LARGHEZZA DISPONIBILE */
+  height: 54px; /* ALTEZZA FISSA */
+  padding: 0 1.4rem; /* PADDING ORIZZONTALE FISSO (non varia) */
+  font-family: var(--font-head);
+  font-size: 1.02rem; /* DIMENSIONE TESTO FISSA */
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(120deg, var(--a1), var(--a2));
+  border: 0;
+  border-radius: var(--r-full);
+  overflow: hidden;
+  box-shadow: 0 10px 24px -12px color-mix(in srgb, var(--a1) 80%, transparent);
+  transition:
+    transform 0.2s var(--ease),
+    box-shadow 0.25s var(--ease),
+    filter 0.2s var(--ease);
+  flex-shrink: 0; /* impedisce compressioni in contesti flex */
+  cursor: pointer;
+}
+
+.login-btn:hover {
+  transform: translateY(-2px);
+  filter: saturate(1.12);
+  box-shadow: 0 16px 32px -14px color-mix(in srgb, var(--a1) 90%, transparent);
+}
+
+.login-btn:active {
+  transform: translateY(0) scale(0.98); /* leggero effetto click, ma non cambia la dimensione finale */
+}
+
+.login-btn i {
+  transition: transform 0.25s var(--ease);
+}
+
+.login-btn:hover i {
+  transform: translateX(4px);
+}
+
+/* Ripple (se presente) */
+.btn-ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  transform: scale(0);
+  pointer-events: none;
+  animation: ripple 0.6s linear;
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* Messaggio di errore (statico, se mai lo userai) – non modifica il layout */
+#loginError {
+  min-height: 1.8rem;
+  margin-top: 0.3rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #dc2626;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.login-footer {
+  position: relative;
+  z-index: 1;
+  margin-top: 1.6rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--line);
+}
+
+.login-footer p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--ink-3);
+}

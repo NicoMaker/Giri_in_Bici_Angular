@@ -1,0 +1,116 @@
+/* ============================================================
+   Catalogo bici: griglia, striscia AI, riquadro foto
+   Parte del tema principale: giri.css
+   ============================================================ */
+
+/* ============================================================
+   "Le nostre bici" — catalogo
+   ============================================================ */
+
+#StampaBici {
+  display: block;
+  width: min(100% - 2.5rem, var(--wrap));
+  margin: 2rem auto 0;
+}
+
+#StampaBici .container_stagione + .container_stagione {
+  margin-top: 1.5rem;
+}
+
+/* Striscia delle intestazioni AI (galleria a 3 per riga) */
+.bici-hero-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 220px));
+  justify-content: center;
+  gap: 0.85rem;
+  margin: 0 0 2rem;
+}
+
+.bici-hero-row img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--line);
+  box-shadow: var(--sh-1);
+}
+
+/* Griglia di card, una per bici. Larghezza massima delle colonne
+   fissata (non 1fr): cosi' ogni card resta della stessa misura
+   anche quando un filtro restituisce una sola bici, invece di
+   stirarsi a riempire tutta la riga. */
+.bici-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 340px));
+  justify-content: center;
+  gap: clamp(1.1rem, 2.4vw, 1.6rem);
+}
+
+.bici-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line);
+  border-radius: var(--r-xl);
+  background: color-mix(in srgb, var(--surface) 82%, transparent);
+  box-shadow: var(--sh-2);
+  overflow: hidden;
+  transition:
+    transform 0.35s var(--ease),
+    box-shadow 0.35s var(--ease);
+}
+
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  .bici-card {
+    -webkit-backdrop-filter: blur(14px) saturate(150%);
+    backdrop-filter: blur(14px) saturate(150%);
+  }
+}
+
+.bici-card:hover {
+  transform: perspective(900px) translateY(-9px) scale(1.02)
+    rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+  box-shadow: var(--sh-3);
+}
+
+/* Riquadro foto identico in ogni scheda. .bici-card e' un flex in
+   colonna: senza min-height: 0 la foto piu' alta allungava il riquadro
+   e l'aspect-ratio veniva ignorato (era il caso de "La Bianconera").
+   Qui usiamo "cover": la foto riempie tutto il riquadro, quindi le
+   immagini si vedono tutte della stessa identica misura, senza bande
+   vuote. Il ritaglio avviene dai bordi, il centro resta sempre intero. */
+.bici-card__media {
+  position: relative;
+  flex: 0 0 auto;
+  aspect-ratio: 4 / 3;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--surface-2);
+}
+
+/* Vignettatura in basso, come nelle foto dei brand di bici: la foto
+   resta piena e leggibile, ma il bordo inferiore si scurisce un filo
+   cosi' badge/anno/icona di zoom risaltano sempre, foto chiara o
+   scura che sia. Sopra l'immagine (z-index), sotto i badge. */
+.bici-card__media::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    rgba(15, 36, 56, 0.32) 0%,
+    rgba(15, 36, 56, 0.06) 32%,
+    transparent 58%
+  );
+}
+
+.bici-card__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}

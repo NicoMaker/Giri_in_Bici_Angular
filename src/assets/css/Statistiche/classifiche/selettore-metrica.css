@@ -1,0 +1,159 @@
+/* ============================================================
+   Selettore a pillole per scegliere quale dato guardare
+   Parte della pagina Statistiche: Statistiche/Style_statistiche.css
+   ============================================================ */
+
+.selettore-metrica {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin: 0 auto 1.6rem;
+}
+
+.selettore-metrica__pulsante {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 1.3rem;
+  border-radius: var(--r-full);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition:
+    transform 0.2s var(--ease),
+    box-shadow 0.2s var(--ease),
+    background 0.2s var(--ease),
+    color 0.2s var(--ease),
+    border-color 0.2s var(--ease);
+}
+
+.selettore-metrica__pulsante:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--sh-1);
+  border-color: color-mix(in srgb, var(--a1) 35%, var(--line));
+}
+
+.selettore-metrica__pulsante.attivo {
+  background: linear-gradient(120deg, var(--a1), var(--a2));
+  border-color: transparent;
+  color: #fff;
+  box-shadow: var(--sh-2);
+}
+
+/* Il pulsante "Mesi <anno>" (#pulsante-anno-corrente) nasce con
+   l'attributo "hidden" finché non arriva da una pagina-anno con dati
+   propri. Ma ".selettore-metrica__pulsante" qui sopra impone sempre
+   "display: inline-flex", e questa regola vince su quella di default
+   del browser per "[hidden]": il pulsante restava visibile e
+   selezionabile comunque, vuoto e col solo testo generico "Mesi".
+   Questa regola restituisce a "hidden" il suo effetto reale. */
+.selettore-metrica__pulsante[hidden] {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  .selettore-metrica {
+    justify-content: stretch;
+  }
+  .selettore-metrica__pulsante {
+    flex: 1 1 auto;
+    padding: 0.55rem 0.6rem;
+    font-size: 0.85rem;
+    text-align: center;
+  }
+}
+
+/* ---------- Barra del selettore "cosa vedere", fissa mentre si scorre ---------- */
+.selettore-vista-barra {
+  position: sticky;
+  top: calc(var(--bar-h) + 0.7rem);
+  z-index: 40;
+  margin: 0 auto clamp(2rem, 5vw, 3.5rem);
+  padding: 0.7rem;
+  border-radius: var(--r-full);
+  background: color-mix(in srgb, var(--surface) 80%, transparent);
+  backdrop-filter: saturate(1.4) blur(14px);
+  -webkit-backdrop-filter: saturate(1.4) blur(14px);
+  box-shadow: var(--sh-1);
+}
+
+.selettore-vista-barra .selettore-metrica {
+  margin: 0;
+}
+
+@media (max-width: 480px) {
+  .selettore-vista-barra {
+    top: calc(var(--bar-h) + 0.4rem);
+    padding: 0.5rem;
+  }
+}
+
+/* ---------- Selettore mobile: menu a tendina al posto delle pillole ---------- */
+/* Sotto i 640px le 5 pillole non entrano comodamente su una riga sola:
+   si nasconde la fila di pillole e si mostra un select nativo, dentro
+   la stessa barra sticky qui sopra (resta fissa in cima anche scorrendo
+   su mobile, esattamente come le pillole su desktop/tablet). */
+.selettore-vista-mobile-wrap {
+  display: none;
+  position: relative;
+}
+
+.selettore-vista-mobile-wrap::after {
+  content: "";
+  position: absolute;
+  right: 1.2rem;
+  top: 50%;
+  width: 9px;
+  height: 9px;
+  border-right: 2px solid var(--ink-2);
+  border-bottom: 2px solid var(--ink-2);
+  transform: translateY(-65%) rotate(45deg);
+  pointer-events: none;
+}
+
+.selettore-vista-mobile {
+  width: 100%;
+  padding: 0.75rem 2.4rem 0.75rem 1.1rem;
+  border-radius: var(--r-full);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 0.95rem;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+}
+
+.selettore-vista-mobile:hover {
+  border-color: color-mix(in srgb, var(--a1) 35%, var(--line));
+}
+
+.selettore-vista-mobile:focus-visible {
+  outline: 2px solid var(--a1);
+  outline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+  .selettore-vista-barra .selettore-metrica {
+    display: none;
+  }
+  .selettore-vista-mobile-wrap {
+    display: block;
+  }
+}
+
+/* ---------- Podio: scorre insieme al resto della pagina ---------- */
+.podio-fisso {
+  padding: 0.9rem 0.9rem 1.3rem;
+  background: color-mix(in srgb, var(--bg-1) 92%, transparent);
+  border-radius: var(--r-lg);
+  box-shadow: var(--sh-2);
+}

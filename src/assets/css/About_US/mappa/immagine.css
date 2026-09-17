@@ -1,0 +1,64 @@
+/* ============================================================
+   Immagine della mappa, intera e senza ritagli
+   Parte della pagina Informazioni: About_US/StyleAbout.css
+   ============================================================ */
+
+/* ---------- Mappa del sito ---------- */
+.sitemap-card {
+  padding: clamp(0.8rem, 2vw, 1.2rem);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  box-shadow: var(--sh-2);
+  transition:
+    transform 0.35s var(--ease),
+    box-shadow 0.35s var(--ease);
+}
+
+.sitemap-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--sh-3);
+}
+
+.sitemap-zoom {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: var(--r-md);
+  background: var(--surface-2);
+}
+
+/* Mappa intera, senza ritagli ne' zoom */
+.sitemap-zoom img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.sitemap-zoom::after {
+  content: "Apri a schermo intero";
+  position: absolute;
+  left: 50%;
+  bottom: 0.9rem;
+  transform: translate(-50%, 10px);
+  padding: 0.45rem 1.1rem;
+  font-family: var(--font-head);
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-full);
+  box-shadow: var(--sh-2);
+  opacity: 0;
+  transition:
+    opacity 0.3s var(--ease),
+    transform 0.3s var(--ease);
+}
+
+.sitemap-zoom:hover::after,
+.sitemap-zoom:focus-visible::after {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}

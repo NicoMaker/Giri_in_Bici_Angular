@@ -1,0 +1,174 @@
+/* ============================================================
+   Riquadri dei grafici Chart.js
+   Parte del tema condiviso: assets/css/core.css
+   ============================================================ */
+
+/* ---------- 12. Grafici ---------- */
+/* L'altezza del riquadro è decisa qui: Chart.js gira con
+   maintainAspectRatio:false e riempie il contenitore.        */
+:root {
+  --chart-h: 460px;
+}
+
+.grafico,
+canvas.grafico {
+  display: block;
+  position: relative;
+  width: 100%;
+  max-width: 940px;
+  height: var(--chart-h, 460px);
+  min-height: var(--chart-h, 460px);
+  left: auto;
+  transform: none;
+  margin: 0 auto 1.5rem;
+  padding: clamp(0.6rem, 2.2vw, 1.4rem);
+  background: var(--chart-surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  box-shadow: var(--sh-2);
+  overflow: hidden;
+}
+
+/* Il canvas riempie esattamente il riquadro: niente tagli, niente
+   scrollbar orizzontali, niente grafico schiacciato. */
+.grafico > canvas,
+canvas.grafico {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100%;
+  background: transparent;
+}
+
+canvas {
+  display: block;
+  max-width: 100%;
+  background: transparent;
+}
+
+.coloregrafico {
+  background: transparent;
+}
+
+#grafici,
+#Grafici {
+  display: block;
+}
+
+#grafici > canvas,
+#Grafici > canvas:not(.grafico) {
+  display: block;
+  width: 100%;
+  max-width: 940px;
+  height: var(--chart-h, 460px);
+  margin: 0 auto 1.5rem;
+  padding: clamp(0.6rem, 2.2vw, 1.4rem);
+  background: var(--chart-surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  box-shadow: var(--sh-2);
+}
+
+/* --- Tablet --- */
+@media (max-width: 900px) {
+  :root {
+    --chart-h: 420px;
+  }
+}
+
+/* --- Mobile: più alto in proporzione, così le etichette respirano --- */
+@media (max-width: 640px) {
+  :root {
+    --chart-h: 380px;
+  }
+  .grafico,
+  canvas.grafico {
+    margin-bottom: 1.1rem;
+    border-radius: var(--r-md, 12px);
+  }
+}
+
+@media (max-width: 420px) {
+  :root {
+    --chart-h: 340px;
+  }
+  .grafico,
+  canvas.grafico {
+    padding: 0.5rem 0.4rem;
+  }
+}
+
+/* Le ciambelle su mobile stanno meglio in un riquadro quasi quadrato,
+   con la legenda sotto. */
+@media (max-width: 640px) {
+  .grafico:has(> #doughnut-chart),
+  .grafico:has(> canvas[id*="doughnut"]) {
+    height: min(88vw, 420px);
+    min-height: min(88vw, 420px);
+  }
+}
+
+/* Telefono in orizzontale: schermo basso, riquadro più contenuto */
+@media (max-width: 900px) and (orientation: landscape) and (max-height: 500px) {
+  :root {
+    --chart-h: 78vh;
+  }
+}
+
+/* Grafico con tutte le etichette dei mesi sempre visibili (Statistiche
+   Totali): invece di far sparire le etichette per mancanza di spazio,
+   il riquadro scorre in orizzontale. La larghezza del canvas la decide
+   js/Statistiche/History/statistiche-totali.js in base al numero di
+   mesi (variabile --larghezza-mesi). */
+.grafico-nota {
+  margin-bottom: 0.9rem;
+}
+
+.grafico-tutti-mesi {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.grafico-tutti-mesi__scorri {
+  height: 100%;
+  min-width: 100%;
+}
+
+.grafico-tutti-mesi__scorri > canvas {
+  width: var(--larghezza-mesi, 100%) !important;
+  height: 100% !important;
+}
+
+/* Sfuma i bordi su schermi stretti, cosi' si capisce che si puo'
+   scorrere anche prima di provarci col dito. */
+@media (max-width: 900px) {
+  .grafico-tutti-mesi {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      black 14px,
+      black calc(100% - 14px),
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0,
+      black 14px,
+      black calc(100% - 14px),
+      transparent 100%
+    );
+  }
+}
+
+/* Messaggio di errore al posto di un riquadro bianco vuoto */
+.errore-grafico {
+  max-width: 940px;
+  margin: 0 auto 1.5rem;
+  padding: 1.2rem 1.4rem;
+  color: var(--ink-2);
+  background: var(--surface-2);
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--r-lg);
+  text-align: center;
+}

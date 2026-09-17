@@ -1,0 +1,276 @@
+/* ============================================================
+   Reazioni al passaggio del mouse e al tocco
+   Parte del tema condiviso: assets/css/core.css
+   ============================================================ */
+
+/* ---------- Micro-interazioni ---------- */
+.num {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+/* L'icona della card fa un piccolo salto al passaggio del mouse */
+.immaginestagione,
+.immaginestagionestat,
+.immaginestagionestatsx,
+.immaginestagionesx,
+.immaginestagionedx {
+  transition:
+    transform 0.35s var(--ease),
+    background 0.3s var(--ease);
+}
+
+.Primaveracontorno:hover .immaginestagione,
+.Estatecontorno:hover .immaginestagione,
+.Autunno-Invernocontorno:hover .immaginestagione,
+.Statistiche:hover .immaginestagione,
+#dati > *:hover .immaginestagionestat,
+#dati > *:hover .immaginestagionestatsx,
+.primavera:hover .immaginestagionesx,
+.estate:hover .immaginestagionedx,
+.autunno_inverno:hover .immaginestagionesx {
+  transform: translateY(-4px) rotate(-6deg) scale(1.08);
+  background: var(--a-soft);
+}
+
+/* Riga della card riepilogo: leggero scorrimento al passaggio */
+.misuracolore {
+  transition:
+    padding-left 0.25s var(--ease),
+    color 0.25s var(--ease);
+}
+
+.colore .misuracolore:hover {
+  padding-left: 0.5rem;
+  color: var(--a1);
+}
+
+/* Sollevamento dell'intera card riepilogo al passaggio del mouse,
+   stesso "concetto" gia' usato per l'icona e per il pulsante
+   "vai a": leggero rialzo, ombra piu' profonda, striscia sfumata
+   in cima piu' luminosa. Attiva sia sulla card da sola sia quando
+   e' avvolta in un link (a .colore, es. il blocco km della home). */
+.colore:hover,
+a:hover .colore {
+  transform: translateY(-6px) scale(1.012);
+  box-shadow: var(--sh-3);
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+}
+
+.colore:hover::before,
+a:hover .colore::before {
+  height: 6px;
+  box-shadow: 0 0 22px -2px color-mix(in srgb, var(--a1) 70%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .colore:hover,
+  a:hover .colore {
+    transform: none;
+  }
+}
+
+/* Freccia della paginazione */
+#pagination button {
+  will-change: transform;
+}
+
+#pagination button:active {
+  transform: scale(0.94);
+}
+
+/* Pulsanti contatto: alone al passaggio */
+.Icona:hover {
+  animation: pulseRing 1.2s var(--ease);
+  box-shadow: 0 0 0 0 color-mix(in srgb, var(--a1) 55%, transparent);
+}
+
+/* Le voci del menu entrano una dopo l'altra */
+.menu.showMenu li {
+  animation: riseIn 0.4s var(--ease) both;
+}
+
+.menu.showMenu li:nth-child(1) {
+  animation-delay: 0.04s;
+}
+.menu.showMenu li:nth-child(2) {
+  animation-delay: 0.08s;
+}
+.menu.showMenu li:nth-child(3) {
+  animation-delay: 0.12s;
+}
+.menu.showMenu li:nth-child(4) {
+  animation-delay: 0.16s;
+}
+.menu.showMenu li:nth-child(5) {
+  animation-delay: 0.2s;
+}
+.menu.showMenu li:nth-child(6) {
+  animation-delay: 0.24s;
+}
+.menu.showMenu li:nth-child(n + 7) {
+  animation-delay: 0.28s;
+}
+
+/* Righe di tabella: evidenziazione morbida */
+tbody tr td {
+  transition: transform 0.2s var(--ease);
+}
+
+/* Sottolineatura animata dei link nel piè di pagina */
+.foot-links a {
+  position: relative;
+}
+
+.foot-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -3px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--a1), var(--a2));
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s var(--ease);
+}
+
+.foot-links a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Riflesso "faretto" che segue il cursore sulle card principali:
+   --mx/--my sono impostate al passaggio del mouse da
+   assets/motion/contenuti-animati.js. Card statiche (senza mouse
+   sopra) restano com'erano: l'opacita' parte da 0. */
+.bici-card {
+  position: relative;
+  --mx: 50%;
+  --my: 50%;
+}
+
+.bici-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    260px circle at var(--mx) var(--my),
+    color-mix(in srgb, var(--a1) 16%, transparent),
+    transparent 72%
+  );
+  transition: opacity 0.35s var(--ease);
+}
+
+.bici-card:hover::after {
+  opacity: 1;
+}
+
+/* ---------- Pulsante per raggiungere una pagina di approfondimento
+   (es. "Vai alla classifica dei mesi"), riusabile ovunque nel sito ---------- */
+.cta-classifica-wrap {
+  text-align: center;
+  margin-top: 1.2rem;
+}
+
+.cta-classifica {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 0.98rem;
+  color: #fff;
+  border-radius: var(--r-full);
+  background: linear-gradient(120deg, var(--a1), var(--a2));
+  box-shadow: var(--sh-2);
+  transition:
+    transform 0.3s var(--ease),
+    box-shadow 0.3s var(--ease);
+}
+
+.cta-classifica:hover {
+  color: #fff;
+  transform: translateY(-5px) scale(1.035);
+  box-shadow: var(--sh-3);
+}
+
+/* ---------- Etichetta "vai a ..." sulle card riepilogo cliccabili -------
+   Prima non c'era nessun segnale fisso: si capiva solo dal cursore o
+   passandoci sopra. Questa etichetta resta sempre visibile in fondo
+   alla card, cosi' e' chiaro subito che si puo' toccare e dove porta. */
+a .colore {
+  padding-bottom: calc(clamp(1.2rem, 3vw, 1.9rem) + 2.1rem);
+}
+
+.colore__vai-a {
+  position: absolute;
+  left: clamp(1.1rem, 3vw, 2rem);
+  right: clamp(1.1rem, 3vw, 2rem);
+  bottom: clamp(1.2rem, 3vw, 1.9rem);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.55rem 0.9rem;
+  font-family: var(--font-head);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #fff;
+  border-radius: var(--r-full);
+  background: linear-gradient(120deg, var(--a1), var(--a2));
+  box-shadow: var(--sh-1);
+  transition:
+    transform 0.25s var(--ease),
+    box-shadow 0.25s var(--ease);
+}
+
+.colore__vai-a .freccia {
+  transition: transform 0.25s var(--ease);
+}
+
+a:hover .colore__vai-a {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: var(--sh-2);
+}
+
+a:hover .colore__vai-a .freccia {
+  transform: translateX(3px);
+}
+
+/* ---------- Cerchio al tocco (feedback su pulsanti e pillole) ----------
+   Generato da assets/js/motion/tocco-pulsanti.js: un cerchio chiaro
+   nasce nel punto esatto in cui si tocca/clicca, si espande e sfuma,
+   poi si rimuove da solo. Usa "currentColor" apposta: sui pulsanti
+   pieni (sfondo colorato, testo bianco) il cerchio è bianco tenue,
+   su quelli chiari (sfondo bianco, testo scuro) è scuro tenue —
+   niente da configurare pulsante per pulsante. */
+.tocco-cerchio {
+  position: absolute;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.22;
+  pointer-events: none;
+  transform: scale(0);
+  animation: fx-tocco 0.55s ease-out;
+}
+
+@keyframes fx-tocco {
+  to {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tocco-cerchio {
+    display: none;
+  }
+}

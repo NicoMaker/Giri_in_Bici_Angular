@@ -1,0 +1,163 @@
+/* ============================================================
+   Sequenza di apertura, entrata delle card, segnaposto
+   Parte del tema condiviso: assets/css/core.css
+   ============================================================ */
+
+/* ---------- Sequenza di apertura ---------- */
+.site-bar {
+  animation: barDown 0.6s var(--ease) both;
+}
+
+.hero > * {
+  animation: riseIn 0.75s var(--ease) both;
+}
+
+.hero > *:nth-child(1) {
+  animation-delay: 0.08s;
+}
+.hero > *:nth-child(2) {
+  animation-delay: 0.16s;
+}
+.hero > *:nth-child(3) {
+  animation-delay: 0.24s;
+}
+.hero > *:nth-child(4) {
+  animation-delay: 0.32s;
+}
+.hero > *:nth-child(5) {
+  animation-delay: 0.4s;
+}
+.hero > *:nth-child(6) {
+  animation-delay: 0.48s;
+}
+
+/* Il titolo in gradiente scorre di continuo: verde, bianco, rosso,
+   verde, bianco, rosso... (ciclo unico, non avanti-indietro). */
+.hero > h1 {
+  background-size: 220% auto;
+  animation:
+    riseIn 0.75s var(--ease) both,
+    gradientShift 6s linear infinite;
+}
+
+/* La copertina della stagione non galleggia piu': salendo di continuo
+   finiva sopra il sottotitolo. Le resta solo l'entrata di .hero > *. */
+
+/* ---------- Entrata scaglionata delle card ---------- */
+#stampa .container > *,
+#dati > *,
+.season-grid > *,
+.gallery > *,
+.team-section .team-grid > *,
+.bici-grid > *,
+#StampaBici .contorno,
+#StampaBici .row > * {
+  animation: riseIn 0.6s var(--ease) both;
+}
+
+#stampa .container > *:nth-child(1),
+#dati > *:nth-child(1),
+.season-grid > *:nth-child(1),
+.gallery > *:nth-child(1),
+.team-section .team-grid > *:nth-child(1),
+.bici-grid > *:nth-child(1) {
+  animation-delay: 0.05s;
+}
+#stampa .container > *:nth-child(2),
+#dati > *:nth-child(2),
+.season-grid > *:nth-child(2),
+.gallery > *:nth-child(2),
+.team-section .team-grid > *:nth-child(2),
+.bici-grid > *:nth-child(2) {
+  animation-delay: 0.13s;
+}
+#stampa .container > *:nth-child(3),
+#dati > *:nth-child(3),
+.season-grid > *:nth-child(3),
+.gallery > *:nth-child(3),
+.team-section .team-grid > *:nth-child(3),
+.bici-grid > *:nth-child(3) {
+  animation-delay: 0.21s;
+}
+#stampa .container > *:nth-child(4),
+.gallery > *:nth-child(4),
+.team-section .team-grid > *:nth-child(4),
+.bici-grid > *:nth-child(4) {
+  animation-delay: 0.29s;
+}
+.gallery > *:nth-child(n + 5),
+.team-section .team-grid > *:nth-child(n + 5),
+.bici-grid > *:nth-child(n + 5) {
+  animation-delay: 0.37s;
+}
+
+/* Le righe dentro le card riepilogative (.colore .misuracolore) entrano
+   una dopo l'altra invece di comparire tutte insieme: tocca ogni card
+   statistiche del sito (home, bici, stagioni, statistiche totali/anni/mesi) */
+.colore .misuracolore {
+  animation: riseIn 0.5s var(--ease) both;
+}
+.colore .misuracolore:nth-child(1) {
+  animation-delay: 0.04s;
+}
+.colore .misuracolore:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.colore .misuracolore:nth-child(3) {
+  animation-delay: 0.16s;
+}
+.colore .misuracolore:nth-child(4) {
+  animation-delay: 0.22s;
+}
+.colore .misuracolore:nth-child(5) {
+  animation-delay: 0.28s;
+}
+.colore .misuracolore:nth-child(n + 6) {
+  animation-delay: 0.34s;
+}
+
+/* Elementi inseriti da JavaScript, con ritardo calcolato */
+.entra {
+  animation: riseIn 0.6s var(--ease) both;
+  animation-delay: var(--ritardo, 0ms);
+}
+
+/* ---------- Comparsa allo scroll ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.7s var(--ease),
+    transform 0.7s var(--ease);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Segnaposto animato durante il caricamento ---------- */
+#stampa:empty,
+#totale:empty,
+#km:empty,
+#dati:empty,
+#StampaBici:empty,
+#Grafici:empty,
+#grafici:empty {
+  display: block;
+  min-height: 190px;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--line);
+  background-image: linear-gradient(
+    100deg,
+    var(--surface-2) 28%,
+    var(--surface-3) 48%,
+    var(--surface-2) 68%
+  );
+  background-size: 220% 100%;
+  animation: shimmer 1.6s linear infinite;
+}
+
+#stampa:empty {
+  min-height: 260px;
+}

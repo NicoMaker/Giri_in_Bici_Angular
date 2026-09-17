@@ -1,0 +1,36 @@
+/* ============================================================
+   Contenitore centrale e spaziature delle sezioni
+   Parte del tema condiviso: assets/css/core.css
+   ============================================================ */
+
+/* ---------- 4. Layout ---------- */
+.wrap {
+  width: min(100% - 2.5rem, var(--wrap));
+  margin-inline: auto;
+}
+
+.stack > * + * {
+  margin-top: clamp(1.5rem, 3vw, 2.75rem);
+}
+
+.section {
+  margin-block: clamp(2rem, 5vw, 3.5rem);
+}
+
+.eyebrow {
+  font-family: var(--font-head);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--a1);
+  text-align: center;
+  margin-bottom: 0.6rem;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: var(--line);
+  margin: 1.5rem 0;
+}

@@ -1,0 +1,166 @@
+/* ============================================================
+   Icone a tratto disegnate da icone.js
+   Parte del tema condiviso: assets/css/core.css
+   ============================================================ */
+
+/* ---------- Icone disegnate a tratto (icone.js) ---------- */
+.ico {
+  display: block;
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+}
+
+/* Ogni voce di menu ha l'icona dentro una piastrella arrotondata:
+   grigia a riposo, tinta d'accento quando ci passi sopra. */
+.ico-tile {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 36px;
+  height: 36px;
+  border-radius: 11px;
+  color: var(--ink-2);
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  transition:
+    background 0.2s var(--ease),
+    color 0.2s var(--ease),
+    border-color 0.2s var(--ease);
+}
+
+.ico-tile .ico {
+  width: 21px;
+  height: 21px;
+}
+
+.ico-tile img,
+.menu .ico-tile img {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  object-fit: contain;
+}
+
+.menu li a:hover .ico-tile,
+.menu button:hover .ico-tile,
+.menu li a:focus-visible .ico-tile,
+.menu button:focus-visible .ico-tile {
+  color: var(--a1);
+  background: color-mix(in srgb, var(--a1) 14%, var(--surface));
+  border-color: color-mix(in srgb, var(--a1) 32%, transparent);
+}
+
+.menu img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+
+.menu .logo {
+  width: 26px;
+  height: 26px;
+  border-radius: var(--r-sm);
+}
+
+.bicimenu {
+  font-size: 1rem;
+}
+
+.no-results {
+  color: var(--ink-3);
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-align: center;
+  padding: 1.4rem 0;
+  width: 100%;
+}
+
+/* L'hamburger è fisso in alto a destra: sulle pagine che ce l'hanno
+   (classe messa da Hamburger.js) la barra deve lasciargli il posto,
+   altrimenti finisce sopra il pulsante "Stagioni". */
+/* Larghezza dell'hamburger (46px) + distanza dal bordo (14px) + aria */
+:root {
+  --hamburger-slot: 74px;
+}
+
+.con-hamburger .site-bar {
+  padding-right: calc(clamp(0.9rem, 3vw, 1.6rem) + var(--hamburger-slot));
+}
+
+/* Ultimo elemento della barra (di solito il pulsante "Stagioni"):
+   non deve mai finire sotto l'hamburger. */
+.con-hamburger .site-bar > .graficostagioni {
+  margin-right: 0;
+}
+
+.hamburger {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  transform: translateY(-50%);
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  color: var(--ink);
+  background: var(--surface);
+  background: color-mix(in srgb, var(--surface) 85%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: var(--sh-2);
+  text-shadow: none;
+  transition:
+    transform 0.25s var(--ease),
+    box-shadow 0.25s var(--ease);
+}
+
+.hamburger:hover {
+  transform: translateY(calc(-50% - 2px));
+  box-shadow: var(--sh-3);
+  color: var(--a1);
+}
+
+.hamburger .MenuIcon,
+.hamburger .CloseIcon {
+  display: grid;
+  place-items: center;
+  font-size: 0;
+  line-height: 0;
+}
+
+.hamburger .CloseIcon {
+  display: none;
+}
+
+.hamburger.closeIcon .MenuIcon {
+  display: none;
+}
+
+.hamburger.closeIcon .CloseIcon {
+  display: grid;
+}
+
+.hamburger .material-icons,
+.MenuIcon span,
+.CloseIcon span {
+  font-size: 24px;
+  padding: 0;
+  margin: 0;
+  background: none;
+  border-radius: 0;
+  color: inherit;
+  box-shadow: none;
+  display: grid;
+  place-items: center;
+}
+
+.hamburger:hover .material-icons {
+  transform: none;
+  box-shadow: none;
+}

@@ -1,0 +1,25 @@
+/* ============================================================
+   Giri in Bici — Informazioni e contatti
+
+   Indice dei componenti della pagina. Il tema condiviso arriva
+   da assets/css/core.css; qui sotto solo cio' che e' proprio
+   di questa pagina, un file per ogni parte, raggruppati per
+   sottocartella in base a cosa fanno.
+   ============================================================ */
+
+@import url("../assets/core.css");
+
+@import url("../tema.css"); /* Colori d'accento condivisi (file unico) */
+@import url("layout/struttura/particelle-sfondo.css"); /* Particelle ambientali sullo sfondo */
+@import url("intestazione/pulsante-indietro.css"); /* Pulsante indietro */
+@import url("intestazione/base.css"); /* Intestazione della pagina */
+@import url("layout/struttura/contenitore.css"); /* Contenitore: sovrascrive la griglia .container del tema */
+@import url("squadra/squadra.css"); /* Sezione del team */
+@import url("mappa/blocco-mappa.css"); /* Blocco mappa del sito */
+@import url("squadra/comparsa-scroll.css"); /* Comparsa dei blocchi allo scroll */
+@import url("contatti/dove-andare.css"); /* Voci "Dove andare": collegamento a tutta card */
+@import url("squadra/occhiello.css"); /* Sezioni con occhiello */
+@import url("mappa/immagine.css"); /* Immagine della mappa, intera e senza ritagli */
+@import url("contatti/contatti.css"); /* Contatti e collegamenti alle stagioni */
+@import url("mappa/lightbox.css"); /* Apertura e scaricamento della mappa */
+@import url("intestazione/margine-barra-fissa.css"); /* La barra fissa lascia respiro all'intestazione */

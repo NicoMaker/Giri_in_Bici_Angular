@@ -1,0 +1,99 @@
+/* ============================================================
+   Azzeramento degli stili del browser e impostazioni di base
+   Parte del tema condiviso: assets/css/core.css
+   ============================================================ */
+
+/* ---------- 2. Reset ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--bg-1);
+  background-image:
+    radial-gradient(
+      1100px 620px at 12% -8%,
+      color-mix(in srgb, var(--a1) 24%, transparent),
+      transparent 60%
+    ),
+    radial-gradient(
+      900px 560px at 92% 0%,
+      color-mix(in srgb, var(--a2) 22%, transparent),
+      transparent 58%
+    ),
+    radial-gradient(
+      760px 620px at 50% 115%,
+      color-mix(in srgb, var(--a2) 12%, transparent),
+      transparent 62%
+    ),
+    linear-gradient(180deg, var(--bg-3), var(--bg-2));
+  background-attachment: fixed;
+  overflow-x: clip;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: var(--a1);
+  text-decoration: none;
+  transition: color 0.2s var(--ease);
+}
+
+a:hover {
+  color: var(--a2);
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* Anello di focus piu' morbido: prima un contorno pieno, ora un
+   doppio bagliore nei due colori del tema (stesso effetto "glow"
+   gia' usato altrove) — piu' elegante, resta comunque ben visibile
+   per chi naviga da tastiera. */
+:focus-visible {
+  outline: none;
+  border-radius: 6px;
+  box-shadow:
+    0 0 0 3px var(--surface),
+    0 0 0 5px color-mix(in srgb, var(--a1) 70%, var(--a2));
+}
+
+::selection {
+  background: var(--a1);
+  color: #fff;
+}
+
+/* Scrollbar discreta */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--line-strong) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--line-strong);
+  border-radius: var(--r-full);
+}

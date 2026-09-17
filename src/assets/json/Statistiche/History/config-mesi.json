@@ -1,0 +1,31 @@
+{
+  "orderMesi": {
+    "Gennaio": 1,
+    "Febbraio": 2,
+    "Marzo": 3,
+    "Aprile": 4,
+    "Maggio": 5,
+    "Giugno": 6,
+    "Luglio": 7,
+    "Agosto": 8,
+    "Settembre": 9,
+    "Ottobre": 10,
+    "Novembre": 11,
+    "Dicembre": 12
+  },
+  "_notaColoriMesi": "Fonte unica del colore-per-mese, sempre legato al nome del mese (non alla posizione dentro i dati di un anno, che puo' mancare di qualche mese). Stessa palette a 12 colori usata nel grafico 'Statistiche Mensili': Gennaio=darkblue, Febbraio=blue, Marzo=lightgreen, Aprile=green, Maggio=pink, Giugno=yellow, Luglio=orange, Agosto=red, Settembre=darkgreen, Ottobre=brown, Novembre=cyan, Dicembre=blue. Usata sia da JS/Statistiche/History/statistiche-mensili.js (grafico aggregato) sia da JS/Statistiche/anni.js (pagina del singolo anno): un solo posto da cambiare per ricolorare i mesi ovunque nel sito.",
+  "coloriMesi": {
+    "Gennaio": "darkblue",
+    "Febbraio": "blue",
+    "Marzo": "lightgreen",
+    "Aprile": "green",
+    "Maggio": "pink",
+    "Giugno": "yellow",
+    "Luglio": "orange",
+    "Agosto": "red",
+    "Settembre": "darkgreen",
+    "Ottobre": "brown",
+    "Novembre": "cyan",
+    "Dicembre": "blue"
+  }
+}

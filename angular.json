@@ -1,0 +1,161 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "giri-in-bici": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:application",
+          "options": {
+            "outputPath": "dist/giri-in-bici",
+            "index": "src/index.html",
+            "browser": "src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "src/assets/json",
+                "output": "assets/json"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/assets/img",
+                "output": "assets/img"
+              },
+              {
+                "glob": "**/*",
+                "input": "src/assets/css",
+                "output": "assets/css"
+              },
+              "src/robots.txt"
+            ],
+            "styles": [
+              "src/assets/css/assets/componenti/base/reset.css",
+              "src/assets/css/assets/componenti/base/token.css",
+              "src/assets/css/assets/componenti/base/tipografia.css",
+              "src/assets/css/assets/core.css",
+              "src/assets/css/tema.css",
+              "src/assets/css/About_US/StyleAbout.css",
+              "src/assets/css/About_US/contatti/contatti.css",
+              "src/assets/css/About_US/contatti/dove-andare.css",
+              "src/assets/css/About_US/intestazione/base.css",
+              "src/assets/css/About_US/intestazione/margine-barra-fissa.css",
+              "src/assets/css/About_US/intestazione/pulsante-indietro.css",
+              "src/assets/css/About_US/layout/footer/footer.css",
+              "src/assets/css/About_US/layout/footer/righe-footer.css",
+              "src/assets/css/About_US/layout/struttura/contenitore.css",
+              "src/assets/css/About_US/layout/struttura/particelle-sfondo.css",
+              "src/assets/css/About_US/mappa/blocco-mappa.css",
+              "src/assets/css/About_US/mappa/immagine.css",
+              "src/assets/css/About_US/mappa/lightbox.css",
+              "src/assets/css/About_US/squadra/comparsa-scroll.css",
+              "src/assets/css/About_US/squadra/occhiello.css",
+              "src/assets/css/About_US/squadra/squadra.css",
+              "src/assets/css/Autunno_Inverno/Autunno_Inverno.css",
+              "src/assets/css/CercaData/cerca-data.css",
+              "src/assets/css/Estate/Estate.css",
+              "src/assets/css/Giri/giri.css",
+              "src/assets/css/Login/base/StyleLogin.css",
+              "src/assets/css/Login/base/contenitore.css",
+              "src/assets/css/Login/base/responsive.css",
+              "src/assets/css/Login/componenti/bottone.css",
+              "src/assets/css/Login/componenti/card.css",
+              "src/assets/css/Login/componenti/form.css",
+              "src/assets/css/Login/extra/cookie.css",
+              "src/assets/css/Login/extra/logo.css",
+              "src/assets/css/Primavera/Primavera.css",
+              "src/assets/css/Statistiche/base/Style_statistiche.css",
+              "src/assets/css/Statistiche/base/griglia.css",
+              "src/assets/css/Statistiche/classifiche/classifica-controlli.css",
+              "src/assets/css/Statistiche/classifiche/classifica-mesi.css",
+              "src/assets/css/Statistiche/classifiche/selettore-metrica.css",
+              "src/assets/css/Statistiche/tabelle/riepilogo-stagioni.css",
+              "src/assets/css/Statistiche/tabelle/tabella-mesi.css",
+              "src/assets/css/assets/componenti/animazioni/base/animazioni-extra.css",
+              "src/assets/css/assets/componenti/animazioni/base/animazioni-moderne.css",
+              "src/assets/css/assets/componenti/animazioni/base/animazioni-scroll-moderne.css",
+              "src/assets/css/assets/componenti/animazioni/base/animazioni.css",
+              "src/assets/css/assets/componenti/animazioni/dettagli/animazioni-preferenze.css",
+              "src/assets/css/assets/componenti/animazioni/dettagli/rifiniture.css",
+              "src/assets/css/assets/componenti/animazioni/dettagli/transizioni-pagina.css",
+              "src/assets/css/assets/componenti/componenti-ui/contenuti/bici-contatti.css",
+              "src/assets/css/assets/componenti/componenti-ui/contenuti/card-statistiche.css",
+              "src/assets/css/assets/componenti/componenti-ui/contenuti/stagioni.css",
+              "src/assets/css/assets/componenti/componenti-ui/navigazione/griglia-periodi.css",
+              "src/assets/css/assets/componenti/componenti-ui/navigazione/icone.css",
+              "src/assets/css/assets/componenti/componenti-ui/navigazione/paginazione.css",
+              "src/assets/css/assets/componenti/interazioni/barre/barra-lettura.css",
+              "src/assets/css/assets/componenti/interazioni/barre/torna-su.css",
+              "src/assets/css/assets/componenti/interazioni/effetti/micro-interazioni.css",
+              "src/assets/css/assets/componenti/interazioni/effetti/rivelazione.css",
+              "src/assets/css/assets/componenti/interazioni/impostazioni/preferenze.css",
+              "src/assets/css/assets/componenti/interazioni/impostazioni/responsive.css",
+              "src/assets/css/assets/componenti/layout/sezioni/footer.css",
+              "src/assets/css/assets/componenti/layout/sezioni/hero.css",
+              "src/assets/css/assets/componenti/layout/struttura/barra.css",
+              "src/assets/css/assets/componenti/layout/struttura/drawer.css",
+              "src/assets/css/assets/componenti/layout/struttura/layout.css",
+              "src/assets/css/assets/componenti/media/adattamenti-immagini.css",
+              "src/assets/css/assets/componenti/media/galleria.css",
+              "src/assets/css/assets/componenti/media/lightbox.css",
+              "src/assets/css/assets/componenti/tabelle-grafici/grafici.css",
+              "src/assets/css/assets/componenti/tabelle-grafici/tabella-storico.css",
+              "src/assets/css/assets/componenti/tabelle-grafici/tabelle.css",
+              "src/assets/css/bici/bici-filtri.css",
+              "src/assets/css/bici/bici-griglia.css",
+              "src/assets/css/bici/bici-scheda.css",
+              "src/assets/css/km/km-card.css",
+              "src/assets/css/km/km-home.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2MB",
+                  "maximumError": "4MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "20kB",
+                  "maximumError": "40kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "giri-in-bici:build:production"
+            },
+            "development": {
+              "buildTarget": "giri-in-bici:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        }
+      }
+    }
+  }
+}

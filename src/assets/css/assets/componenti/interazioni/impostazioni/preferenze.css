@@ -1,0 +1,35 @@
+/* ============================================================
+   Movimento ridotto e stampa
+   Parte del tema condiviso: assets/css/core.css
+   ============================================================ */
+
+/* ---------- 20. Preferenze utente ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media print {
+  .site-bar,
+  .hamburger,
+  .menu,
+  .site-foot,
+  #pagination {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+  }
+}

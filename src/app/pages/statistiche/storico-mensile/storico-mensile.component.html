@@ -1,0 +1,44 @@
+<a class="pulsante-indietro" routerLink="/statistiche">← Torna alle statistiche</a>
+
+<h1 class="titolo">Storico mensile</h1>
+<p class="centro sottotitolo">km per mese, anno per anno. Le frecce mostrano la variazione % rispetto allo stesso mese dell'anno precedente.</p>
+
+@if (caricamento) {
+  <p class="centro">Caricamento…</p>
+} @else {
+  <div class="tabella-scroll" appScrollReveal>
+    <table>
+      <thead>
+        <tr>
+          <th>Anno</th>
+          @for (m of mesi; track m) {
+            <th>{{ m.slice(0, 3) }}</th>
+          }
+          <th>Totale</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (r of righe; track r.anno) {
+          <tr>
+            <td>
+              <span class="pallino" [style.background]="r.colore"></span>{{ r.anno }}
+            </td>
+            @for (c of r.celle; track $index) {
+              <td>
+                <span class="cella-km">{{ c.km | italianNumber }}</span>
+                @if (c.variazione === null) {
+                  <span class="badge badge-neutro">—</span>
+                } @else {
+                  <span class="badge" [class]="'badge-' + classeVariazione(c.variazione)"
+                    >{{ segno(c.variazione) }} {{ formatNumber(c.variazione < 0 ? -c.variazione : c.variazione) }}%</span
+                  >
+                }
+              </td>
+            }
+            <td class="cella-totale">{{ r.totale | italianNumber }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+}

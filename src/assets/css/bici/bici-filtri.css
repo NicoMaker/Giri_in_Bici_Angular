@@ -1,0 +1,64 @@
+/* ============================================================
+   Barra dei filtri per categoria
+   Parte del tema principale: giri.css
+   ============================================================ */
+
+/* Barra dei filtri categoria, sempre visibile sopra la griglia */
+.bici-filtri {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 0 0 1.6rem;
+}
+
+.bici-filtro {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.4rem 1.1rem 0.4rem 0.4rem;
+  border-radius: var(--r-full);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition:
+    transform 0.2s var(--ease),
+    box-shadow 0.2s var(--ease),
+    background 0.2s var(--ease),
+    color 0.2s var(--ease);
+}
+
+.bici-filtro .ico-tile {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--r-full);
+  pointer-events: none;
+}
+
+.bici-filtro:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--sh-1);
+}
+
+.bici-filtro.attivo {
+  background: linear-gradient(120deg, var(--a1), var(--a2));
+  border-color: transparent;
+  color: #fff;
+  box-shadow: var(--sh-2);
+}
+
+.bici-filtro.attivo .ico-tile {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: transparent;
+  color: #fff;
+}
+
+@media (max-width: 640px) {
+  .bici-card__specs {
+    grid-template-columns: 1fr;
+  }
+}

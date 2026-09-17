@@ -1,0 +1,39 @@
+{
+  "seasons": [
+    {
+      "containerClass": "primavera",
+      "link": "../Primavera.html",
+      "imgClass": "immaginestagionestat",
+      "icon": "primavera.png",
+      "name": "Primavera",
+      "dataKey": "p",
+      "raceKey": "corsep",
+      "avgKey": "avgp"
+    },
+    {
+      "containerClass": "estate",
+      "link": "../Estate.html",
+      "imgClass": "immaginestagionestatsx",
+      "icon": "estate.png",
+      "name": "Estate",
+      "dataKey": "e",
+      "raceKey": "corsee",
+      "avgKey": "avge"
+    },
+    {
+      "containerClass": "autunno_inverno",
+      "link": "../Autunno_Inverno.html",
+      "imgClass": "immaginestagionestat",
+      "icon": "inverno.png",
+      "name": "Autunno - Inverno",
+      "dataKey": "ai",
+      "raceKey": "corseai",
+      "avgKey": "avgai"
+    }
+  ],
+  "chart": {
+    "colors": ["lightgreen", "red", "lightblue"],
+    "borderColor": "black",
+    "borderWidth": 1
+  }
+}

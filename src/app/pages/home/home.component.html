@@ -1,0 +1,41 @@
+<section class="hero" appScrollReveal>
+  <h1>Giri in Bici</h1>
+  <p class="hero-sub">Il diario delle nostre avventure in bicicletta in Friuli Venezia Giulia, stagione per stagione dal 2020.</p>
+</section>
+
+<section class="colore" appScrollReveal>
+  @if (caricamento) {
+    <p>Caricamento statistiche…</p>
+  } @else if (totali && medie) {
+    <p class="misuracolore">Totale km {{ totali.totalKm | italianNumber }} <img [src]="'/img/Icons/traguardo.png' | assetUrl" alt="Icona traguardo" /></p>
+    <p class="misuracolore">km medi per giro {{ medie.avgKmPerRace | italianNumber }}</p>
+    <p class="misuracolore">Media km per mese {{ medie.avgKmPerMonth === null ? 'N/A' : (medie.avgKmPerMonth | italianNumber) }}</p>
+    <p class="misuracolore">km medi per anno {{ medie.avgKmPerYear === null ? 'N/A' : (medie.avgKmPerYear | italianNumber) }}</p>
+    <p class="misuracolore">Totale corse {{ totali.totalRaces | italianNumber }}</p>
+    <p class="misuracolore">Corse medie per mese {{ medie.avgRacesPerMonth === null ? 'N/A' : (medie.avgRacesPerMonth | italianNumber) }}</p>
+    <p class="misuracolore">Corse medie per anno {{ medie.avgRacesPerYear === null ? 'N/A' : (medie.avgRacesPerYear | italianNumber) }}</p>
+    <p class="misuracolore">Totale anni di corsa {{ totali.totalYears | italianNumber }}</p>
+    <p class="misuracolore">Totale mesi di corsa {{ totali.totalMonths | italianNumber }}</p>
+    <p class="misuracolore">📅 Periodi {{ totali.totalPeriods | italianNumber }}</p>
+    <p class="misuracolore">Media km per periodo {{ medie.avgKmPerPeriod === null ? 'N/A' : (medie.avgKmPerPeriod | italianNumber) }}</p>
+    <p class="misuracolore">Media km per stagione {{ medie.avgKmPerSeason | italianNumber }}</p>
+    <a class="colore__vai-a" routerLink="/statistiche">Vai alle statistiche complete <span class="freccia" aria-hidden="true">→</span></a>
+  } @else {
+    <p>Dati non disponibili al momento.</p>
+  }
+</section>
+
+<section class="griglia-periodi" appScrollReveal>
+  <a class="scheda-stagione" routerLink="/primavera">
+    <img [src]="'/img/Primavera.jpg' | assetUrl" alt="Primavera" />
+    <span>Primavera 🌸</span>
+  </a>
+  <a class="scheda-stagione" routerLink="/estate">
+    <img [src]="'/img/Estate.jpg' | assetUrl" alt="Estate" />
+    <span>Estate 🌞</span>
+  </a>
+  <a class="scheda-stagione" routerLink="/autunno-inverno">
+    <img [src]="'/img/Autunno_Inverno.jpg' | assetUrl" alt="Autunno - Inverno" />
+    <span>Autunno - Inverno 🍁❄️</span>
+  </a>
+</section>

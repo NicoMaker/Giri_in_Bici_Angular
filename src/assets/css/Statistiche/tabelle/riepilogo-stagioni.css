@@ -1,0 +1,18 @@
+/* ============================================================
+   RIEPILOGO STAGIONI
+
+   MODIFICA 2026-07-25: il blocco "Totali per stagione" ora usa
+   lo stesso markup .colore / .misuracolore delle altre card di
+   riepilogo del sito (es. "Tutti i chilometri" in
+   Statistiche_Totali.html) — stile definito in
+   assets/css/componenti/componenti-ui/card-statistiche.css, già importato
+   globalmente da assets/core.css.
+
+   Le vecchie regole "Modern & Glass" (.riepilogo__*, .quota,
+   .quote) non sono più generate da schede.js e sono state
+   rimosse da qui. Questo file resta come indice/nota: se in
+   futuro serve un ritocco solo per questa pagina, va aggiunto
+   qui sopra la card condivisa (selettori tipo
+   ".Statistiche .colore { ... }"), senza duplicare lo stile
+   base.
+   ============================================================ */

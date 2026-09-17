@@ -1,0 +1,15 @@
+{
+  "season": "Primavera",
+  "image": "primavera.png",
+  "path": "Primavera",
+  "cssclass": "Primavera",
+  "subPeriods": {
+    "2021": "json/Primavera/Periodi/2021.json",
+    "2022": "json/Primavera/Periodi/2022.json",
+    "2023": "json/Primavera/Periodi/2023.json",
+    "2024": "json/Primavera/Periodi/2024.json",
+    "2025": "json/Primavera/Periodi/2025.json",
+    "2026": "json/Primavera/Periodi/2026.json"
+  },
+  "colors": ["pink", "antiquewhite", "cyan", "#97ed86ce", "#e6e6ff", "#90D5A0"]
+}

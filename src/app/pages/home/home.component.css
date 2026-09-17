@@ -1,0 +1,72 @@
+.hero {
+  text-align: center;
+  padding: 2.5rem 1rem 1.5rem;
+}
+
+.hero-sub {
+  opacity: 0.8;
+  max-width: 560px;
+  margin: 0.5rem auto 0;
+}
+
+.colore {
+  max-width: 720px;
+  margin: 0 auto 2rem;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.misuracolore {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.misuracolore img {
+  width: 18px;
+  height: 18px;
+}
+
+.colore__vai-a {
+  margin-top: 0.75rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.griglia-periodi {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  max-width: 960px;
+  margin: 0 auto 3rem;
+  padding: 0 1rem;
+}
+
+.scheda-stagione {
+  position: relative;
+  display: block;
+  border-radius: 1rem;
+  overflow: hidden;
+  text-decoration: none;
+  color: #fff;
+  aspect-ratio: 4 / 3;
+}
+
+.scheda-stagione img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.scheda-stagione span {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.75rem;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+  font-weight: 700;
+}

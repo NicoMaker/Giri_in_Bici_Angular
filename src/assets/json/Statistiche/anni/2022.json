@@ -1,0 +1,19 @@
+{
+  "year": "2022",
+  "numberOfRaces": 62,
+  "data": {
+    "Gennaio": 65,
+    "Febbraio": 242,
+    "Marzo": 244,
+    "Aprile": 92,
+    "Maggio": 270,
+    "Giugno": 279,
+    "Luglio": 601,
+    "Agosto": 542,
+    "Settembre": 604,
+    "Ottobre": 627,
+    "Novembre": 133,
+    "Dicembre": 109
+  },
+  "_notaColori": "Il colore di ogni mese non vive piu' qui: viene calcolato da JS/Statistiche/anni.js leggendo json/Statistiche/History/config-mesi.json (coloriMesi), mappato per nome del mese - stessa palette del grafico 'Statistiche Mensili' - cosi' resta coerente anche se in questo file mancano dei mesi."
+}

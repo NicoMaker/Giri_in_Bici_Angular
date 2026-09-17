@@ -1,0 +1,37 @@
+<a class="pulsante-indietro" routerLink="/statistiche">← Torna alle statistiche</a>
+
+<h1 class="titolo">Statistiche totali</h1>
+
+@if (caricamento) {
+  <p class="centro">Caricamento…</p>
+} @else {
+  <section class="colore" appScrollReveal>
+    <p class="misuracolore">Totale km {{ totale | italianNumber }}</p>
+    <p class="misuracolore">Mesi registrati {{ righe.length }}</p>
+  </section>
+
+  <app-bar-chart [dati]="barre" titolo="Andamento km, mese per mese" appScrollReveal></app-bar-chart>
+
+  <div class="tabella-scroll" appScrollReveal>
+    <table>
+      <thead>
+        <tr>
+          <th>Mese</th>
+          <th>Anno</th>
+          <th>km</th>
+          <th>%</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (r of righe; track r.mese + r.anno) {
+          <tr>
+            <td>{{ r.mese }}</td>
+            <td>{{ r.anno }}</td>
+            <td>{{ r.km | italianNumber }}</td>
+            <td>{{ r.percentuale }} %</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+}

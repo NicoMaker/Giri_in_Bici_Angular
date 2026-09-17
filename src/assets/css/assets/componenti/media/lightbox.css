@@ -1,0 +1,235 @@
+/* ============================================================
+   Apertura delle foto a grandezza piena
+   Parte del tema condiviso: assets/css/core.css
+   ============================================================ */
+
+/* ---------- Lightbox: apre le foto della galleria a grandezza piena ---------- */
+
+/* Tutte le foto del sito si aprono a grandezza piena. Il marcatore
+   data-apribile lo mette ui.js sulle sole immagini che ha davvero
+   attivato, cosi' l'aspetto non puo' mai discostarsi dal
+   comportamento: niente cursore a lente su icone o loghi. */
+[data-apribile],
+.gallery a.shot {
+  cursor: zoom-in;
+}
+
+[data-apribile]:focus-visible {
+  outline: 3px solid var(--a1);
+  outline-offset: 3px;
+}
+
+/* Lente sempre visibile: il cursore a lente sopra si vede solo col
+   mouse — su telefono non si passa mai sopra niente, quindi senza
+   questo badge non c'e' modo di sapere che la foto si apre. Un solo
+   posto per la galleria dei periodi e per le schede delle bici (i due
+   punti dove le foto sono piu' viste); le altre immagini apribili
+   restano con il solo cursore, per non riempire il sito di lentine. */
+.gallery a.shot,
+.bici-card__media {
+  position: relative;
+}
+
+.gallery a.shot::after,
+.bici-card__media::after {
+  content: "";
+  position: absolute;
+  right: 0.6rem;
+  bottom: 0.6rem;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: rgba(15, 36, 56, 0.55);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='10.5' cy='10.5' r='6.5'/%3E%3Cline x1='15.3' y1='15.3' x2='20.5' y2='20.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 16px;
+  backdrop-filter: blur(2px);
+  transition:
+    transform 0.25s var(--ease),
+    background-color 0.2s var(--ease);
+  pointer-events: none;
+}
+
+.gallery a.shot:hover::after,
+.bici-card:hover .bici-card__media::after {
+  transform: scale(1.1);
+  background-color: var(--a1);
+}
+
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: clamp(1rem, 4vw, 3rem);
+  background: rgba(6, 10, 16, 0.88);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.25s var(--ease),
+    visibility 0.25s;
+}
+
+.lightbox-overlay.is-aperta {
+  opacity: 1;
+  visibility: visible;
+}
+
+.lightbox-img {
+  max-width: min(92vw, 1100px);
+  max-height: min(88vh, 1100px);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--r-lg);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  background: var(--surface-2);
+  transform: scale(0.96);
+  transition: transform 0.25s var(--ease);
+}
+
+.lightbox-overlay.is-aperta .lightbox-img {
+  transform: scale(1);
+}
+
+.lightbox-chiudi {
+  position: absolute;
+  top: clamp(0.8rem, 2vw, 1.6rem);
+  right: clamp(0.8rem, 2vw, 1.6rem);
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: var(--r-full);
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition:
+    background 0.2s var(--ease),
+    transform 0.2s var(--ease);
+}
+
+.lightbox-chiudi:hover {
+  background: rgba(255, 255, 255, 0.22);
+  transform: scale(1.06);
+}
+
+.lightbox-scarica {
+  position: absolute;
+  bottom: clamp(0.8rem, 2vw, 1.6rem);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.5rem 1.1rem;
+  border-radius: var(--r-full);
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: background 0.2s var(--ease);
+}
+
+.lightbox-scarica:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+/* Frecce per scorrere le foto del periodo. Restano ai lati dello
+   schermo, sopra l'immagine, e spariscono se la foto e' una sola. */
+.lightbox-freccia {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border: 0;
+  border-radius: var(--r-full);
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition:
+    background 0.2s var(--ease),
+    transform 0.2s var(--ease);
+}
+
+.lightbox-freccia--prec {
+  left: clamp(0.5rem, 2vw, 1.6rem);
+}
+
+.lightbox-freccia--succ {
+  right: clamp(0.5rem, 2vw, 1.6rem);
+}
+
+.lightbox-freccia:hover {
+  background: rgba(255, 255, 255, 0.24);
+}
+
+.lightbox-freccia--prec:hover {
+  transform: translateY(-50%) translateX(-3px);
+}
+
+.lightbox-freccia--succ:hover {
+  transform: translateY(-50%) translateX(3px);
+}
+
+.lightbox-freccia[hidden] {
+  display: none;
+}
+
+/* Contatore "3 / 7" in alto a sinistra */
+.lightbox-conta {
+  position: absolute;
+  top: clamp(0.8rem, 2vw, 1.6rem);
+  left: clamp(0.8rem, 2vw, 1.6rem);
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--r-full);
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-family: var(--font-head);
+  font-weight: 600;
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.lightbox-conta[hidden] {
+  display: none;
+}
+
+/* Su telefono le frecce scendono accanto al pulsante di download,
+   cosi' non finiscono sopra la foto */
+@media (max-width: 560px) {
+  .lightbox-freccia {
+    top: auto;
+    bottom: clamp(0.8rem, 2vw, 1.6rem);
+    transform: none;
+    width: 42px;
+    height: 42px;
+  }
+
+  .lightbox-freccia--prec:hover,
+  .lightbox-freccia--succ:hover {
+    transform: none;
+  }
+
+  .lightbox-img {
+    max-height: 74vh;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lightbox-overlay,
+  .lightbox-img,
+  .lightbox-freccia {
+    transition: none !important;
+  }
+}

@@ -1,0 +1,134 @@
+.titolo,
+.centro {
+  text-align: center;
+}
+
+.tab {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.tab button {
+  padding: 0.5rem 1.2rem;
+  border-radius: 999px;
+  border: 1px solid rgba(128, 128, 128, 0.4);
+  background: transparent;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.tab button.attivo {
+  background: currentColor;
+  color: canvas;
+}
+
+.form-ricerca {
+  max-width: 480px;
+  margin: 0 auto 1.5rem;
+  padding: 0 1rem;
+  display: grid;
+  gap: 1rem;
+}
+
+fieldset {
+  border: 1px solid rgba(128, 128, 128, 0.3);
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+}
+
+.riga-data-input {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.riga-data-input input {
+  flex: 1;
+  padding: 0.4rem 0.6rem;
+}
+
+.aggiungi {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 0;
+}
+
+.input-posto {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+}
+
+.cerca-btn {
+  padding: 0.6rem;
+  border-radius: 0.6rem;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.criterio-ordine {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.criterio-ordine__pulsante {
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid rgba(128, 128, 128, 0.4);
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.criterio-ordine__pulsante.attivo {
+  background: currentColor;
+  color: canvas;
+}
+
+.elenco-risultati {
+  list-style: none;
+  padding: 0 1rem;
+  max-width: 720px;
+  margin: 0 auto 3rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.risultato-riga {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0.9rem;
+  border-radius: 0.6rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.risultato-riga__posizione {
+  font-weight: 700;
+  opacity: 0.5;
+  min-width: 1.5rem;
+}
+
+.risultato-riga__posto {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.risultato-riga__sotto {
+  opacity: 0.65;
+  font-size: 0.75rem;
+}
+
+.risultato-riga__km {
+  font-weight: 700;
+  white-space: nowrap;
+}

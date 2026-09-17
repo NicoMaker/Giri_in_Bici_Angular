@@ -1,0 +1,8 @@
+/* Giri in Bici — Tema Primavera */
+@import url("../assets/core.css");
+
+:root {
+  --a1: #0ca678;
+  --a2: #63c65f;
+  --a-soft: rgba(12, 166, 120, 0.13);
+}

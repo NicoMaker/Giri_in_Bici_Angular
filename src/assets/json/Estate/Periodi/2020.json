@@ -1,0 +1,127 @@
+[
+  {
+    "date": "30 Maggio",
+    "place": "quasi San Daniele",
+    "distance": 45
+  },
+  {
+    "date": "18 Giugno",
+    "place": "San Daniele",
+    "distance": 52
+  },
+  {
+    "date": "21 Giugno",
+    "place": "Pordenone",
+    "distance": 61
+  },
+  {
+    "date": "23 Giugno",
+    "place": "San Daniele",
+    "distance": 66
+  },
+  {
+    "date": "26 Giugno",
+    "place": "Latisana",
+    "distance": 55
+  },
+  {
+    "date": "28 Giugno",
+    "place": "Udine",
+    "distance": 60
+  },
+  {
+    "date": "30 Giugno",
+    "place": "Spilmbergo + Pinzano",
+    "distance": 73
+  },
+  {
+    "date": "02 Luglio",
+    "place": "Marano + Ariis",
+    "distance": 80
+  },
+  {
+    "date": "04 Luglio",
+    "place": "Fagagna",
+    "distance": 55
+  },
+  {
+    "date": "07 Luglio",
+    "place": "Palmanova + Mortegliano",
+    "distance": 66
+  },
+  {
+    "date": "09 Luglio",
+    "place": "San vito + Sesto al Reghena + Portogruaro + Cordovado",
+    "distance": 85
+  },
+  {
+    "date": "14 Luglio",
+    "place": "Valvasone + Porcia + Pordenone",
+    "distance": 96
+  },
+  {
+    "date": "18 Luglio",
+    "place": "Da Palmanova a Grado",
+    "distance": 61
+  },
+  {
+    "date": "22 Luglio",
+    "place": "San Daniele + Fagagna",
+    "distance": 60
+  },
+  {
+    "date": "25 Luglio",
+    "place": "Cividale + Dobrovo <img src='/img/Icons/Slovenia.png' />",
+    "distance": 124
+  },
+  {
+    "date": "08 Agosto",
+    "place": "Da san Daniele a Gemona e Venzone",
+    "distance": 55
+  },
+  {
+    "date": "10 Agosto",
+    "place": "Lago di Cornino + Spilimbergo",
+    "distance": 88
+  },
+  {
+    "date": "12 Agosto",
+    "place": "Grado + Aquileia",
+    "distance": 115
+  },
+  {
+    "date": "14 Agosto",
+    "place": "Udine",
+    "distance": 48
+  },
+  {
+    "date": "16 Agosto",
+    "place": "Lago di Cavazzo",
+    "distance": 112
+  },
+  {
+    "date": "19 Agosto",
+    "place": "Spilmbergo + Sacile",
+    "distance": 141
+  },
+  {
+    "date": "22 Agosto",
+    "place": "Valvasone + San Vito",
+    "distance": 44
+  },
+  {
+    "date": "25 Agosto",
+    "place": "Lignano",
+    "distance": 88
+  },
+  {
+    "date": "09 Settembre",
+    "place": "Conegliano",
+    "distance": 139
+  },
+  {
+    "date": "11 Settembre",
+    "place": "Redipuglia + Duino + Santa Croce e Sistiana",
+    "distance": 152
+  }
+]

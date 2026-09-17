@@ -1,0 +1,50 @@
+/* ============================================================
+   Spegne le animazioni se l'utente le ha disattivate
+   Parte del tema condiviso: assets/css/core.css
+   ============================================================ */
+
+/* ---------- Rispetto delle preferenze ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .site-bar,
+  .hero > *,
+  .hero > h1,
+  .hero > .immagini_stagione,
+  .parallasse,
+  .hero::before,
+  #stampa .container > *,
+  #dati > *,
+  .season-grid > *,
+  .gallery > *,
+  .team-section .team-grid > *,
+  #StampaBici .contorno,
+  #StampaBici .row > *,
+  .entra,
+  .menu.showMenu li,
+  .Icona:hover {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+  }
+
+  #stampa:empty,
+  #totale:empty,
+  #km:empty,
+  #dati:empty,
+  #StampaBici:empty,
+  #Grafici:empty,
+  #grafici:empty {
+    animation: none;
+  }
+
+  .scroll-progress {
+    display: none;
+  }
+
+  /* Riflesso che segue il cursore sulle card: spento con le altre
+     animazioni. Il JS in contenuti-animati.js non aggiunge nemmeno
+     l'ascoltatore in questo caso, qui si copre solo il CSS. */
+  .colore::after,
+  .bici-card::after {
+    display: none !important;
+  }
+}

@@ -1,0 +1,16 @@
+/* ============================================================
+   Barra di avanzamento della lettura
+   Parte del tema condiviso: assets/css/core.css
+   ============================================================ */
+
+/* ---------- Barra di avanzamento della lettura ---------- */
+.scroll-progress {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 100;
+  height: 3px;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  background: linear-gradient(90deg, var(--a1), var(--a2));
+  pointer-events: none;
+}

@@ -1,0 +1,35 @@
+/* ============================================================
+   Giri in Bici — Accesso
+
+   Indice dei componenti. Il tema condiviso arriva da
+   assets/css/core.css; qui sotto solo cio' che e' proprio
+   di questa pagina, un file per ogni parte.
+   ============================================================ */
+
+@import url("../../assets/core.css");
+
+@import url("../../tema.css"); /* Colori d'accento condivisi (file unico) */
+@import url("contenitore.css"); /* Sovrascrive la griglia .container del tema */
+@import url("../componenti/card.css"); /* Riquadro dell'accesso */
+@import url("../extra/logo.css"); /* Logo sopra il modulo */
+@import url("../componenti/form.css"); /* Campi del modulo */
+@import url("../componenti/bottone.css"); /* Bottone Accedi, ripple e messaggio di errore */
+@import url("../extra/cookie.css"); /* Banner dei cookie */
+@import url("responsive.css"); /* Adattamenti per schermi piccoli */
+
+/* Impostazioni di base della pagina d'accesso.
+   Prima stavano in Login/tema.css: ora che il tema è un file unico,
+   queste regole proprie del login restano qui, identiche. */
+body {
+  display: grid;
+  place-items: center;
+  min-height: 100dvh;
+  padding: 1.25rem;
+}
+
+.particles-container {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}

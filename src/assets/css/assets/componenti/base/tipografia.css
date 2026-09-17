@@ -1,0 +1,93 @@
+/* ============================================================
+   Titoli, paragrafi, testo di servizio
+   Parte del tema condiviso: assets/css/core.css
+   ============================================================ */
+
+/* ---------- 3. Tipografia ---------- */
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display-bold);
+  color: var(--ink);
+  /* Prima era 1.08: troppo stretto per un font bold come questo, la
+     "g" (e altre lettere con codetta come "p", "y") di una riga
+     quasi toccava la riga sotto quando il titolo andava a capo su
+     due righe, diventando difficile da leggere. 1.2 lascia respiro
+     senza appesantire i titoli su una riga sola. */
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.4em;
+  text-align: center;
+}
+
+h1 {
+  font-size: clamp(2rem, 5.2vw, 3.4rem);
+  font-weight: 800;
+}
+
+h2 {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 700;
+}
+
+p {
+  margin: 0 0 1rem;
+  color: var(--ink-2);
+  font-size: 1rem;
+  text-align: center;
+}
+
+.grasetto,
+.grassetto {
+  font-weight: 700;
+}
+
+.corsivo {
+  font-style: italic;
+}
+
+/* Titolo firma del sito: la scritta "Giri in Bici" in cima alla home.
+   Ora la tipografia è Syne, bold e decisa, non più il corsivo — ma
+   resta (anzi torna) il riempimento in gradiente tricolore che
+   scorre di continuo: quell'animazione (gradientShift, in
+   animazioni.css/rifiniture.css) piaceva ed era proprio pensata per
+   questo elemento, le serve un vero sfondo in gradiente su cui
+   scorrere, non un colore pieno. Il gradiente è "repeating", cioè
+   il ciclo verde-bianco-rosso si ripete all'infinito lungo la
+   scritta, cosi' che scorrendo non "torni indietro" (niente
+   alternate) ma continui a ciclare verde, bianco, rosso, verde,
+   bianco, rosso... senza scatti al giro. */
+.colore_sfondo_italia {
+  font-family: var(--font-display-bold);
+  font-weight: 800;
+  font-size: clamp(2.6rem, 9vw, 5.6rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin: 0.1em 0 0.3em;
+  background-image: repeating-linear-gradient(
+    100deg,
+    #00934a 0%,
+    #35c07a 8%,
+    #f2f6f8 17%,
+    #f2f6f8 25%,
+    #ef4b4b 33%,
+    #c8102e 42%,
+    #00934a 50%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 6px 18px rgba(15, 36, 56, 0.18));
+  font-family: var(--font-display);
+}
+
+.colore_sfondo_italia img {
+  display: inline-block;
+  width: clamp(28px, 5vw, 52px);
+  height: auto;
+  vertical-align: middle;
+  filter: none;
+}

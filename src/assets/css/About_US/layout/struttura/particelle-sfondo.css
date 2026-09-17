@@ -1,0 +1,94 @@
+/* ============================================================
+   Particelle ambientali sullo sfondo
+   Parte della pagina Informazioni: About_US/StyleAbout.css
+   ============================================================ */
+
+/* Particelle ambientali */
+.bg-particles {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--a1), var(--a2));
+  opacity: 0.16;
+  animation: float 16s ease-in-out infinite;
+}
+
+.particle:nth-child(1) {
+  top: 12%;
+  left: 8%;
+  animation-delay: 0s;
+}
+.particle:nth-child(2) {
+  top: 28%;
+  left: 82%;
+  width: 16px;
+  height: 16px;
+  animation-delay: 1.6s;
+}
+.particle:nth-child(3) {
+  top: 62%;
+  left: 16%;
+  width: 7px;
+  height: 7px;
+  animation-delay: 3.2s;
+}
+.particle:nth-child(4) {
+  top: 78%;
+  left: 72%;
+  animation-delay: 4.8s;
+}
+.particle:nth-child(5) {
+  top: 42%;
+  left: 46%;
+  width: 14px;
+  height: 14px;
+  animation-delay: 6.4s;
+}
+.particle:nth-child(6) {
+  top: 8%;
+  left: 58%;
+  width: 8px;
+  height: 8px;
+  animation-delay: 8s;
+}
+.particle:nth-child(7) {
+  top: 88%;
+  left: 34%;
+  animation-delay: 9.6s;
+}
+.particle:nth-child(8) {
+  top: 54%;
+  left: 92%;
+  width: 12px;
+  height: 12px;
+  animation-delay: 11.2s;
+}
+.particle:nth-child(9) {
+  top: 70%;
+  left: 4%;
+  width: 6px;
+  height: 6px;
+  animation-delay: 12.8s;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+  33% {
+    transform: translateY(-26px) translateX(14px);
+  }
+  66% {
+    transform: translateY(14px) translateX(-18px);
+  }
+}

@@ -1,0 +1,52 @@
+.titolo,
+.centro {
+  text-align: center;
+}
+
+.colore {
+  max-width: 640px;
+  margin: 1rem auto;
+  padding: 1.25rem;
+  border-radius: 1rem;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.sottopagine {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+  max-width: 900px;
+  margin: 0 auto 1.5rem;
+  padding: 0 1rem;
+}
+
+.sottopagine a {
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(128, 128, 128, 0.4);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.griglia-periodi {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  max-width: 900px;
+  margin: 0 auto 3rem;
+  padding: 0 1rem;
+}
+
+.scheda-periodo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1.4;
+  border-radius: 0.9rem;
+  text-decoration: none;
+  color: #1a1a1a;
+  font-weight: 800;
+  font-size: 1.2rem;
+}

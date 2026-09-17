@@ -1,0 +1,89 @@
+{
+  "intestazioni": {
+    "home": "/img/Bici/Intestazione/madonnina_Bici.jpg",
+    "mtb": [
+      "/img/Bici/Intestazione/AI/MTB/MarioMTB.jpeg",
+      "/img/Bici/Intestazione/AI/MTB/SonicMTB.jpg",
+      "/img/Bici/Intestazione/AI/MTB/MarioSonicMTB.jpg",
+      "/img/Bici/Intestazione/AI/MTB/Sonichu01.jpg",
+      "/img/Bici/Intestazione/AI/MTB/Sonichu02.jpg",
+      "/img/Bici/Intestazione/AI/MTB/Sonichu03.jpg"
+    ],
+    "corsa": [
+      "/img/Bici/Intestazione/AI/Corsa/SonicCorsa.jpg",
+      "/img/Bici/Intestazione/AI/Corsa/MarioSonicCorsa.jpg",
+      "/img/Bici/Intestazione/AI/Corsa/SonicCorsa2.jpg",
+      "/img/Bici/Intestazione/AI/Corsa/SonicPikaku1.jpg",
+      "/img/Bici/Intestazione/AI/Corsa/SonicPikaku2.jpg",
+      "/img/Bici/Intestazione/AI/Corsa/SonicPikaku3.jpg"
+    ]
+  },
+  "bici": [
+    {
+      "nome": "La Pantera Nera",
+      "tipo": "mtb",
+      "tipo_freni": "Pattino",
+      "materiale": "Acciaio",
+      "misura_ruote": 27,
+      "avanti": 3,
+      "dietro": 7,
+      "anno": 2016,
+      "immagine": "/img/Bici/MTB/La Pantera Nera .jpg"
+    },
+    {
+      "nome": "La Fluo",
+      "tipo": "mtb",
+      "tipo_freni": "Disco",
+      "materiale": "Acciaio",
+      "misura_ruote": 29,
+      "avanti": 3,
+      "dietro": 7,
+      "anno": 2020,
+      "immagine": "/img/Bici/MTB/La Fluo.jpg"
+    },
+    {
+      "nome": "La Bianconera",
+      "tipo": "mtb",
+      "tipo_freni": "Disco",
+      "materiale": "Acciaio",
+      "misura_ruote": 29,
+      "avanti": 3,
+      "dietro": 7,
+      "anno": 2020,
+      "immagine": "/img/Bici/MTB/La Bianconera .jpg"
+    },
+    {
+      "nome": "La Pimpa",
+      "tipo": "mtb",
+      "tipo_freni": "Disco",
+      "materiale": "Acciaio",
+      "misura_ruote": 29,
+      "avanti": 3,
+      "dietro": 8,
+      "anno": 2021,
+      "immagine": "/img/Bici/MTB/La Pimpa.jpg"
+    },
+    {
+      "nome": "La Splendente",
+      "tipo": "mtb",
+      "tipo_freni": "Disco",
+      "materiale": "Acciaio",
+      "misura_ruote": 27,
+      "avanti": 3,
+      "dietro": 7,
+      "anno": 2022,
+      "immagine": "/img/Bici/MTB/La Splendente.jpg"
+    },
+    {
+      "nome": "La Corsara",
+      "tipo": "corsa",
+      "tipo_freni": "Pattino",
+      "materiale": "Fibra di Carbonio",
+      "misura_ruote": 28,
+      "avanti": 2,
+      "dietro": 11,
+      "anno": 2022,
+      "immagine": "/img/Bici/Corsa/La Corsara .jpg"
+    }
+  ]
+}

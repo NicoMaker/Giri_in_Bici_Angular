@@ -1,0 +1,8 @@
+/* Giri in Bici — Tema Estate */
+@import url("../assets/core.css");
+
+:root {
+  --a1: #f2701a;
+  --a2: #f7c948;
+  --a-soft: rgba(242, 112, 26, 0.13);
+}

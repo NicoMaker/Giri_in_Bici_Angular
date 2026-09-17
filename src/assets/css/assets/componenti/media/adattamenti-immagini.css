@@ -1,0 +1,35 @@
+/* ============================================================
+   Immagini e pulsante stagioni su schermi stretti
+   Parte del tema condiviso: assets/css/core.css
+   ============================================================ */
+
+/* ---------- 23. Immagini e pulsante stagioni: adattamento ---------- */
+
+/* Su schermi stretti resta solo l'icona delle stagioni */
+@media (max-width: 780px) {
+  .graficostagioni-testo {
+    display: none;
+  }
+
+  .graficostagioni {
+    padding: 0.35rem;
+  }
+}
+
+/* Galleria: su telefono due colonne piene */
+@media (max-width: 480px) {
+  .gallery {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+}
+
+/* Nessuna immagine viene mai ritagliata */
+.shot img,
+.immagini_stagione,
+.immmaginejnrobot,
+.immagini_stagione2,
+.immagine_bicisx,
+.immagine_bicidx,
+.stagioni-hero {
+  object-fit: contain;
+}

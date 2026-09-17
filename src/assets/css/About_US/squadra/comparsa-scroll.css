@@ -1,0 +1,27 @@
+/* ============================================================
+   Comparsa dei blocchi allo scroll
+   Parte della pagina Informazioni: About_US/StyleAbout.css
+   ============================================================ */
+
+/* Rivelazione */
+.fade-in {
+  animation: fadeInUp 0.7s var(--ease) both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+}
+
+@media (max-width: 768px) {
+  .back-btn {
+    top: 0.75rem;
+    left: 0.75rem;
+  }
+
+  .header {
+    padding-top: 4.5rem;
+  }
+}

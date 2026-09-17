@@ -1,0 +1,70 @@
+/* ============================================================
+   Adattamenti generali per schermi piccoli
+   Parte del tema condiviso: assets/css/core.css
+   ============================================================ */
+
+/* ---------- 19. Responsive ---------- */
+@media (max-width: 900px) {
+  .brand {
+    gap: 0.85rem;
+  }
+
+  .brand-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+
+  .riga-giri {
+    display: none;
+  }
+
+  .tricolore-italia {
+    width: 130px;
+    height: 8px;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .brand-text small {
+    font-size: 0.62rem;
+    letter-spacing: 0.07em;
+    max-width: 150px;
+  }
+
+  .con-hamburger .site-bar {
+    padding-right: calc(0.9rem + var(--hamburger-slot));
+  }
+}
+
+@media (max-width: 640px) {
+  .Icons a,
+  .Icons .colore_apertura {
+    width: 38px;
+    height: 38px;
+  }
+
+  .Icons img {
+    width: 21px;
+    height: 21px;
+  }
+
+  .Icons .ico {
+    width: 21px;
+    height: 21px;
+  }
+
+  th,
+  td {
+    padding: 0.65rem 0.7rem;
+  }
+
+  .misuracolore {
+    font-size: 0.94rem;
+  }
+
+  #pagination {
+    gap: 0.4rem;
+  }
+}

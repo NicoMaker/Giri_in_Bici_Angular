@@ -1,0 +1,24 @@
+{
+  "season": "Estate",
+  "image": "estate.png",
+  "path": "Estate",
+  "cssclass": "Estate",
+  "subPeriods": {
+    "2020": "json/Estate/Periodi/2020.json",
+    "2021": "json/Estate/Periodi/2021.json",
+    "2022": "json/Estate/Periodi/2022.json",
+    "2023": "json/Estate/Periodi/2023.json",
+    "2024": "json/Estate/Periodi/2024.json",
+    "2025": "json/Estate/Periodi/2025.json",
+    "2026": "json/Estate/Periodi/2026.json"
+  },
+  "colors": [
+    "yellow",
+    "orange",
+    "red",
+    "purple",
+    "#ff0060",
+    "turquoise",
+    "gold"
+  ]
+}

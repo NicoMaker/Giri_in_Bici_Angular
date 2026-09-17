@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Le stagioni a confronto">
+  <title>Le stagioni a confronto</title>
+
+  <circle cx="60" cy="60" r="58" fill="#ffffff" />
+
+  <!-- Tre archi: primavera, estate, autunno-inverno -->
+  <g fill="none" stroke-width="20" stroke-linecap="butt">
+    <circle cx="60" cy="60" r="42" stroke="#0ca678"
+            stroke-dasharray="88 176" stroke-dashoffset="0" transform="rotate(-90 60 60)" />
+    <circle cx="60" cy="60" r="42" stroke="#f2701a"
+            stroke-dasharray="88 176" stroke-dashoffset="-88" transform="rotate(-90 60 60)" />
+    <circle cx="60" cy="60" r="42" stroke="#1b6fc4"
+            stroke-dasharray="88 176" stroke-dashoffset="-176" transform="rotate(-90 60 60)" />
+  </g>
+
+  <!-- Bicicletta al centro -->
+  <g stroke="#0e1b2a" stroke-width="3.4" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="46" cy="66" r="10" />
+    <circle cx="74" cy="66" r="10" />
+    <path d="M46 66 L57 48 L69 48" />
+    <path d="M57 48 L64 66 L74 66" />
+    <path d="M64 66 L52 66" />
+    <path d="M67 45 L73 45" />
+  </g>
+</svg>

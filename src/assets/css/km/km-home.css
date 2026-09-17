@@ -1,0 +1,14 @@
+/* ============================================================
+   Blocco chilometri della home, cliccabile
+   Parte del tema principale: giri.css
+   ============================================================ */
+
+/* Blocco chilometri della home: la card riepilogo è cliccabile */
+#km {
+  display: block;
+  margin: 0 auto;
+}
+
+#km .colore {
+  cursor: pointer;
+}

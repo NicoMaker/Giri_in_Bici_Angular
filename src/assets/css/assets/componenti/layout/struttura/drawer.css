@@ -1,0 +1,173 @@
+/* ============================================================
+   Menu laterale e pulsante hamburger
+   Parte del tema condiviso: assets/css/core.css
+   ============================================================ */
+
+/* ---------- 14. Drawer menu + hamburger ---------- */
+.menu {
+  position: fixed;
+  inset: 0 -100% 0 auto;
+  width: min(360px, 88vw);
+  height: 100%;
+  z-index: 80;
+  margin: 0;
+  padding: 0; /* RIMOSSO TUTTO IL PADDING */
+  list-style: none;
+  overflow-y: auto;
+  background: var(--surface);
+  border-left: 1px solid var(--line);
+  box-shadow: -24px 0 60px -30px rgba(15, 36, 56, 0.55);
+  transition: right 0.45s var(--ease);
+  display: flex;
+  flex-direction: column;
+}
+
+.menu.showMenu {
+  right: 0;
+}
+
+/* Header del menu con la X fissa */
+.menu-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--surface); /* SFONDO SOLIDO per coprire il contenuto sotto */
+  padding: 1rem 1.25rem 0.5rem 1.25rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--line); /* Linea di separazione */
+}
+
+/* Pulsante di chiusura (X) dentro il pannello - INGRANDITO */
+.menu .menu-close {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 70px;
+  height: 70px;
+  padding: 0;
+  color: var(--ink);
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: none;
+}
+
+.menu .menu-close span {
+  display: grid;
+  place-items: center;
+  font-size: 3rem;
+  line-height: 0;
+  font-weight: 300;
+}
+
+/* Contenuto scrollabile del menu */
+.menu-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 1.25rem 2rem 1.25rem;
+}
+
+.menu h1 {
+  font-family: var(--font-head);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  text-align: left;
+  margin: 1rem 0 0.5rem 0;
+  background: none;
+  -webkit-text-fill-color: currentColor;
+}
+
+.menu br {
+  display: none;
+}
+
+.menu input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  text-align: left;
+  color: var(--ink);
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-full);
+  transition:
+    border-color 0.2s var(--ease),
+    box-shadow 0.2s var(--ease);
+}
+
+.menu input::placeholder {
+  color: var(--ink-3);
+}
+
+.menu input:focus {
+  outline: none;
+  border-color: var(--a1);
+  box-shadow: 0 0 0 4px var(--a-soft);
+}
+
+.menu ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.menu li {
+  padding: 0;
+  margin-bottom: 0.4rem;
+  list-style: none;
+}
+
+.menu li a,
+.menu button {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.85rem;
+  width: 100%;
+  padding: 0.7rem 0.9rem;
+  font-family: var(--font-head);
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: left;
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--r-md);
+  transition:
+    background 0.2s var(--ease),
+    border-color 0.2s var(--ease);
+}
+
+.menu li a:hover,
+.menu button:hover {
+  background: var(--a-soft);
+  border-color: color-mix(in srgb, var(--a1) 28%, transparent);
+  color: var(--a1);
+}
+
+/* ============================================================
+   Colori d'accento — TEMA UNICO CONDIVISO
+   ============================================================ */
+
+:root {
+  --a1: #0e8bd4;
+  --a2: #6f5bf0;
+  --a-soft: rgba(14, 139, 212, 0.12);
+}
+
+.menu-close {
+  background-color: transparent !important;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+}

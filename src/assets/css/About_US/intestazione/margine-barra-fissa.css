@@ -1,0 +1,12 @@
+/* ============================================================
+   La barra fissa lascia respiro all'intestazione
+   Parte della pagina Informazioni: About_US/StyleAbout.css
+   ============================================================ */
+
+/* ============================================================
+   La barra fissa in alto lascia respiro all'intestazione
+   ============================================================ */
+
+.site-bar + .header {
+  padding-top: clamp(1.6rem, 4vw, 2.6rem);
+}

@@ -1,0 +1,24 @@
+{
+  "users": [
+    {
+      "name": "Nico Maker",
+      "username": "NicoMaker",
+      "description": "Creatore e sviluppatore del sito e appasionato di ciclismo",
+      "avatar": "AvatarNM.jpg",
+      "komootUrl": "https://www.komoot.com/it-it/user/1372754001803",
+      "visibleInTeam": true
+    },
+    {
+      "name": "Jacoreds",
+      "username": "Jacoreds",
+      "description": "Compagno di avventure ciclistiche",
+      "avatar": "AvatarJR.png",
+      "komootUrl": "https://www.komoot.com/it-it/user/1381372752571",
+      "visibleInTeam": true
+    },
+    {
+      "username": "Salvo",
+      "visibleInTeam": false
+    }
+  ]
+}

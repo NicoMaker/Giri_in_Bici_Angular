@@ -1,0 +1,278 @@
+/* ============================================================
+   Barra di navigazione in alto
+   Parte del tema condiviso: assets/css/core.css
+   ============================================================ */
+
+/* ---------- 5. Barra superiore ----------
+   Vetro smerigliato: sfondo semi-trasparente + sfocatura di quello che
+   scorre sotto, cosi' la barra resta leggibile ma non e' piu' un
+   blocco bianco piatto — si vede il contenuto scorrere dietro,
+   smussato. Il colore di fondo resta lo stesso bianco (--bar-bg),
+   solo reso translucido; niente cambia per chi non supporta
+   backdrop-filter (resta un bianco quasi pieno, via @supports sotto). */
+.site-bar {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  min-height: var(--bar-h);
+  padding: 0.6rem clamp(0.9rem, 3vw, 1.6rem);
+  background: color-mix(in srgb, var(--bar-bg) 82%, transparent);
+  border-bottom: 1px solid rgba(15, 36, 56, 0.1);
+  transition:
+    background 0.3s var(--ease),
+    box-shadow 0.3s var(--ease);
+}
+
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  .site-bar {
+    background: color-mix(in srgb, var(--bar-bg) 68%, transparent);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    backdrop-filter: blur(16px) saturate(160%);
+  }
+}
+
+/* Quando si scorre la pagina, la barra si stacca un filo di piu' dal
+   contenuto: ombra leggera + un velo piu' opaco, cosi' resta sempre
+   leggibile anche su sfondi chiari. Attivata da assets/motion.js
+   (stessa soglia di scroll gia' usata per "torna su"). */
+.site-bar.is-scrolled {
+  background: color-mix(in srgb, var(--bar-bg) 92%, transparent);
+  box-shadow: var(--sh-2);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: var(--ink);
+  font-family: var(--font-head);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-right: auto;
+}
+
+.brand:hover {
+  color: var(--ink);
+}
+
+.brand-text {
+  font-size: 1.05rem;
+  white-space: nowrap;
+}
+
+/* Riga "Giri in Bici" vera e propria: separata dal sottotitolo cosi'
+   la striscia tricolore puo' stare esattamente sotto di essa */
+.riga-giri {
+  display: block;
+}
+
+.brand-text small {
+  display: block;
+  font-family: var(--font-head);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: rgba(15, 36, 56, 0.6);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: normal;
+  max-width: 200px;
+  line-height: 1.25;
+}
+
+/* ---------- Striscia tricolore sotto "Giri in Bici" ----------
+   Bandiera italiana (verde-bianco-rosso) come piccola riga ferma
+   sotto la scritta del marchio, presente in ogni intestazione del
+   sito e nella pagina di accesso. Niente animazione qui: e' un
+   dettaglio fisso, come una vera bandierina. */
+.tricolore-italia {
+  display: block;
+  width: 180px;
+  height: 7px;
+  margin-top: 5px;
+  margin-bottom: 14px;
+  border-radius: var(--r-full);
+  overflow: hidden;
+  background-image: linear-gradient(
+    90deg,
+    var(--it-verde) 0%,
+    var(--it-verde) 33.33%,
+    var(--it-bianco) 33.33%,
+    var(--it-bianco) 66.66%,
+    var(--it-rosso) 66.66%,
+    var(--it-rosso) 100%
+  );
+  box-shadow:
+    inset 0 0 0 1px rgba(15, 36, 56, 0.1),
+    0 1px 2px rgba(15, 36, 56, 0.15);
+  border: 1.5px solid var(--it-contorno);
+}
+
+/* Variante piu' larga e centrata per la pagina di accesso, dove il
+   titolo "Giri in Bici" e' grande e centrato nella card */
+.tricolore-italia--login {
+  width: min(100%, 210px);
+  height: 5px;
+  margin: 0.35rem auto 1.3rem;
+}
+
+/* Variante centrata per l'hero della home, sotto al titolo "Giri in
+   Bici": stessa bandiera di header e footer, ma centrata invece che
+   allineata a sinistra, coerente con il resto della sezione .hero. */
+.tricolore-italia--hero {
+  width: min(100%, 200px);
+  height: 6px;
+  margin: 0.1rem auto 1rem;
+}
+
+/* Logo storico: resta su una pastiglia chiara, cosi' la bandiera
+   si legge bene comunque, sia sulla barra chiara che nel resto del sito */
+.Bandiera-FVG {
+  width: 54px;
+  height: 54px;
+  object-fit: contain;
+  border-radius: 15px;
+  border: 1px solid rgba(15, 36, 56, 0.12);
+  box-shadow: var(--sh-1);
+  background: var(--surface);
+  transition:
+    transform 0.25s var(--ease),
+    box-shadow 0.25s var(--ease);
+}
+
+.brand:hover .Bandiera-FVG {
+  transform: rotate(-4deg) scale(1.06);
+  box-shadow: var(--sh-2);
+}
+
+/* Navigazione a icone (classe storica .Icons) */
+.Icons {
+  display: inline-flex;
+  align-items: center;
+  flex: 1 1 auto;
+  min-width: 0;
+  justify-content: center;
+  gap: 0.25rem;
+  padding: 0.3rem;
+  margin: 0;
+  border: 1px solid rgba(15, 36, 56, 0.12);
+  border-radius: var(--r-full);
+  background: rgba(15, 36, 56, 0.05);
+  position: static;
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+.Icons a,
+.Icons .colore_apertura {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: var(--r-full);
+  color: rgba(15, 36, 56, 0.72);
+  background: transparent;
+  transition:
+    background 0.2s var(--ease),
+    color 0.2s var(--ease),
+    transform 0.2s var(--ease);
+}
+
+/* Icona a tratto al posto del PNG (la sostituzione la fa ui.js) */
+.Icons .ico-nav {
+  display: grid;
+  place-items: center;
+}
+
+.Icons .ico {
+  width: 24px;
+  height: 24px;
+}
+
+.Icons a:hover,
+.Icons a:focus-visible {
+  color: var(--a1);
+  background: rgba(15, 36, 56, 0.08);
+  transform: translateY(-3px) scale(1.08);
+}
+
+.Icons img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+/* Pagina in cui ci si trova: icona nel colore d'accento con un
+   anello sottile, senza pastiglia gialla dietro (ne' da ferma ne' al
+   passaggio del mouse: toglieva leggibilita' sulla barra chiara). */
+.Icons a[aria-current="page"],
+.Icons a.is-attivo {
+  color: var(--a1);
+  background: transparent;
+  box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--a1) 55%, transparent);
+}
+
+.Icons a[aria-current="page"]:hover,
+.Icons a.is-attivo:hover {
+  background: transparent;
+}
+
+/* Pulsante grafico stagioni nella barra */
+.graficostagioni {
+  position: static;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  flex: 0 0 auto;
+  /* Stessa altezza dell'hamburger (46px, vedi componenti-ui/icone.css)
+     cosi' i due pulsanti risultano centrati sulla stessa linea invece
+     di dipendere dal padding per arrivare alla stessa altezza. */
+  min-height: 46px;
+  padding: 0.3rem 0.95rem 0.3rem 0.4rem;
+  font-family: var(--font-head);
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  border: 1px solid transparent;
+  border-radius: var(--r-full);
+  background: linear-gradient(120deg, var(--a1), var(--a2));
+  box-shadow: var(--sh-2);
+  transition:
+    transform 0.25s var(--ease),
+    box-shadow 0.25s var(--ease),
+    color 0.2s var(--ease);
+}
+
+/* Passandoci sopra si alza appena: il colore della scritta non
+   viene toccato, resta quello del pulsante. */
+.graficostagioni:hover {
+  color: #fff;
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: var(--sh-3);
+}
+
+.Stagioni {
+  display: block;
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+
+.graficostagioni-testo {
+  white-space: nowrap;
+}
+
+/* Logo grande delle stagioni nell'intestazione della pagina dedicata */
+.stagioni-hero {
+  display: block;
+  width: min(100%, 190px);
+  height: auto;
+  margin: 1.4rem auto 0;
+  filter: drop-shadow(0 12px 26px rgba(15, 36, 56, 0.18));
+}

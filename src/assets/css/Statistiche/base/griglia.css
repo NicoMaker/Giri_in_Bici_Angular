@@ -1,0 +1,9 @@
+/* ============================================================
+   Griglia delle schede anno
+   Parte della pagina Statistiche: Statistiche/Style_statistiche.css
+   ============================================================ */
+
+/* Ultima card dispari a tutta larghezza */
+.odd-items .Statistiche:last-child {
+  grid-column: 1 / -1;
+}

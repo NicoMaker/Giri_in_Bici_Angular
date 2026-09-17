@@ -1,0 +1,30 @@
+<h1 class="titolo">Statistiche</h1>
+
+@if (caricamento) {
+  <p class="centro">Caricamento…</p>
+} @else {
+  @if (totali) {
+    <section class="colore" appScrollReveal>
+      <p class="misuracolore">Totale km {{ totali.totalKm | italianNumber }}</p>
+      <p class="misuracolore">Totale corse {{ totali.totalRaces | italianNumber }}</p>
+      <p class="misuracolore">Totale anni {{ totali.totalYears | italianNumber }}</p>
+      <p class="misuracolore">Totale periodi {{ totali.totalPeriods | italianNumber }}</p>
+    </section>
+  }
+
+  <nav class="sottopagine" appScrollReveal>
+    <a routerLink="/statistiche/stagioni">Confronto tra le stagioni</a>
+    <a routerLink="/statistiche/storico/classifica-mesi">Classifica dei mesi</a>
+    <a routerLink="/statistiche/storico/mensili">Statistiche mensili</a>
+    <a routerLink="/statistiche/storico/totali">Statistiche totali</a>
+    <a routerLink="/statistiche/storico/storico-mensile">Storico mensile</a>
+  </nav>
+
+  <section class="griglia-periodi" appScrollReveal>
+    @for (a of anni; track a.anno) {
+      <a class="scheda-periodo" [routerLink]="['/statistiche/anni', a.anno]" [style.background]="a.colore">
+        <span>{{ a.anno }}</span>
+      </a>
+    }
+  </section>
+}

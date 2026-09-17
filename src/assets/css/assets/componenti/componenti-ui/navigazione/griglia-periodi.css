@@ -1,0 +1,100 @@
+/* ============================================================
+   Griglia degli anni e dei periodi
+   Parte del tema condiviso: assets/css/core.css
+   ============================================================ */
+
+/* ---------- 8. Griglia periodi / anni ---------- */
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(1rem, 2.2vw, 1.5rem);
+  align-items: stretch;
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.Primaveracontorno,
+.Estatecontorno,
+.Autunno-Invernocontorno,
+.Statistiche {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  box-shadow: var(--sh-2);
+  padding: clamp(1.1rem, 2.4vw, 1.6rem);
+  padding-bottom: calc(clamp(1.1rem, 2.4vw, 1.6rem) + 2.6rem);
+  overflow: hidden;
+  transition:
+    transform 0.3s var(--ease),
+    box-shadow 0.3s var(--ease),
+    border-color 0.3s var(--ease);
+}
+
+.Primaveracontorno::before,
+.Estatecontorno::before,
+.Autunno-Invernocontorno::before,
+.Statistiche::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: linear-gradient(180deg, var(--a1), var(--a2));
+}
+
+.Primaveracontorno:hover,
+.Estatecontorno:hover,
+.Autunno-Invernocontorno:hover,
+.Statistiche:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--sh-3);
+  border-color: color-mix(in srgb, var(--a1) 40%, var(--line));
+}
+
+.Primaveracontorno a,
+.Estatecontorno a,
+.Autunno-Invernocontorno a,
+.Statistiche a {
+  display: block;
+  color: inherit;
+}
+
+/* Ultima card dispari: occupa tutta la riga */
+.odd-items .Primaveracontorno:last-child,
+.odd-items .Estatecontorno:last-child,
+.odd-items .Autunno-Invernocontorno:last-child,
+.odd-items .Statistiche:last-child {
+  grid-column: 1 / -1;
+}
+
+/* Icona stagione nella card */
+.immaginestagione {
+  float: none;
+  width: 52px;
+  height: 52px;
+  margin: 0 0 0.6rem;
+  object-fit: contain;
+  padding: 9px;
+  border-radius: var(--r-md);
+  background: var(--a-soft);
+}
+
+.titoli {
+  font-family: var(--font-head);
+  font-size: clamp(1.15rem, 2.4vw, 1.45rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  text-align: left;
+  margin: 0 0 0.5rem;
+  transition: color 0.2s var(--ease);
+}
+
+.Primaveracontorno:hover .titoli,
+.Estatecontorno:hover .titoli,
+.Autunno-Invernocontorno:hover .titoli,
+.Statistiche:hover .titoli {
+  color: var(--a1);
+}

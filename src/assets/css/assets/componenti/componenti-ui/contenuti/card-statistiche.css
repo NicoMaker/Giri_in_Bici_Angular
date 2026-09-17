@@ -1,0 +1,110 @@
+/* ============================================================
+   Riquadri .colore con i numeri riepilogativi
+   Parte del tema condiviso: assets/css/core.css
+   ============================================================ */
+
+/* ---------- 7. Card statistiche (.colore) ---------- */
+.colore {
+  position: relative;
+  width: min(100%, 720px);
+  margin: 0 auto;
+  padding: clamp(1.2rem, 3vw, 1.9rem) clamp(1.1rem, 3vw, 2rem);
+  background: color-mix(in srgb, var(--surface) 78%, transparent);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  box-shadow: var(--sh-2);
+  overflow: hidden;
+  transition:
+    transform 0.35s var(--ease),
+    box-shadow 0.35s var(--ease),
+    background 0.35s var(--ease);
+}
+
+@supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+  .colore {
+    -webkit-backdrop-filter: blur(14px) saturate(150%);
+    backdrop-filter: blur(14px) saturate(150%);
+  }
+}
+
+.colore::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--a1), var(--a2));
+  box-shadow: 0 0 16px -2px color-mix(in srgb, var(--a1) 55%, transparent);
+  transition:
+    height 0.35s var(--ease),
+    box-shadow 0.35s var(--ease);
+}
+
+/* Righe dato dentro la card */
+/* Riga "etichetta ..... valore".
+   Il testo è scritto di seguito nel markup, ma motion.js incapsula il
+   numero in <span class="num">: da lì in poi tutto viene spinto a
+   destra come un blocco unico (numero + unità + icona). Senza questo,
+   flex crea tre elementi anonimi e il numero finisce al centro. */
+.misuracolore {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0.62rem 0;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-head);
+  font-size: clamp(0.95rem, 1.7vw, 1.08rem);
+  font-weight: 500;
+  color: var(--ink);
+  text-align: left;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Il numero e tutto ciò che lo segue vanno a destra — piu' grande e
+   piu' pesante della riga normale, ma nero pieno (var(--ink)), non
+   in gradiente: qui il numero deve leggersi netto, non "di vetro". */
+.misuracolore .num {
+  margin-left: auto;
+  font-family: var(--font-head);
+  font-size: 1.18em;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  color: var(--ink);
+}
+
+/* Unità di misura e icone restano attaccate al numero */
+.misuracolore .num ~ * {
+  flex: 0 0 auto;
+}
+
+/* Riga senza numero (titoli tipo "🌸 PRIMAVERA"): resta com'era */
+.misuracolore:not(:has(.num)) {
+  justify-content: space-between;
+}
+
+.colore .misuracolore:last-child {
+  border-bottom: 0;
+}
+
+.misuracolore img {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+
+.misuracolore:first-child {
+  font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.colore hr {
+  margin: 0.9rem 0;
+  background: var(--line);
+}

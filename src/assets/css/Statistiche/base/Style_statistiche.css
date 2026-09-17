@@ -1,0 +1,26 @@
+/* ============================================================
+   Giri in Bici — Statistiche
+
+   Indice dei componenti. Il tema condiviso arriva da
+   assets/css/core.css; qui sotto solo cio' che e' proprio
+   di questa sezione, un file per ogni parte.
+   ============================================================ */
+
+@import url("../../assets/core.css");
+
+@import url("../../tema.css"); /* Colori d'accento condivisi (file unico) */
+@import url("../tabelle/tabella-mesi.css"); /* Tabella dei mesi */
+@import url("griglia.css"); /* Griglia delle schede anno */
+@import url("../tabelle/riepilogo-stagioni.css"); /* Riepilogo "Totali per stagione" */
+@import url("../classifiche/classifica-mesi.css"); /* Podio e classifica dei mesi più pedalati */
+@import url("../classifiche/classifica-controlli.css"); /* Ordine (dal più al meno pedalato o inverso) e filtro per km */
+@import url("../classifiche/selettore-metrica.css"); /* Selettore a pillole per scegliere il dato da guardare */
+
+/* Accenti propri della sezione Statistiche (viola).
+   Prima stavano in Statistiche/tema.css: ora che il tema è un file
+   unico, l'accento specifico di questa pagina vive qui e resta identico. */
+:root {
+  --a1: #6d47e0;
+  --a2: #c07ae8;
+  --a-soft: rgba(109, 71, 224, 0.13);
+}

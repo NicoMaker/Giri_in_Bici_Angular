@@ -1,0 +1,48 @@
+/* ============================================================
+   Giri in Bici — Tema condiviso
+
+   Questo file non contiene regole: e' l'indice dei componenti.
+   Ogni componente sta in assets/css/componenti/<sottocartella>/
+   e ha una sola responsabilita'. Le sottocartelle raggruppano i
+   componenti per argomento (base, layout, componenti-ui,
+   tabelle-grafici, media, interazioni, animazioni). Per riusarlo
+   altrove basta richiamare core.css, oppure il singolo componente
+   che serve.
+
+   L'ordine degli import e' quello originale del foglio di stile:
+   spostarli puo' cambiare quale regola vince.
+   ============================================================ */
+
+@import url("componenti/base/token.css"); /* Variabili di progetto: colori, tipi, spazi, ombre, misure */
+@import url("componenti/base/reset.css"); /* Azzeramento degli stili del browser e impostazioni di base */
+@import url("componenti/base/tipografia.css"); /* Titoli, paragrafi, testo di servizio */
+@import url("componenti/layout/struttura/layout.css"); /* Contenitore centrale e spaziature delle sezioni */
+@import url("componenti/layout/struttura/barra.css"); /* Barra di navigazione in alto */
+@import url("componenti/layout/sezioni/hero.css"); /* Intestazione grande di apertura pagina */
+@import url("componenti/componenti-ui/contenuti/card-statistiche.css"); /* Riquadri .colore con i numeri riepilogativi */
+@import url("componenti/componenti-ui/navigazione/griglia-periodi.css"); /* Griglia degli anni e dei periodi */
+@import url("componenti/componenti-ui/navigazione/paginazione.css"); /* Navigazione fra le pagine */
+@import url("componenti/tabelle-grafici/tabelle.css"); /* Tabelle generiche */
+@import url("componenti/tabelle-grafici/tabella-storico.css"); /* Tabella dello storico mensile */
+@import url("componenti/tabelle-grafici/grafici.css"); /* Riquadri dei grafici Chart.js */
+@import url("componenti/media/galleria.css"); /* Galleria fotografica dei periodi */
+@import url("componenti/layout/struttura/drawer.css"); /* Menu laterale e pulsante hamburger */
+@import url("componenti/componenti-ui/navigazione/icone.css"); /* Icone a tratto disegnate da icone.js */
+@import url("componenti/componenti-ui/contenuti/stagioni.css"); /* Scorciatoie e schede delle stagioni */
+@import url("componenti/componenti-ui/contenuti/bici-contatti.css"); /* Catalogo bici, contatti, blocchi della home */
+@import url("componenti/layout/sezioni/footer.css"); /* Piè di pagina */
+@import url("componenti/interazioni/effetti/rivelazione.css"); /* Blocchi che compaiono allo scroll (.reveal) */
+@import url("componenti/interazioni/impostazioni/responsive.css"); /* Adattamenti generali per schermi piccoli */
+@import url("componenti/interazioni/impostazioni/preferenze.css"); /* Movimento ridotto e stampa */
+@import url("componenti/animazioni/dettagli/rifiniture.css"); /* Ritocchi trasversali e fotogrammi delle animazioni */
+@import url("componenti/animazioni/base/animazioni.css"); /* Sequenza di apertura, entrata delle card, segnaposto */
+@import url("componenti/interazioni/barre/barra-lettura.css"); /* Barra di avanzamento della lettura */
+@import url("componenti/interazioni/barre/torna-su.css"); /* Pulsante torna su */
+@import url("componenti/interazioni/effetti/micro-interazioni.css"); /* Reazioni al passaggio del mouse e al tocco */
+@import url("componenti/animazioni/dettagli/animazioni-preferenze.css"); /* Spegne le animazioni se l'utente le ha disattivate */
+@import url("componenti/media/adattamenti-immagini.css"); /* Immagini e pulsante stagioni su schermi stretti */
+@import url("componenti/media/lightbox.css"); /* Apertura delle foto a grandezza piena */
+@import url("componenti/animazioni/base/animazioni-extra.css"); /* Movimento in più: respiri, sfavillii, hover ricchi */
+@import url("componenti/animazioni/base/animazioni-moderne.css"); /* Sfondo che deriva, riflesso sulle card, pulsante Stagioni vivo */
+@import url("componenti/animazioni/dettagli/transizioni-pagina.css"); /* Dissolvenza animata fra una pagina e l'altra del sito */
+@import url("componenti/animazioni/base/animazioni-scroll-moderne.css"); /* .reveal agganciato allo scroll, pulsanti principali con rimbalzo */

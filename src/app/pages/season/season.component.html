@@ -1,0 +1,18 @@
+@if (caricamento) {
+  <p class="centro">Caricamento…</p>
+} @else if (config) {
+  <section class="intestazione-stagione" [class]="config.cssclass" appScrollReveal>
+    <img [src]="immagineIntestazione() | assetUrl" [alt]="config.season" />
+    <h1>{{ config.season }}</h1>
+  </section>
+
+  <section class="griglia-periodi" appScrollReveal>
+    @for (a of anni; track a.anno) {
+      <a class="scheda-periodo" [routerLink]="['/', seasonKey, a.anno]" [style.background]="a.colore">
+        <span>{{ a.anno }}</span>
+      </a>
+    }
+  </section>
+} @else {
+  <p class="centro">Impossibile caricare i dati della stagione.</p>
+}

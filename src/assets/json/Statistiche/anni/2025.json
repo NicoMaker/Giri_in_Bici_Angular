@@ -1,0 +1,19 @@
+{
+  "year": "2025",
+  "numberOfRaces": 40,
+  "data": {
+    "Gennaio": 400,
+    "Febbraio": 309,
+    "Marzo": 290,
+    "Aprile": 282,
+    "Maggio": 311,
+    "Giugno": 280,
+    "Luglio": 116,
+    "Agosto": 85,
+    "Settembre": 390,
+    "Ottobre": 414,
+    "Novembre": 179,
+    "Dicembre": 110
+  },
+  "_notaColori": "Il colore di ogni mese non vive piu' qui: viene calcolato da JS/Statistiche/anni.js leggendo json/Statistiche/History/config-mesi.json (coloriMesi), mappato per nome del mese - stessa palette del grafico 'Statistiche Mensili' - cosi' resta coerente anche se in questo file mancano dei mesi."
+}

@@ -1,0 +1,17 @@
+/* ============================================================
+   Adattamenti per schermi piccoli
+   Parte della pagina di accesso: Login/StyleLogin.css
+   ============================================================ */
+
+/* Responsive */
+@media (max-width: 520px) {
+  .cookie-content {
+    justify-content: center;
+  }
+  .cookie-content p {
+    text-align: center;
+  }
+  #accept-cookies {
+    width: 100%;
+  }
+}

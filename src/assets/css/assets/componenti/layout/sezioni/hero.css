@@ -1,0 +1,120 @@
+/* ============================================================
+   Intestazione grande di apertura pagina
+   Parte del tema condiviso: assets/css/core.css
+   ============================================================ */
+
+/* ---------- 6. Hero ---------- */
+.hero {
+  position: relative;
+  text-align: center;
+  padding: clamp(2rem, 6vw, 4rem) 0 clamp(1rem, 3vw, 2rem);
+  isolation: isolate;
+}
+
+/* Bagliore sfumato dietro al titolo: profondità in più senza
+   appesantire la pagina, sempre nei colori del tema attivo. */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -10%;
+  left: 50%;
+  width: min(720px, 92vw);
+  height: 340px;
+  transform: translateX(-50%);
+  background: radial-gradient(
+    closest-side,
+    color-mix(in srgb, var(--a1) 20%, transparent),
+    color-mix(in srgb, var(--a2) 12%, transparent) 55%,
+    transparent 78%
+  );
+  filter: blur(6px);
+  z-index: -1;
+  pointer-events: none;
+  animation: fx-aurora-drift 16s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+/* Il bagliore deriva piano, come un'aurora, invece di restare fermo */
+@keyframes fx-aurora-drift {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0) scale(1);
+    opacity: 0.92;
+  }
+  33% {
+    transform: translateX(-54%) translateY(12px) scale(1.06);
+    opacity: 1;
+  }
+  66% {
+    transform: translateX(-46%) translateY(-10px) scale(0.96);
+    opacity: 0.82;
+  }
+}
+
+.hero .Titolo,
+.hero h1 {
+  margin-bottom: 0.35rem;
+}
+
+.hero-sub {
+  max-width: 58ch;
+  margin: 0 auto;
+  color: var(--ink-3);
+  font-size: clamp(0.98rem, 1.6vw, 1.1rem);
+}
+
+/* Titoli di sezione stagionali (classi storiche) */
+.Titolo,
+.Primavera,
+.Estate,
+.Autunno-Inverno,
+.titolo-storico {
+  font-family: var(--font-display-bold);
+  font-weight: 800;
+  font-size: clamp(1.9rem, 5vw, 3.2rem);
+  letter-spacing: -0.02em;
+  text-align: center;
+  background-image: linear-gradient(100deg, var(--a1), var(--a2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  padding: 0.1em 0;
+  margin: 0 0 0.5rem;
+}
+
+.Titolo2 {
+  font-family: var(--font-display-bold);
+  font-size: clamp(1.25rem, 2.6vw, 1.7rem);
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  text-align: center;
+  margin: 0.2rem 0 0.8rem;
+}
+
+/* ---------- Accento "linea di velocità" ----------
+   Piccola barra sotto il titolo principale, ispirata al numero di
+   gara/pettorale dei brand ciclistici: gradiente accent con un
+   riflesso che scorre come un lampo, stessa animazione fx-bar-sheen
+   gia' usata sulla barra di lettura in cima alla pagina — coerenza
+   invece di inventare un nuovo effetto. Solo sotto il vero titolo
+   della pagina (.Titolo/h1), non sui sottotitoli .Titolo2. */
+.hero > .Titolo + .hero-sub::before,
+.hero > .Titolo ~ .hero-sub::before,
+.hero > h1 + .hero-sub::before,
+.hero > h1 ~ .hero-sub::before {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 4px;
+  margin: 0 auto 1rem;
+  border-radius: var(--r-full);
+  background:
+    linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent),
+    linear-gradient(90deg, var(--a1), var(--a2));
+  background-size:
+    180% 100%,
+    100% 100%;
+  animation: fx-bar-sheen 2.4s linear infinite;
+}

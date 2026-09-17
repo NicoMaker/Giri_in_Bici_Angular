@@ -1,0 +1,125 @@
+/* ============================================================
+   Piè di pagina
+   Parte del tema condiviso: assets/css/core.css
+   ============================================================ */
+
+/* ---------- 17. Footer ----------
+   Stessa cornice chiara della barra in alto: apre e chiude ogni
+   pagina con lo stesso bianco puro. Testo scuro (var(--ink)),
+   non piu' bianco. */
+.site-foot {
+  margin-top: clamp(1.6rem, 3.5vw, 2.6rem);
+  padding: clamp(1rem, 2.2vw, 1.4rem) 0 1.1rem;
+  background: var(--bar-bg);
+}
+
+.site-foot .wrap {
+  /* Il footer usa di base il contenitore .wrap (centrato, max
+     1180px), diverso dal padding fisso della barra in alto: su
+     schermi larghi i due bordi sinistri finivano scollegati.
+     Qui si sovrascrive .wrap per usare lo stesso padding fisso
+     dell'header (.site-bar), cosi' le due righe restano sempre
+     allineate verticalmente. */
+  width: 100%;
+  margin-inline: 0;
+  padding-inline: clamp(0.9rem, 3vw, 1.6rem);
+
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  column-gap: 1.6rem;
+  row-gap: 0.3rem;
+}
+
+/* La riga del copyright e la bandiera FVG stanno nella stessa
+   colonna, una sopra l'altra; i link vanno nella colonna a destra,
+   centrati sulle due righe. Stessa disposizione su mobile e desktop
+   (su mobile la griglia diventa a colonna singola, vedi sotto). */
+.site-foot .wrap > p {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.site-foot .wrap > .footer-tricolore {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.site-foot .wrap > .foot-links {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  justify-self: end;
+}
+
+@media (max-width: 640px) {
+  .site-foot .wrap {
+    grid-template-columns: 1fr;
+    justify-items: start;
+    row-gap: 0.55rem;
+  }
+
+  .site-foot .wrap > .foot-links {
+    grid-column: 1;
+    grid-row: 3;
+    justify-self: start;
+  }
+}
+
+.site-foot p {
+  margin: 0;
+  font-size: 0.88rem;
+  color: rgba(15, 36, 56, 0.6);
+  text-align: left;
+}
+
+/* Riga con l'intervallo di date ("Dal 30 Maggio 2020 al ..."),
+   sotto la riga del copyright in ogni piè di pagina del sito. */
+.footer-dates {
+  display: inline-block;
+  margin-top: 0.25rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: rgba(15, 36, 56, 0.5);
+}
+
+.foot-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.1rem;
+  font-family: var(--font-head);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.foot-links a {
+  color: rgba(15, 36, 56, 0.78);
+}
+
+.foot-links a:hover {
+  color: var(--a1);
+}
+
+/* ---------- Bandiera "Io sono Friuli Venezia Giulia" nel footer ----------
+   Stesso trattamento dell'header: striscia tricolore sopra la scritta,
+   presente in ogni piè di pagina del sito. */
+.footer-tricolore {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.footer-tricolore .tricolore-italia {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.footer-fvg-tagline {
+  margin: 0;
+  font-family: var(--font-head);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: rgba(15, 36, 56, 0.6);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}

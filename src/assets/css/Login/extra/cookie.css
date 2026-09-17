@@ -1,0 +1,102 @@
+/* ============================================================
+   Banner dei cookie
+   Parte della pagina di accesso: Login/StyleLogin.css
+   ============================================================ */
+
+/* ====== COOKIE BANNER ====== */
+.cookie-banner {
+  position: fixed;
+  left: 50%;
+  bottom: 1.25rem;
+  transform: translateX(-50%);
+  z-index: 100;
+  display: none;
+  width: min(100% - 2rem, 640px);
+  padding: 1rem 1.2rem;
+  background: var(--surface);
+  background: color-mix(in srgb, var(--surface) 92%, transparent);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  box-shadow: var(--sh-3);
+}
+
+.cookie-content {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.cookie-icon {
+  font-size: 1.35rem;
+  color: var(--a1);
+  flex: 0 0 auto;
+}
+
+.cookie-content p {
+  flex: 1 1 240px;
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--ink-2);
+  text-align: left;
+}
+
+.cookie-content a {
+  color: var(--a1);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+#accept-cookies {
+  position: relative;
+  padding: 0.6rem 1.4rem;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: #fff;
+  background: linear-gradient(120deg, var(--a1), var(--a2));
+  border: 0;
+  border-radius: var(--r-full);
+  overflow: hidden;
+  transition:
+    transform 0.2s var(--ease),
+    filter 0.2s var(--ease);
+}
+
+#accept-cookies:hover {
+  transform: translateY(-2px);
+  filter: saturate(1.15);
+}
+
+.revoke-button {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 99;
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1rem;
+  font-family: var(--font-head);
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--ink-2);
+  background: var(--surface);
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--line);
+  border-radius: var(--r-full);
+  box-shadow: var(--sh-2);
+  overflow: hidden;
+  transition:
+    transform 0.2s var(--ease),
+    color 0.2s var(--ease);
+}
+
+.revoke-button:hover {
+  transform: translateY(-2px);
+  color: var(--a1);
+}

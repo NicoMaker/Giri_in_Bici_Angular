@@ -1,0 +1,75 @@
+/* ============================================================
+   Campi del modulo
+   Parte della pagina di accesso: Login/StyleLogin.css
+   ============================================================ */
+
+/* Form */
+#loginForm {
+  position: relative;
+  z-index: 1;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.input-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon > i:first-child {
+  position: absolute;
+  left: 1.05rem;
+  font-size: 1rem;
+  color: var(--ink-3);
+  pointer-events: none;
+  transition: color 0.2s var(--ease);
+}
+
+.input-icon input {
+  width: 100%;
+  padding: 0.95rem 3rem 0.95rem 2.9rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--ink);
+  text-align: left;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-full);
+  transition:
+    border-color 0.2s var(--ease),
+    box-shadow 0.2s var(--ease),
+    background 0.2s var(--ease);
+}
+
+.input-icon input::placeholder {
+  color: var(--ink-3);
+}
+
+.input-icon input:focus {
+  outline: none;
+  background: var(--surface);
+  border-color: var(--a1);
+  box-shadow: 0 0 0 4px var(--a-soft);
+}
+
+.toggle-password {
+  position: absolute;
+  right: 1.05rem;
+  font-size: 1rem;
+  color: var(--ink-3);
+  cursor: pointer;
+  transition:
+    color 0.2s var(--ease),
+    transform 0.3s var(--ease);
+}
+
+.toggle-password:hover {
+  color: var(--a1);
+}
+
+.input-focus-effect {
+  display: none;
+}

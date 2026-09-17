@@ -1,0 +1,22 @@
+{
+  "season": "Autunno - Inverno",
+  "subPeriods": {
+    "2020-2021": "json/Autunno_Inverno/Periodi/2020-2021.json",
+    "2021-2022": "json/Autunno_Inverno/Periodi/2021-2022.json",
+    "2022-2023": "json/Autunno_Inverno/Periodi/2022-2023.json",
+    "2023-2024": "json/Autunno_Inverno/Periodi/2023-2024.json",
+    "2024-2025": "json/Autunno_Inverno/Periodi/2024-2025.json",
+    "2025-2026": "json/Autunno_Inverno/Periodi/2025-2026.json"
+  },
+  "image": "inverno.png",
+  "path": "Autunno_Inverno",
+  "cssclass": "Autunno-Inverno",
+  "colors": [
+    "yellowgreen",
+    "skyblue",
+    "#ba690c",
+    "blue",
+    "lightblue",
+    "saddlebrown"
+  ]
+}

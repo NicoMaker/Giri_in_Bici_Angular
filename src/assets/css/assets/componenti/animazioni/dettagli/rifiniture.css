@@ -1,0 +1,127 @@
+/* ============================================================
+   Ritocchi trasversali e fotogrammi delle animazioni
+   Parte del tema condiviso: assets/css/core.css
+   ============================================================ */
+
+/* ---------- 21. Rifiniture aggiunte ---------- */
+
+/* Liste dentro il drawer */
+.menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Contenitori riempiti da JavaScript */
+#km,
+#stampa,
+#totale,
+#dati {
+  display: block;
+}
+
+#km > a,
+#totale > a,
+#stampa a {
+  display: block;
+  color: inherit;
+}
+
+/* Il logo della home dentro una cornice pulita */
+.hero-logo {
+  display: block;
+  width: min(100%, 280px);
+  margin: 1.8rem auto 1.2rem;
+  padding: 10px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-xl);
+  box-shadow: var(--sh-3);
+}
+
+.hero-logo .immagine {
+  width: 100%;
+  margin: 0;
+  border: 0;
+  border-radius: calc(var(--r-xl) - 10px);
+  box-shadow: none;
+}
+
+/* Collegamento alla Regione FVG */
+.fvg-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.55rem 1.4rem 0.55rem 0.55rem;
+  font-family: var(--font-head);
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-full);
+  box-shadow: var(--sh-1);
+  transition:
+    transform 0.25s var(--ease),
+    box-shadow 0.25s var(--ease),
+    color 0.2s var(--ease);
+}
+
+.fvg-link:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--sh-2);
+  color: var(--a1);
+}
+
+.fvg-badge {
+  width: 58px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* ============================================================
+   22. MOVIMENTO — entrate, scorrimento, micro-interazioni
+   ============================================================ */
+
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+}
+
+@keyframes barDown {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes gradientShift {
+  to {
+    background-position: 200% center;
+  }
+}
+
+@keyframes pulseRing {
+  70% {
+    box-shadow: 0 0 0 14px rgba(0, 0, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+}

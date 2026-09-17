@@ -35,6 +35,8 @@ import { AssetUrlPipe } from '../../core/pipes/asset-url.pipe';
       </a>
     </header>
 
+    <div class="scrim" [class.scrim--visibile]="aperto" (click)="aperto = false"></div>
+
     <div class="drawer" [class.drawer--aperto]="aperto">
       <div class="drawer__intestazione">
         <input

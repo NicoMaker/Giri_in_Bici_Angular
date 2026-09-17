@@ -1,51 +1,59 @@
-.titolo,
-.centro {
-  text-align: center;
-}
-
 .squadra {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
+  gap: var(--space-4);
   max-width: 900px;
-  margin: 1.5rem auto;
-  padding: 0 1rem;
+  margin: var(--space-5) auto;
+  padding: 0 var(--space-4);
 }
 
 .membro {
   text-align: center;
-  padding: 1.25rem;
-  border-radius: 1rem;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  padding: var(--space-5);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
 }
 
 .membro img {
-  width: 96px;
-  height: 96px;
+  width: 92px;
+  height: 92px;
   border-radius: 50%;
   object-fit: cover;
-  margin-bottom: 0.75rem;
+  margin-bottom: var(--space-3);
+  box-shadow: var(--shadow-sm);
+}
+
+.membro p {
+  color: var(--ink-soft);
+  font-size: 0.9rem;
 }
 
 .mappa-blocco,
 .contatti {
   max-width: 720px;
-  margin: 0 auto 2rem;
-  padding: 0 1rem;
+  margin: 0 auto var(--space-6);
+  padding: 0 var(--space-4);
   text-align: center;
 }
 
 .mappa-blocco img {
   width: 100%;
-  border-radius: 1rem;
-  margin-top: 0.75rem;
+  border-radius: var(--radius-lg);
+  margin-top: var(--space-3);
+  box-shadow: var(--shadow-sm);
 }
 
 .contatti ul {
   list-style: none;
   padding: 0;
   display: flex;
-  gap: 1rem;
+  gap: var(--space-4);
   justify-content: center;
   flex-wrap: wrap;
+}
+
+.contatti a {
+  font-weight: 600;
 }

@@ -6,6 +6,8 @@ import { TotaliGenerali } from '../../core/models/data.models';
 import { ItalianNumberPipe } from '../../core/pipes/italian-number.pipe';
 import { AssetUrlPipe } from '../../core/pipes/asset-url.pipe';
 import { ScrollRevealDirective } from '../../shared/scroll-reveal/scroll-reveal.directive';
+import { ContourDividerComponent } from '../../shared/contour-divider/contour-divider.component';
+import { CountUpDirective } from '../../shared/count-up/count-up.directive';
 
 // ============================================================
 // HomeComponent — equivalente di Giri.html
@@ -15,7 +17,15 @@ import { ScrollRevealDirective } from '../../shared/scroll-reveal/scroll-reveal.
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterLink, ItalianNumberPipe, AssetUrlPipe, ScrollRevealDirective],
+  imports: [
+    CommonModule,
+    RouterLink,
+    ItalianNumberPipe,
+    AssetUrlPipe,
+    ScrollRevealDirective,
+    ContourDividerComponent,
+    CountUpDirective,
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })

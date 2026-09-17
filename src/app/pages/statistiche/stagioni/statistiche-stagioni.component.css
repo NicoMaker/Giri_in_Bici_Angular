@@ -14,7 +14,7 @@
   max-width: 640px;
   margin: 0 auto 1.5rem;
   padding: 1.25rem;
-  border-radius: 1rem;
+  border-radius: var(--radius-md);
   display: grid;
   gap: 0.4rem;
 }
@@ -30,8 +30,8 @@
 
 .scheda-stagione-stat {
   padding: 1.25rem;
-  border-radius: 1rem;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
   text-align: center;
 }
 

@@ -19,9 +19,17 @@ import { Component } from '@angular/core';
     `
       .footer {
         text-align: center;
-        padding: 2rem 1rem;
-        opacity: 0.8;
+        padding: var(--space-7) var(--space-4) var(--space-6);
+        color: var(--ink-soft);
         font-size: 0.85rem;
+        border-top: 1px solid var(--border);
+        margin-top: var(--space-7);
+      }
+      .footer p {
+        margin: 0.15rem 0;
+      }
+      .footer__data {
+        text-transform: capitalize;
       }
     `,
   ],

@@ -20,16 +20,25 @@ import { Component, HostListener } from '@angular/core';
     `
       .torna-su {
         position: fixed;
-        right: 1.25rem;
-        bottom: 1.25rem;
-        width: 44px;
-        height: 44px;
+        right: var(--space-5);
+        bottom: var(--space-5);
+        width: 46px;
+        height: 46px;
         border-radius: 50%;
-        border: none;
+        border: 1px solid var(--border);
+        background: var(--surface);
+        color: var(--pine-700);
         cursor: pointer;
-        font-size: 1.1rem;
+        font-size: 1.2rem;
+        font-family: var(--font-display);
         z-index: 30;
-        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+        box-shadow: var(--shadow-md);
+        transition: transform 0.15s ease, background 0.15s ease;
+      }
+      .torna-su:hover {
+        background: var(--pine-700);
+        color: #fff;
+        transform: translateY(-2px);
       }
     `,
   ],

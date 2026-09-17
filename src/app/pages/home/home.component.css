@@ -1,58 +1,74 @@
 .hero {
   text-align: center;
-  padding: 2.5rem 1rem 1.5rem;
+  padding: var(--space-8) var(--space-4) var(--space-6);
+  max-width: 760px;
+  margin: 0 auto;
 }
 
-.hero-sub {
-  opacity: 0.8;
-  max-width: 560px;
-  margin: 0.5rem auto 0;
+.hero__eyebrow {
+  color: var(--pine-700);
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-bottom: var(--space-2);
 }
 
-.colore {
-  max-width: 720px;
-  margin: 0 auto 2rem;
-  padding: 1.5rem;
-  border-radius: 1rem;
-  display: grid;
-  gap: 0.5rem;
+.hero h1 {
+  margin-bottom: var(--space-5);
 }
 
-.misuracolore {
-  margin: 0;
+.hero__caricamento {
+  color: var(--ink-soft);
+}
+
+.hero__cifra {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.1rem;
+  margin: 0 0 var(--space-2);
 }
 
-.misuracolore img {
-  width: 18px;
-  height: 18px;
+.hero__cifra .cifra {
+  font-size: clamp(3rem, 11vw, 5.5rem);
+  color: var(--pine-700);
+  line-height: 1;
 }
 
-.colore__vai-a {
-  margin-top: 0.75rem;
-  font-weight: 700;
-  text-decoration: none;
+.hero__unita {
+  color: var(--ink-soft);
+  font-size: 1rem;
+}
+
+.hero__sub {
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  margin-bottom: var(--space-6);
 }
 
 .griglia-periodi {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.25rem;
-  max-width: 960px;
-  margin: 0 auto 3rem;
-  padding: 0 1rem;
+  gap: var(--space-4);
+  max-width: var(--content-width);
+  margin: 0 auto var(--space-7);
+  padding: 0 var(--space-4);
 }
 
 .scheda-stagione {
   position: relative;
   display: block;
-  border-radius: 1rem;
+  border-radius: var(--radius-lg);
   overflow: hidden;
   text-decoration: none;
   color: #fff;
   aspect-ratio: 4 / 3;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.scheda-stagione:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
 }
 
 .scheda-stagione img {
@@ -66,7 +82,32 @@
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 0.75rem;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+  padding: var(--space-4);
+  background: linear-gradient(transparent, rgba(10, 20, 15, 0.75));
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.colore {
+  max-width: 640px;
+}
+
+.colore__titolo {
+  margin-bottom: var(--space-3);
+  font-size: 1.1rem;
+}
+
+.misuracolore span:first-child {
+  color: var(--ink-soft);
+  font-family: var(--font-body);
+  font-weight: 500;
+}
+
+.colore__vai-a {
+  margin-top: var(--space-3);
+  display: inline-block;
   font-weight: 700;
+  text-decoration: none;
+  color: var(--pine-700);
 }
